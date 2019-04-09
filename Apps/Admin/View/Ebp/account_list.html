@@ -1,0 +1,62 @@
+<extend name="Base/common" />
+<block name="body">
+<div class="page-container">
+  <div class="cl pd-5 bg-1 bk-gray mt-20">
+    <a href="{:U('/admin/ebp/account_add')}" class="btn btn-success"><i class="Hui-iconfont Hui-iconfont-add"></i> 开户</a>
+  </div>
+  <table class="table table-border table-bordered table-bg mt-20">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>商户号</th>
+        <th>今日入金</th>
+        <th>昨日入金</th>
+        <th>账户余额</th>
+        <th>身份证</th>
+        <th>用户名</th>
+        <th>电话</th>
+        <th>费率</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    <foreach name="list" item="item">
+    <tr>
+      <td>{$item['id']}</td>
+      <td><a class="c-primary" href="{:U('/admin/ebp/account_info', array('id' => $item['id']))}">{$item['customerCode']}</a></td>
+      <td>{$item['today_amout']}</td>
+      <td>{$item['yesterday_amout']}</td>
+      <td>{$item['balance']}</td>
+      <td>{$item['identityNo']}</td>
+      <td>{$item['userName']}</td>
+      <td>{$item['mobiePhoneNo']}</td>
+      <td>{$item['rate']}</td>
+      <td>
+        <a class="c-primary" href="{:U('/admin/ebp/account_view', array('id' => $item['id']))}">开户结果查询</a> 
+        <a class="c-error account-btn" href="javascript:;" data-id="{$item['id']}">删除</a> 
+      </td>
+    </tr>
+    </foreach>
+    </tbody>
+  </table>
+</div>
+<script>
+$('.account-btn').on('click', function(){
+  var id = $(this).data('id');
+  layer.confirm('确认要删除吗？',function(index){
+    $.ajax({
+      type: 'POST',
+      url: "{:U('/admin/ebp/account_del')}",
+      dataType: 'json',
+      data: {'id': id},
+      success: function(data){
+        window.location.reload()
+      },
+      error:function(data) {
+        console.log(data.msg);
+      },
+    });
+  });
+});
+</script>
+</block>

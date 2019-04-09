@@ -1,0 +1,26 @@
+<extend name="Base/common" />
+<block name="body">
+<div class="page-container">
+  <table class="table table-border table-bordered table-bg">
+    <thead>
+      <tr><th>ID</th><th>订单号</th><th>股票</th><th>买入价</th><th>止损</th><th>止盈</th><th>操作</th></tr>
+    </thead>
+    <tbody>
+    <foreach name="order_list" item="item">
+    <tr>
+      <td>{$item['id']}</td>
+      <td>{$item['order_sn']}</td>
+      <td>{$item['name']}</td>
+      <td>{$item['buy_price']}</td>
+      <td>{$item['endloss']}</td>
+      <td>{$item['endprofit']}</td>
+      <td>
+        <a href="{:U('/admin/order/order_info', array('id' => $item['id']))}">详情</a>
+      </td>
+    </tr>
+    </foreach>
+    </tbody>
+  </table>
+  <div class="pager">{$page}</div>
+</div>
+</block>

@@ -1,0 +1,98 @@
+<extend name="Base/common" />
+<block name="body">
+<div class="page-container">
+  <div class="container">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-header">资金池</div>
+        <div class="panel-body" style="overflow:hidden;">
+          <div class="row text-c">
+            <div class="col-xs-3">
+              <div><i class="Hui-iconfont Hui-iconfont-hongbao" style="font-size:50px;"></i></div>
+              <div>今日入账 <span class="c-warning f-28">{$today_sum|sprintf="%.2f", ###} </span></div>
+            </div>
+            <div class="col-xs-3">
+              <div><i class="Hui-iconfont Hui-iconfont-wuliu" style="font-size:50px;"></i></div>
+              <div>可转账 <span class="c-warning f-28">{$valid_amount|sprintf="%.2f", ###}</span></div>
+            </div>
+            <div class="col-xs-3">
+              <div><i class="Hui-iconfont Hui-iconfont-money" style="font-size:50px;"></i></div>
+              <div>账户余额 <span class="c-warning f-28">{$b_account_info['body']['balance']|sprintf="%.2f", ###}</span></div>
+            </div>
+            <div class="col-xs-3">
+              <div><i class="Hui-iconfont Hui-iconfont-bank" style="font-size:50px;"></i></div>
+              <div>冻结金额 <span class="c-warning f-28">0.00</span></div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <div class="row mt-20">
+      <div class="panel panel-default">
+        <div class="panel-header">商户信息</div>
+        <div class="panel-body" style="overflow:hidden;">
+          <table class="table table-border table-bordered">
+            <tr>
+              <td>商户号</td>
+              <td>{$account_info['customerCode']}</td>
+              <td>商户名</td>
+              <td>{$account_info['company']}</td>
+            </tr>
+            <tr>
+              <td>联系人</td>
+              <td>{$account_info['userName']}</td>
+              <td>身份证</td>
+              <td>{$account_info['identityNo']}</td>
+            </tr>
+            <tr>
+              <td>电话</td>
+              <td>{$account_info['mobiePhoneNo']}</td>
+              <td>状态</td>
+              <td>正常</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-20">
+      <div class="panel panel-default">
+        <div class="panel-header">费率信息</div>
+        <div class="panel-body" style="overflow:hidden;">
+          <table class="table table-border table-bordered">
+            <tr>
+              <td>交易类型</td>
+              <td>支持金融机构</td>
+              <td>费率类型</td>
+              <td>费率</td>
+              <td>最低收费</td>
+              <td>最高收费</td>
+              <td>单笔最低金额</td>
+              <td>单笔最高金额</td>
+            </tr>
+            <tr>
+              <td>网银</td>
+              <td>ALL</td>
+              <td>按费率</td>
+              <td>{$account_info['rate']}‰</td>
+              <td>￥1.00</td>
+              <td>--</td>
+              <td>0.00</td>
+              <td>50000</td>
+            </tr>
+            <tr>
+              <td>代付</td>
+              <td>ALL</td>
+              <td>按笔数</td>
+              <td>￥2.00</td>
+              <td>￥2.00</td>
+              <td>--</td>
+              <td>0.00</td>
+              <td>50000</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</block>

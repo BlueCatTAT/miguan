@@ -1,0 +1,54 @@
+<extend name="Base/base" />
+<block name="body">
+<style>
+.profile-haeder {position: relative; overflow: hidden; min-height: 8rem}
+.profile-haeder > .back {top: -2rem; left: -2rem; right: -2rem; bottom: -2rem; background-position: center; background-size: cover}
+.profile-haeder > .front {background: rgba(0,0,0,.1); padding: 1.5rem}
+</style>
+<div class="profile-haeder space shadow">
+  <div class="red dock blur-lg back" style="background-image: url(__PUBLIC__/bg22.png)"></div>
+  <div class="front dock text-white" style="display: inline-block;">
+    <div class="avatar avatar-xl circle space-sm">
+      <img src="__PUBLIC__/avatar.png" alt="">
+    </div>
+    <div style="display: inline-block; padding:20px;">
+      <div>大赛总收益</div>
+      <div style="font-size:1.2rem;">0.00%</div>
+    </div>
+  </div>
+</div>
+<div class="section" style="margin-top:10px; padding:10px;">
+  <div class="row">
+    <div class="cell">
+      <span class="label danger circle">实盘</span>
+    </div>
+    <div class="cell" style="flex-direction: column;">
+      <div>策略数</div>
+      <div>0</div>
+    </div>
+    <div class="cell" style="flex-direction: column;">
+      <div>胜率</div>
+      <div>0.00%</div>
+    </div>
+  </div>
+</div>
+<div class="section" style="margin-top:10px; padding:10px;">
+  <div class="row">
+    <div class="cell">
+      <span class="label warning circle">大赛</span>
+    </div>
+    <div class="cell" style="flex-direction: column;">
+      <div>日收益率</div>
+      <div>0.00%</div>
+    </div>
+    <div class="cell" style="flex-direction: column;">
+      <div>周收益率</div>
+      <div>0.00%</div>
+    </div>
+    <div class="cell" style="flex-direction: column;">
+      <div>月收益率</div>
+      <div>0.00%</div>
+    </div>
+  </div>
+</div>
+</block>

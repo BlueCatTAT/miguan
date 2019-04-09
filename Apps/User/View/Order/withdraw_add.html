@@ -1,0 +1,53 @@
+<extend name="Base/common" />
+<block name="body">
+<div class="page-container">
+  <form action="#" method="post" class="form form-horizontal">
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">
+      </label>
+      <div class="formControls col-xs-8 col-sm-9">
+        当前账户可用余额 <span class="c-red">{$account_info['body']['balance']}</span> 人民币
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">
+        <span class="c-red">*</span>
+        提现金额
+      </label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <input type="text" class="input-text" value="" placeholder="" name="transferAmount">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">
+        <span class="c-red">*</span>
+        提现银行卡号
+      </label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <input type="text" class="input-text" value="" placeholder="" name="bankCard">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">
+        <span class="c-red">*</span>
+        银行卡银行
+      </label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <span class="select-box">
+          <select name="bankCode" class="select">
+            <option value="0">请选择银行卡银行</option>
+            <foreach name="bank_list" item="item">
+            <option value="{$item.code}">{$item.name}</option>
+            </foreach>
+          </select>
+        </span>
+      </div>
+    </div>
+    <div class="row cl">
+      <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+        <button type="submit" class="btn btn-success radius" id="admin-role-save"><i class="icon-ok"></i> 确定</button>
+      </div>
+    </div>
+  </form>
+</div>
+</block>

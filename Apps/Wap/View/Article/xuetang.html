@@ -1,0 +1,60 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="section" >
+  <nav class="nav" data-display data-selector="a" data-show-single="true" data-active-class="active">
+    <a class="btn primary active" data-target="#tab1">股票入门</a>
+    <a class="btn primary" data-target="#tab2">精选战法</a>
+    <a class="btn primary" data-target="#tab3">每日解盘</a>
+  </nav>
+  <div>
+    <div class="box in" id="tab1">
+      <div class="list section">
+        <foreach name="list_1" item="item">
+        <a href="{:U('/wap/article/detail', ['id' => $item['id']])}" class="item multi-lines with-avatar">
+          <div class="content">
+            <span class="title">{$item['title']}</span>
+            <div>
+              <small class="text-green">{$item['content']|mb_substr=0,10,'utf-8'}</small>&nbsp;
+              <small class="muted">{$item['created_time']|date="m-d H:i", ###}</small>
+              <div class="pull-right label red-pale text-tint">{$item['type_name']}</div>
+            </div>
+          </div>
+        </a>
+        </foreach>
+      </div>
+    </div>
+    <div class="box hidden" id="tab2">
+      <div class="list section">
+        <foreach name="list_2" item="item">
+        <a href="{:U('/wap/article/detail', ['id' => $item['id']])}" class="item multi-lines with-avatar">
+          <div class="content">
+            <span class="title">{$item['title']}</span>
+            <div>
+              <small class="text-green">{$item['content']|mb_substr=0,10,'utf-8'}</small>&nbsp;
+              <small class="muted">{$item['created_time']|date="m-d H:i", ###}</small>
+              <div class="pull-right label red-pale text-tint">{$item['type_name']}</div>
+            </div>
+          </div>
+        </a>
+        </foreach>
+      </div>
+    </div>
+    <div class="box hidden" id="tab3">
+      <div class="list section">
+        <foreach name="list_3" item="item">
+        <a href="{:U('/wap/article/detail', ['id' => $item['id']])}" class="item multi-lines with-avatar">
+          <div class="content">
+            <span class="title">{$item['title']}</span>
+            <div>
+              <small class="text-green">{$item['content']|mb_substr=0,10,'utf-8'}</small>&nbsp;
+              <small class="muted">{$item['created_time']|date="m-d H:i", ###}</small>
+              <div class="pull-right label red-pale text-tint">{$item['type_name']}</div>
+            </div>
+          </div>
+        </a>
+        </foreach>
+      </div>
+    </div>
+  </div>
+</div>
+</block>

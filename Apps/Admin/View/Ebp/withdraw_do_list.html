@@ -1,0 +1,38 @@
+<extend name="Base/common" />
+<block name="body">
+<div class="page-container">
+  <table class="table table-border table-bordered table-bg">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ips流水号</th>
+        <th>订单号</th>
+        <th>商户号</th>
+        <th>金额</th>
+        <th>状态</th>
+        <th>时间</th>
+      </tr>
+    </thead>
+    <tbody>
+    <foreach name="list" item="item">
+    <tr>
+      <td>{$item['id']}</td>
+      <td>{$item['ipsBillNo']}</td>
+      <td>{$item['merBillNo']}</td>
+      <td>{$item['customerCode']}</td>
+      <td>{$item['amount']}</td>
+      <td>
+        <if condition="$item['tradeState'] eq 8">
+        处理中
+        </if>
+        <if condition="$item['tradeState'] eq 10">
+        已完成
+        </if>
+      </td>
+      <td>{$item['create_time']|date="Y-m-d H:i:s", ###}</td>
+    </tr>
+    </foreach>
+    </tbody>
+  </table>
+</div>
+</block>

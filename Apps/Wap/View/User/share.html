@@ -1,0 +1,38 @@
+<extend name="Base/base" />
+<block name="body">
+<style>
+#qrcode  img{
+  display:inline !important;
+}
+</style>
+<div class="section" style="margin-top:10px; padding:10px; text-align:center;">
+  <h4>邀请小伙伴来赚钱啦</h4>
+  <div id="qrcode" style="display:inline-block;">
+  </div>
+</div>
+<div class="section" style="padding:10px;">
+  <div class="lead">推广列表</div>
+  <hr/>
+  <div class="row">
+    <div class="cell" style="flex-direction:column;">
+      <div>昨日提成:0</div>
+      <div>提成总计:0</div>
+    </div>
+    <div class="cell" style="flex-direction:column;">
+      <div>昨日策略:0</div>
+      <div>策略总计:0</div>
+    </div>
+  </div>
+</div>
+<script>
+$(function(){
+  var qrcode = new QRCode('qrcode', { 
+    text: "{:U('/wap/public/reg', ['id' => $user_info['id']])}", 
+    width: 256, 
+    height: 256, 
+    colorDark : '#000000', 
+    colorLight : '#ffffff', 
+  }); 
+})
+</script>
+</block>

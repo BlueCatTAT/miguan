@@ -1,0 +1,59 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="section" style="margin-top:10px; padding:10px;">
+  <div style="color:#e53d1c; background:#ffe5e0; padding:10px 30px; font-size:0.5rem;">
+    <span>提示！</span>推荐股票为第三方机构模型结果，仅供参考，不作为入市依据，据此入市，风险自担
+  </div>
+  <div style="margin-top:10px;">
+    <div style="font-size:1rem; font-weight:bold; border-left:3px solid #e53d1c; padding:5px; 20px;">最近热门</div> 
+    <div class="row" style="margin-top:10px;">
+      <div class="cell-4" style="padding:5px 10px; background:#efefef; border-radius:5px; justify-content:center;">
+        <a class="" data-display data-backdrop="true" data-target="#target4" data-placement="bottom">行情多空趋势</a>
+      </div>    
+      <div class="cell-4">股价模拟走势</div>    
+      <div class="cell-4">当月上涨概率</div>    
+    </div>
+  </div>
+</div>
+<table class="table" style="margin-top:10px;">
+  <thead>
+    <tr>
+      <th>股票名称</th>
+      <th></th>
+      <th>涨跌幅</th>
+      <th>关注度</th>
+    </tr>
+  </thead> 
+  <tbody>
+    <foreach name="list" item="item">
+    <tr>
+      <td>
+        <div><a href="{:U('/wap/stock/detail', ['code' => $item['code']])}">{$item.name}</a></div>
+        <!--<i class="icon icon-long-arrow-up text-red"></i> 2-->
+      </td>
+      <td>
+        <span class="text-gray">{$item.code}</span>
+      </td>
+      <if condition="$item['netChangeRatio'] gt 0">
+      <td class="text-red">{$item.netChangeRatio|round=2}%</td>
+      <else/>
+      <td class="text-green">{$item.netChangeRatio|round=2}%</td>
+      </if>
+      <td>0</td>
+    </tr>
+    </foreach>
+  </tbody>
+</table>
+
+
+<div id="target4" class="affix dock-bottom modal hidden">
+  <div class="heading">
+    <div class="title"><strong>对话框</strong></div>
+    <nav class="nav"><a data-dismiss="display"><i class="icon-remove muted"></i></a></nav>
+  </div>
+  <div class="content article box">
+    <p>这是对话框内容</p>
+    <p>^_^....</p>
+  </div>
+</div>
+</block>

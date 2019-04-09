@@ -1,0 +1,54 @@
+<extend name="Base/common" />
+<block name="body">
+<header class="bar bar-nav">
+  <a class="icon icon-left pull-left back"></a>
+  <h1 class="title">注册</h1>
+</header>
+<div class="content">
+  <form action="#" method="post">
+    <div class="list-block">
+      <ul>
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-name"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">用户名</div>
+              <div class="item-input">
+                <input type="text" placeholder="登录用户名" name="username">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-email"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">邮箱</div>
+              <div class="item-input">
+                <input type="email" placeholder="E-mail" name="email">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-password"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">密码</div>
+              <div class="item-input">
+                <input type="password" placeholder="Password" class="" name="password">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="content-block">
+      <button class="button button-big button-fill button-success" style="display:block; width:100%;">提交</button>
+      <p>
+      <a href="{:U('/user/login')}" class="pull-right">已有账号？去登陆</a>
+      </p>
+    </div>
+  </form>
+</div>
+</block>

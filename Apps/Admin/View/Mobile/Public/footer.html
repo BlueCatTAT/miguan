@@ -1,0 +1,20 @@
+<block name="footer">
+<nav class="bar bar-tab">
+  <a class="tab-item external <if condition="$action eq 'home'">active</if>" href="{:U('/')}">
+    <span class="icon icon-home"></span>
+    <span class="tab-label">首页</span>
+  </a>
+  <a class="tab-item external <if condition="$action eq 'product'">active</if>" href="{:U('/product/category')}">
+    <span class="icon icon-me"></span>
+    <span class="tab-label">项目</span>
+  </a>
+  <a class="yq tab-item external <if condition="$action eq 'yq'">active</if>" href="{:U('/user/yq')}">
+    <span class="icon icon-star"></span>
+    <span class="tab-label">邀请</span>
+  </a>
+  <a class="tab-item external <if condition="$action eq 'user'">active</if>" href="{:('/user/index')}">
+    <span class="icon icon-cart"></span>
+    <span class="tab-label">我的</span>
+  </a>
+</nav>
+</block>

@@ -1,0 +1,93 @@
+<extend name="Base/base" />
+<block name="body">
+<style type="text/css">
+.cell_main_price{
+  display:flex; 
+  flex-direction:column; 
+  justify-content:center; 
+  text-align:center; 
+  background:#ffffff;
+}
+
+.nav_icon{display:flex; flex-direction:column; justify-content:center; text-align:center; width:100%;}
+.nav_icon_c{display: flex; justify-content:center; margin:0 auto; color:#ffffff;}
+.avatar-lg{
+  width:2.3rem;
+  height:2.3rem;
+}
+</style>
+<div class="section" style="margin-top:10px;">
+  <div class="row" id="main_price" style="padding:10px;">
+    <foreach name="main_info" item="item">
+    <div class="cell-4">
+      <a href="{:U('/wap/stock/detail', ['code' => ($item['exchange'].$item['stockCode'])])}" style="width:100%;">
+        <div style="flex-direction:column; border:1px solid #cccccc; border-radius:5px; width:100%; text-align:center; padding:10px;">
+          <div>{$item['stockName']}</div> 
+          <div class="text-gray small">{$item['stockCode']}</div> 
+          <if condition="$item['netChange'] gt 0">
+          <div class="text-red">{$item['close']|round=2}</div> 
+          <div class="text-red">
+            <span>{$item['netChange']|round=2}</span>
+            <span>{$item['netChangeRatio']|round=2}</span>
+          </div> 
+          <else/>
+          <div class="text-green">{$item['close']|round=2}</div> 
+          <div class="text-green">
+            <span>{$item['netChange']|round=2}</span>
+            <span>{$item['netChangeRatio']|round=2}</span>
+          </div> 
+          </if>
+        </div>
+      </a>
+    </div>
+    </foreach>
+  </div>
+</div>
+<div class="section" style="margin-top:10px;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>股票名</th>
+        <th>最新价</th>
+        <th>涨跌幅</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <foreach name="collect_list" item="item">
+      <tr>
+        <td>
+          <div>{$item['stockName']}</div>
+          <div><small class="text-gray">{$item['stockCode']}</small></div>
+        </td>
+        <if condition="$item['netChange'] gt 0">
+        <td class="text-red">{$item['netChange']|round=2}</td>
+        <td><span class="btn danger">{$item['netChangeRatio']|round=2}%</span></td>
+        <else/>
+        <td class="text-green">{$item['netChange']|round=2}</td>
+        <td><span class="btn success">{$item['netChangeRatio']|round=2}%</span></td>
+        </if>
+        <td><a href="javascript:;" onclick=collect_del("{$item['exchange']}{$item['stockCode']}")><i class="icon icon-remove-circle text-red"></i></a></td>
+      </tr>
+      </foreach>
+    </tbody>
+  </table>
+</div>
+<div style="text-align:center; margin-bottom:3rem;">
+  <a style="padding:5px 20px;" href="/wap/stock/search" class="btn danger-pale text-tint"> <i class="icon icon-plus-sign"></i> &nbsp;加自选 </a>
+</div>
+<script>
+function collect_del(code)
+{
+  $.ajax({
+    url: '/wap/user/collect_del',
+    type: 'post',
+    dataType: 'json',
+    data: {'code': code},
+    success: function(res) {
+      alert('删除成功');
+    }
+  });
+}
+</script>
+</block>

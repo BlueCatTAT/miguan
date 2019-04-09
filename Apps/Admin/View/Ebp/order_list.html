@@ -1,0 +1,50 @@
+<extend name="Base/common" />
+<block name="body">
+<div class="page-container">
+  <table class="table table-border table-bordered table-bg table-sort">
+    <thead>
+      <tr>
+        <th>客户订单号</th>
+        <th>系统订单号</th>
+        <th>商户号</th>
+        <th>订单金额</th>
+        <th>费率</th>
+        <th>手续费</th>
+        <th>状态</th>
+        <th>订单创建时间</th>
+        <th>订单支付时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <foreach name="list" item="item">
+      <tr>
+        <td>{$item['MerBillNo']}</td>
+        <td>{$item['MainMerbillNo']}</td>
+        <td>{$item['Attach']}</td>
+        <td>{$item['Amount']}</td>
+        <td>{$item['Rate']}</td>
+        <td>{$item['Cost']}</td>
+        <td>
+        <if condition="$item['status'] eq 0">
+        未支付
+        <elseif condition="$item['status'] eq 1"/>
+        已支付
+        </if>
+        </td>
+        <td>{$item['create_time']|date="Y-m-d H:i:s", ###}</td>
+        <td>{$item['pay_time']|date="Y-m-d H:i:s", ###}</td>
+      </tr>
+      </foreach>
+    </tbody>
+  </table>
+  <div>
+    <div id="pager"></div>
+  </div>
+</div>
+<script>
+$('.table-sort').dataTable({
+  "bStateSave": true,//状态保存
+  'ordering':false,
+});
+</script>
+</block>

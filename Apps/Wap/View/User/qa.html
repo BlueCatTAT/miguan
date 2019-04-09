@@ -1,0 +1,29 @@
+<extend name="Base/base" />
+<block name="body">
+<div>
+  <form class="box">
+      <div class="control">
+        <label for="desc">描述</label>
+        <textarea class="textarea" name="desc" id="desc" row="3">
+        </textarea>
+      </div>
+      <div class="control">
+        <button type="button" class="btn primary block" onclick="add_qa();">提交</button>
+      </div>
+  </form>
+</div>
+<script>
+function add_qa(){
+  var desc = $('#desc').val();
+  $.ajax({
+    url: '/wap/user/qa',
+    type: 'post',
+    dataType: 'json',
+    data: {'desc': desc},
+    success: function(res) {
+      alert('提交成功');
+    }
+  });
+}
+</script>
+</block>

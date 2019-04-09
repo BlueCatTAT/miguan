@@ -1,0 +1,77 @@
+<extend name="Base/base" />
+<block name="body">
+<style>
+.profile-haeder {position: relative; overflow: hidden; min-height: 8rem}
+.profile-haeder > .back {top: -2rem; left: -2rem; right: -2rem; bottom: -2rem; background-position: center; background-size: cover}
+.profile-haeder > .front {background: rgba(0,0,0,.1); text-align: center; padding: 1.5rem}
+</style>
+<div class="profile-haeder space shadow">
+  <div class="red dock blur-lg back" style="background-image: url(__PUBLIC__/img2.jpg)"></div>
+  <div class="front dock text-white">
+    <div class="avatar avatar-xl circle space-sm">
+      <img src="__PUBLIC__/avatar.png" alt="">
+    </div>
+    <h4 class="lead text-shadow-black">{$user_info['username']}</h4>
+  </div>
+</div>
+<div class="section">
+  <div class="list with-divider">
+    <a class="item with-avatar" href="/wap/user/share">
+      <div class="avatar text-gray circle green"><i class="icon-list-ul"></i></div>
+      <div class="title">我的推广</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+  </div>
+</div>
+<div class="section">
+  <div class="list with-divider">
+    <a class="item with-avatar" href="/wap/user/income">
+      <div class="avatar text-gray circle warning"><i class="icon-list-ul"></i></div>
+      <div class="title">我的战绩</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+    <a class="item with-avatar" href="/wap/user/follow">
+      <div class="avatar text-gray circle green"><i class="icon icon-comments"></i></div>
+      <div class="title">我的订阅</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+    <a class="item with-avatar" href="/wap/user/qa">
+      <div class="avatar text-gray circle danger"><i class="icon icon-lock"></i></div>
+      <div class="title">问题反馈</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+    <a class="item with-avatar" href="/wap/user/paper">
+      <div class="avatar text-gray circle primary"><i class="icon-cog"></i></div>
+      <div class="title">相关协议</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+    <a class="item with-avatar" href="/wap/user/about">
+      <div class="avatar text-gray circle info"><i class="icon-qrcode"></i></div>
+      <div class="title">关于我们</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+    <a class="item with-avatar" href="/wap/user/staff">
+      <div class="avatar text-gray circle warning"><i class="icon-qrcode"></i></div>
+      <div class="title">客服热线</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+    <a class="item with-avatar" href="/wap/user/help">
+      <div class="avatar text-gray circle danger"><i class="icon-qrcode"></i></div>
+      <div class="title">常见问题</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+  </div>
+</div>
+<div class="section" style="margin-bottom:70px;">
+  <div class="list with-divider">
+    <a class="item with-avatar" href="/wap/user/logout">
+      <div class="avatar text-gray circle black"><i class="icon-list-ul"></i></div>
+      <div class="title">退出登录</div>
+      <i class="icon icon-chevron-right muted"></i>
+    </a>
+  </div>
+</div>
+<div class="section" style="margin-bottom:70px;"></div>
+<script >
+</script>
+</block>
