@@ -37,9 +37,6 @@ function curl_get($url)
     $errno = curl_errno($curl);
     $info  = curl_getinfo($curl);
     curl_close($curl);
-    echo "<pre>";
-    var_dump($errno, $info);
-    echo "</pre>";
     return $data;
 }
 
