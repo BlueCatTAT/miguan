@@ -17,8 +17,19 @@
     <!-- 主体 -->
     
 <div class="container">
-  <form>
-  <a class="btn btn-primary btn-block" href="<?php echo U('/search/report');?>" style="margin-top:50%;">付费查询</a>
+  <h1>数据查询</h1>
+  <hr>
+  <form method="post">
+    <div class="form-group">
+      <input type="text" class="form-control input-lg" id="name" name="name" placeholder="请输入姓名">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control input-lg" id="id_card" name="id_card" placeholder="请输入身份证号">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control input-lg" id="phone" name="phone" placeholder="请输入手机号">
+    </div>
+    <button class="btn btn-primary btn-block btn-lg" type="submit">付费查询</button>
   </form>
 </div>
 
