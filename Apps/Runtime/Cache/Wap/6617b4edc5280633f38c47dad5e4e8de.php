@@ -17,9 +17,28 @@
     <!-- 主体 -->
     
 <div class="container">
-  <form>
-  <a class="btn btn-primary btn-block" href="<?php echo U('/search/report');?>" style="margin-top:50%;">付费查询</a>
-  </form>
+  <div class="row" style="margin-top:40%;">
+    <div class="col-xs-6">
+      <a class="btn btn-lg btn-block btn-primary" href="<?php echo U('/search/report');?>" type="button">
+        <div>
+          <i class="icon icon-file-archive icon-2x"></i>
+        </div>
+        <div style="margin-top:10px;">
+          蜜罐查询
+        </div>
+      </a>
+    </div>
+    <div class="col-xs-6">
+      <a class="btn btn-lg btn-block btn-info" href="<?php echo U('/data_platform/report');?>" type="button">
+        <div>
+          <i class="icon icon-server icon-2x"></i>
+        </div>
+        <div style="margin-top:10px;">
+          蜜蜂查询
+        </div>
+      </a>
+    </div>
+  </div>
 </div>
 
 
