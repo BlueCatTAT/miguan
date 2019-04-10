@@ -36,7 +36,7 @@ class DataPlatformController extends Controller {
     {
         $token = I('get.token');
 
-        $header[] = "Authorization: Basic " . base64_encode($this->_app_id . ":" . $this->_app_key);
+        $header[] = "Authorization: " . $this->_app_id . "," . $this->_app_key;
         $url = $this->_api_url . '/raw_data/' . $token;
         $res = curl_get($url, $header); 
         echo "<pre>";
