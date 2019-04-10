@@ -8,15 +8,10 @@ class DataPlatformController extends Controller {
    
     protected $_account = 'shaoyang';
     protected $_app_id  = '780bbf7c7d094461b9d2982e66f803d7';
-    //protected $_app_id  = '780bbf7c7d094461b9d2982e66f803d7';
-    protected $_app_key = 'b2adf64605654d458e71deb45bd35e06';  
-    //protected $_app_key = '74b0a11a86a044a5b30bdade08218a50';
+    protected $_app_key = '74b0a11a86a044a5b30bdade08218a50';
 
-    protected $_auth_url = 'https://viptest.juxinli.com/h5/authorize/';
-    //protected $_auth_url = 'https://vip.juxinli.com/h5/authorize/';
-    
-    protected $_api_url = 'https://viptest.juxinli.com/data_platform_api';
-    //protected $_api_url = 'https://vip.juxinli.com/data_platform_api';
+    protected $_auth_url = 'https://vip.juxinli.com/h5/authorize/';
+    protected $_api_url  = 'https://vip.juxinli.com/data_platform_api';
     
     function report() {
         $string = 'http://58.87.110.104/data_platform/callback.html';
@@ -36,11 +31,31 @@ class DataPlatformController extends Controller {
     {
         $token = I('get.token');
 
+        $data = $this->_get_data($token);
+        echo "<pre>";
+        var_dump($data);
+        echo "</pre>";
+    }
+
+    function _get_data($token)
+    {
         $header[] = "Authorization: " . $this->_app_id . "," . $this->_app_key;
         $url = $this->_api_url . '/raw_data/' . $token;
         $res = curl_get($url, $header); 
-        echo "<pre>";
-        var_dump($_POST, $_GET, $res);
-        echo "</pre>";
+        $res = json_decode($res, true);
+        switch ($res['data']['status']) {
+        case 'SUCCESS':
+            // TODO 数据存储等业务逻辑
+            return $res['data'];
+            break;
+        case 'PENDING':
+            // 休眠五秒后再次调用接口
+            sleep(3000);
+            $this->_get_data($token);
+            break;
+        default:
+            // TODO 数据采集失败，如果为解析异常可联系运营人员进行修复
+            $this->error("获取数据失败");
+        }
     }
 }
