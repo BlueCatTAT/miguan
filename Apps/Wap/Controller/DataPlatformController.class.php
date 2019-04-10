@@ -12,8 +12,14 @@ class DataPlatformController extends Controller {
 
     protected $_auth_url = 'https://vip.juxinli.com/h5/authorize/';
     protected $_api_url  = 'https://vip.juxinli.com/data_platform_api';
+
+    function index()
+    {
+        $this->display(); 
+    }
     
     function report() {
+        $type = I('get.type');
         $string = 'http://58.87.110.104/data_platform/callback.html';
         $data = base64_encode($string);
         $data = str_replace(array('+','/','='),array('-','_',''),$data);
@@ -21,9 +27,7 @@ class DataPlatformController extends Controller {
             'api_key' => $this->_app_key,
             'callback_url' => $data
         ];
-        $url = $this->_auth_url.'telecom?' . http_build_query($get_data);
-        $url = $this->_auth_url.'taobao?' . http_build_query($get_data);
-        //$url = $this->_auth_url.'jingdong?' . http_build_query($get_data);
+        $url = $this->_auth_url . $type . '?' . http_build_query($get_data);
         header("Location: " . $url);            
     }
 
@@ -31,7 +35,6 @@ class DataPlatformController extends Controller {
     {
         $token = I('get.token');
 
-        //$data = $this->_get_data($token);
         $this->token = $token;
         $this->display();
     }
@@ -44,7 +47,34 @@ class DataPlatformController extends Controller {
         $url = $this->_api_url . '/raw_data/' . $token;
         $res = curl_get($url, $header); 
 
-        echo $res;
+        $res = json_decode($res, true);
+        if ($res['code'] != 'API_DATA_PLATFORM_INVOKE_SUCCESS') {
+            $result = [
+                'status' => -1,
+                'msg'    => $res['message']
+            ];
+            echo json_encode($res);
+        } else {
+            if ($res['data']['status'] != 'SUCCESS') {
+                $result = [
+                    'status' => 0,
+                    'msg'    => '<p>数据采集中...请稍后</p>'
+                ];
+                echo json_encode($res);
+            } else {
+                $result = [
+                    'status' => 1,
+                    'msg'    => '采集成功',
+                    'html'   => $this->_format_html($res);
+                ]; 
+                echo json_encode($res);
+            }
+        }
+    }
+
+    private function _format_html($res)
+    {
+        return $res;
     }
 
     function _get_data($token)
