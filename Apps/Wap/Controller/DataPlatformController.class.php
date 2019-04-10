@@ -8,6 +8,7 @@ class DataPlatformController extends Controller {
    
     protected $_account = 'shaoyang';
     protected $_app_id  = '780bbf7c7d094461b9d2982e66f803d7';
+    //protected $_app_id  = '780bbf7c7d094461b9d2982e66f803d7';
     protected $_app_key = 'b2adf64605654d458e71deb45bd35e06';  
     //protected $_app_key = '74b0a11a86a044a5b30bdade08218a50';
 
