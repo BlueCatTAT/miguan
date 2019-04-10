@@ -1,0 +1,25 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="container">
+  <input type="hidden" name="token" value="{$token}" />
+  11
+  <div id="data"></div>
+</div>
+</block>
+<block name="js">
+<script>
+$(function(){
+  function get_data() {
+    var token = $('#token').val();
+    $.ajax({
+      type: "POST",
+      url: "/data_platform/get_api_data",
+      data: {"token": token},
+      success: function(result) {
+      }
+    });
+  }
+  setInterval(get_data, 3000);
+})
+</script>
+</block>

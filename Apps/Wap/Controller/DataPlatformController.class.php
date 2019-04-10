@@ -31,10 +31,20 @@ class DataPlatformController extends Controller {
     {
         $token = I('get.token');
 
-        $data = $this->_get_data($token);
-        echo "<pre>";
-        var_dump($data);
-        echo "</pre>";
+        //$data = $this->_get_data($token);
+        $this->token = $token;
+        $this->display();
+    }
+
+    function get_api_data()
+    {
+        $token = I('post.token');
+        
+        $header[] = "Authorization: " . $this->_app_id . "," . $this->_app_key;
+        $url = $this->_api_url . '/raw_data/' . $token;
+        $res = curl_get($url, $header); 
+
+        echo $res;
     }
 
     function _get_data($token)
