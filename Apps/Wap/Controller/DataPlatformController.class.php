@@ -65,7 +65,7 @@ class DataPlatformController extends Controller {
                 $result = [
                     'status' => 1,
                     'msg'    => '采集成功',
-                    'html'   => $this->_format_html($res);
+                    'html'   => $this->_format_html($res)
                 ]; 
                 echo json_encode($res);
             }
