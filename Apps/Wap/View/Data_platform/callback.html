@@ -14,6 +14,7 @@ $(function(){
       type: "POST",
       url: "/data_platform/get_api_data",
       data: {"token": token},
+      dataType: 'json',
       success: function(result) {
         if (result.status == -1) {
           $('#data').html(result.msg);

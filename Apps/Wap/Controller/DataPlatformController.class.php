@@ -53,28 +53,28 @@ class DataPlatformController extends Controller {
                 'status' => -1,
                 'msg'    => $res['message']
             ];
-            echo json_encode($res);
+            echo json_encode($result);
         } else {
             if ($res['data']['status'] != 'SUCCESS') {
                 $result = [
                     'status' => 0,
                     'msg'    => '<p>数据采集中...请稍后</p>'
                 ];
-                echo json_encode($res);
+                echo json_encode($result);
             } else {
                 $result = [
                     'status' => 1,
                     'msg'    => '采集成功',
                     'html'   => $this->_format_html($res)
                 ]; 
-                echo json_encode($res);
+                echo json_encode($result);
             }
         }
     }
 
     private function _format_html($res)
     {
-        return $res;
+        return json_encode($res);
     }
 
     function _get_data($token)
