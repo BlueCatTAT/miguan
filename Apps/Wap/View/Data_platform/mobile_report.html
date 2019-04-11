@@ -1,0 +1,28 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="container">
+  <h2>基本信息</h2> 
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>本机号码</td>
+      <td>{$data.basic_version.basic.cell_phone}</td>
+    </tr>
+    <tr>
+      <td>登记姓名</td>
+      <td>{$data.basic_version.basic.real_name}</td>
+    </tr>
+    <tr>
+      <td>登记身份证</td>
+      <td>{$data.basic_version.basic.idcard}</td>
+    </tr>
+    <tr>
+      <td>入网时间</td>
+      <td>{$data.basic_version.basic.reg_time}</td>
+    </tr>
+    <tr>
+      <td>获取数据时间</td>
+      <td>{$data.basic_version.basic.update_time}</td>
+    </tr>
+  </table>
+</div>
+</block>

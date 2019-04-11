@@ -19,7 +19,6 @@
     
 <div class="container">
   <input type="hidden" name="token" id="token" value="<?php echo ($token); ?>" />
-  11
   <div id="data"></div>
 </div>
 
@@ -40,11 +39,20 @@ $(function(){
       type: "POST",
       url: "/data_platform/get_api_data",
       data: {"token": token},
+      dataType: 'json',
       success: function(result) {
+        if (result.status == -1) {
+          $('#data').html(result.msg);
+        } else if (result.status == 0) {
+          $('#data').append(result.msg);
+        } else {
+          $('#data').html(result.html);
+          clearInterval(mi);
+        }
       }
     });
   }
-  setInterval(get_data, 3000);
+  mi = setInterval(get_data, 3000);
 })
 </script>
 

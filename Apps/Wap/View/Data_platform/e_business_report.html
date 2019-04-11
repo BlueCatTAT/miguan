@@ -1,0 +1,40 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="container">
+  <h2>基本信息</h2> 
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>真实姓名</td>
+      <td>{$data.basic_version.basic.real_name}</td>
+    </tr>
+    <tr>
+      <td>用户手机号码</td>
+      <td>{$data.basic_version.basic.cell_phone}</td>
+    </tr>
+    <tr>
+      <td>昵称</td>
+      <td>{$data.basic_version.basic.nickname}</td>
+    </tr>
+    <tr>
+      <td>注册时间</td>
+      <td>{$data.basic_version.basic.register_date}</td>
+    </tr>
+    <tr>
+      <td>账户等级</td>
+      <td>{$data.basic_version.basic.level}</td>
+    </tr>
+    <tr>
+      <td>是否认证</td>
+      <td>{$data.basic_version.basic.is_validate_real_name}</td>
+    </tr>
+    <tr>
+      <td>安全等级</td>
+      <td>{$data.basic_version.basic.security_level}</td>
+    </tr>
+    <tr>
+      <td>用户邮箱</td>
+      <td>{$data.basic_version.basic.email}</td>
+    </tr>
+  </table>
+</div>
+</block>

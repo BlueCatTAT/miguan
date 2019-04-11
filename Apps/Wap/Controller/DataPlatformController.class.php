@@ -121,7 +121,13 @@ class DataPlatformController extends Controller {
 
     private function _format_html($res)
     {
-        return json_encode($res);
+        $this->data = $res['data'];
+        if ($res['data']['category'] == 'mobile') {
+            $html = $this->fetch('mobile_report');
+        } elseif ($res['data']['category'] == 'e_business') {
+            $html = $this->fetch('e_business_report');
+        }
+        return $html;
     }
 
     function _get_data($token)
