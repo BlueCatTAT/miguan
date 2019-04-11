@@ -13,8 +13,9 @@ class DataPlatformController extends Controller {
     protected $_auth_url = 'https://vip.juxinli.com/h5/authorize/';
     protected $_api_url  = 'https://vip.juxinli.com/data_platform_api';
 
-
     protected $_access_token_url = 'https://www.juxinli.com/api/v2/access_report_token';
+    protected $_access_report_url = 'https://www.juxinli.com/api/access_report_data';
+    protected $_token_status_url = 'https://www.juxinli.com/api/token_status';
 
     function index()
     {
@@ -23,11 +24,45 @@ class DataPlatformController extends Controller {
 
     function search()
     {
-        $url = $this->_access_token_url . '?org_name=' . $this->_account . '&client_secret=' . $this->_app_key . '&hours=1'; 
+        $token = $this->_get_access_token();
+        $get_data = [
+            'client_secret' => $this->_app_key,
+            'access_token'  => $token,
+            'name'          => '晋京',
+            'idcard'        => '410181198905104557',
+            'phone'         => '13683582516' 
+        ];
+        $url = $this->_access_report_url . '?' . http_build_query($get_data);
         $res = curl_get($url);
+        echo $url;
         echo "<pre>";
-        var_dump($res, $url);
-        echo "</pre>";exit;
+        var_dump($res);
+        echo "</pre>";
+    }
+
+    function _get_token_status($token)
+    {
+        $get_data = [
+            'client_secret' => '',
+            'access_token'  => '',
+            'token'         => '',
+            'crawl_detail'  => ''
+        ];
+    }
+
+    function _get_access_token()
+    {
+        $get_data = [
+            'org_name' => $this->_account,
+            'client_secret' => $this->_app_key,
+            'hours' => 1
+        ];
+        $url = $this->_access_token_url . '?' . http_build_query($get_data); 
+        $res = curl_get($url);
+        $res = '{"access_token":"80453718b0e64baf8cab93f6fbe87f2b","note":"获取access_token成功","update_time":"2019-04-11 13:56:21","code":200,"create_time":"2019-04-11 13:56:21","success":"true","expire_time":"2019-04-11 14:56:21","expires_in":"1"}';
+        $res = json_decode($res, true);
+        $token = $res['access_token'];
+        return $token;
     }
     
     function report() {
