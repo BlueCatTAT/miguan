@@ -24,5 +24,49 @@
       <td>{$data.basic_version.basic.update_time}</td>
     </tr>
   </table>
+  <h2>账单信息</h2> 
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>本机号码</td>
+      <td>总费用</td>
+      <td>账单月份</td>
+      <td>实际缴费金额</td>
+      <td>套餐及固定花费</td>
+    </tr>
+    <foreach name="ata.basic_version.transactions" item="item">
+    <tr>
+      <td>{$item.cell_phone}</td>
+      <td>{$item.total_amt}</td>
+      <td>{$item.bill_cycle}</td>
+      <td>{$item.pay_amt}</td>
+      <td>{$item.plan_amt}</td>
+    </tr>
+    </foreach>
+  </table>
+  <h2>通话详情</h2> 
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>手机号码</td>
+      <td>通话地点</td>
+      <td>对方号码</td>
+      <td>本次通话消费</td>
+      <td>通话时间</td>
+      <td>呼叫类型</td>
+      <td>通话类型</td>
+      <td>通话时长</td>
+    </tr>
+    <foreach name="ata.basic_version.calls" item="item">
+    <tr>
+      <td>{$item.cell_phone}</td>
+      <td>{$item.place}</td>
+      <td>{$item.other_cell_phone}</td>
+      <td>{$item.subtotal}</td>
+      <td>{$item.start_time}</td>
+      <td>{$item.init_type}</td>
+      <td>{$item.call_type}</td>
+      <td>{$item.use_time}</td>
+    </tr>
+    </foreach>
+  </table>
 </div>
 </block>

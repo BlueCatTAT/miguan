@@ -105,7 +105,8 @@ class DataPlatformController extends Controller {
             if ($res['data']['status'] != 'SUCCESS') {
                 $result = [
                     'status' => 0,
-                    'msg'    => '<p>数据采集中...请稍后</p>'
+                    'msg'    => '<p>数据采集中...请稍后</p>',
+                    'res'    => $res
                 ];
                 echo json_encode($result);
             } else {
