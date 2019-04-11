@@ -13,9 +13,21 @@ class DataPlatformController extends Controller {
     protected $_auth_url = 'https://vip.juxinli.com/h5/authorize/';
     protected $_api_url  = 'https://vip.juxinli.com/data_platform_api';
 
+
+    protected $_access_token_url = 'https://www.juxinli.com/api/v2/access_report_token';
+
     function index()
     {
         $this->display(); 
+    }
+
+    function search()
+    {
+        $url = $this->_access_token_url . '?org_name=' . $this->_account . '&client_secret=' . $this->_app_key . '&hours=1'; 
+        $res = curl_get($url);
+        echo "<pre>";
+        var_dump($res, $url);
+        echo "</pre>";exit;
     }
     
     function report() {
