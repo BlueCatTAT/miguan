@@ -68,5 +68,25 @@
     </tr>
     </foreach>
   </table>
+  <h2>流量详情</h2> 
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>本机号码</td>
+      <td>流量使用地点</td>
+      <td>本次流量花费</td>
+      <td>使用时间</td>
+      <td>流量类型</td>
+      <td>使用时长</td>
+    </tr>
+    <foreach name="ata.basic_version.nets" item="item">
+    <tr>
+      <td>{$item.cell_phone}</td>
+      <td>{$item.place}</td>
+      <td>{$item.subtotal}</td>
+      <td>{$item.net_type}</td>
+      <td>{$item.use_time}</td>
+    </tr>
+    </foreach>
+  </table>
 </div>
 </block>

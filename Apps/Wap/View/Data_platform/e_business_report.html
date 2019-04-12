@@ -36,5 +36,112 @@
       <td>{$data.basic_version.basic.email}</td>
     </tr>
   </table>
+  <h2>基本信息</h2> 
+  <foreach name="ata.basic_version.address" item="item">
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>收货人姓名</td>
+      <td>{$item.receiver_name}</td>
+    </tr>
+    <tr>
+      <td>收货人手机</td>
+      <td>{$item.receiver_cell_phone}</td>
+    </tr>
+    <tr>
+      <td>收货人电话</td>
+      <td>{$item.receiver_phone}</td>
+    </tr>
+    <tr>
+      <td>邮编</td>
+      <td>{$item.zipcode}</td>
+    </tr>
+    <tr>
+      <td>地址省份</td>
+      <td>{$item.province}</td>
+    </tr>
+    <tr>
+      <td>地址城市</td>
+      <td>{$item.city}</td>
+    </tr>
+    <tr>
+      <td>收货地址</td>
+      <td>{$item.receiver_addr}</td>
+    </tr>
+    <tr>
+      <td>收货单位</td>
+      <td>{$item.receiver_title}</td>
+    </tr>
+  </table>
+  </foreach>
+  <h2>交易记录</h2> 
+  <foreach name="data.basic_version.transactions" item="item">
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>交易时间</td>
+      <td>{$item.items.0.trans_time}</td>
+    </tr>
+    <tr>
+      <td>交易ID </td>
+      <td>{$item.order_id}</td>
+    </tr>
+    <tr>
+      <td>发票抬头</td>
+      <td>{$item.receiver_title}</td>
+    </tr>
+    <tr>
+      <td>商品总价格</td>
+      <td>{$item.total_price}</td>
+    </tr>
+    <tr>
+      <td>账单类型</td>
+      <td>{$item.payment_type}</td>
+    </tr>
+    <tr>
+      <td>商品</td>
+      <td>{$item.items.0.product_name}</td>
+    </tr>
+    <tr>
+      <td>价格</td>
+      <td>{$item.items.0.product_price}</td>
+    </tr>
+    <tr>
+      <td>数量</td>
+      <td>{$item.items.0.product_cnt}</td>
+    </tr>
+    <tr>
+      <td>状态</td>
+      <td>{$item.is_success}</td>
+    </tr>
+    <tr>
+      <td>收货信息</td>
+      <td>{$item.receiver_addr}</td>
+    </tr>
+  </table>
+  </foreach>
+  <if condition="$data.basic_version.jd_finance">
+  <h2>京东金融信息</h2> 
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>绑定手机号</td>
+      <td>{$data.basic_version.jd_finance.0.auth_cp}</td>
+    </tr>
+    <tr>
+      <td>真实姓名</td>
+      <td>{$data.basic_version.jd_finance.0.auth_nm}</td>
+    </tr>
+    <tr>
+      <td>帐号名称</td>
+      <td>{$data.basic_version.jd_finance.0.account_nm}</td>
+    </tr>
+    <tr>
+      <td>绑定身份证</td>
+      <td>{$data.basic_version.jd_finance.0.auth_id}</td>
+    </tr>
+    <tr>
+      <td>认证时间</td>
+      <td>{$data.basic_version.jd_finance.0.auth_date}</td>
+    </tr>
+  </table>
+  </if>
 </div>
 </block>

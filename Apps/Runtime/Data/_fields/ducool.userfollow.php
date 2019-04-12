@@ -1,1 +1,0 @@
-a:7:{i:0;s:2:"id";i:1;s:3:"uid";i:2;s:3:"fid";i:3;s:6:"remark";i:4;s:7:"addtime";s:3:"_pk";s:2:"id";s:5:"_type";a:5:{s:2:"id";s:16:"int(10) unsigned";s:3:"uid";s:16:"int(10) unsigned";s:3:"fid";s:16:"int(10) unsigned";s:6:"remark";s:12:"varchar(300)";s:7:"addtime";s:16:"int(10) unsigned";}}

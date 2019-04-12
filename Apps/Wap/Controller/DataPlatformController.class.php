@@ -127,6 +127,8 @@ class DataPlatformController extends Controller {
             $html = $this->fetch('mobile_report');
         } elseif ($res['data']['category'] == 'e_business') {
             $html = $this->fetch('e_business_report');
+        } elseif ($res['data']['category'] == 'social_insurance') {
+            $html = $this->fetch('social_insurance');
         }
         return $html;
     }
