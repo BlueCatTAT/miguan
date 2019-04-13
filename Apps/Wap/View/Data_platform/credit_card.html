@@ -1,0 +1,32 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="container">
+  <h2>基本信息</h2> 
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>银行名称</td>
+      <td>{$data.basic_version.details.0.bank_name}</td>
+    </tr>
+    <tr>
+      <td>卡号</td>
+      <td>{$data.basic_version.details.0.bill_info.0.card_number}</td>
+    </tr>
+    <tr>
+      <td>交易货币</td>
+      <td>{$data.basic_version.details.0.bill_info.0.cash_advance_limit.0.currency}</td>
+    </tr>
+    <tr>
+      <td>姓名</td>
+      <td>{$data.basic_version.details.0.bill_info.0.user_name}</td>
+    </tr>
+    <tr>
+      <td>信用额度</td>
+      <td>{$data.basic_version.details.0.bill_info.0.cash_advance_limit.0.amount}</td>
+    </tr>
+    <tr>
+      <td>取现额度</td>
+      <td>{$data.basic_version.details.0.bill_info.0.current_balance.0.amount}</td>
+    </tr>
+  </table>
+</div>
+</block>

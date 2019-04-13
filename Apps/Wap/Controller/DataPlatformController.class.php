@@ -123,13 +123,7 @@ class DataPlatformController extends Controller {
     private function _format_html($res)
     {
         $this->data = $res['data'];
-        if ($res['data']['category'] == 'mobile') {
-            $html = $this->fetch('mobile_report');
-        } elseif ($res['data']['category'] == 'e_business') {
-            $html = $this->fetch('e_business_report');
-        } elseif ($res['data']['category'] == 'social_insurance') {
-            $html = $this->fetch('social_insurance');
-        }
+        $html = $this->fetch($res['data']['category']);
         return $html;
     }
 

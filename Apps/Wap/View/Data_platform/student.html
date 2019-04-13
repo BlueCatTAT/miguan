@@ -1,0 +1,46 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="container">
+  <h2>基本信息</h2> 
+  <table class="table table-bordered table-striped">
+    <foreach name="data.basic_version.degree" item="item">
+    <tr>
+      <td>入学日期</td>
+      <td>{$item.date_birth}</td>
+    </tr>
+    <tr>
+      <td>毕业院校</td>
+      <td>{$item.academy_name}</td>
+    </tr>
+    <tr>
+      <td>专业名称</td>
+      <td>{$item.major_name}</td>
+    </tr>
+    <tr>
+      <td>学历类别</td>
+      <td>{$item.education_background}</td>
+    </tr>
+    <tr>
+      <td>院校所在地</td>
+      <td>{$item.academy_address}</td>
+    </tr>
+    <tr>
+      <td>毕业日期</td>
+      <td>{$item.date_graduation}</td>
+    </tr>
+    <tr>
+      <td>学习形式</td>
+      <td>{$item.learning_form}</td>
+    </tr>
+    <tr>
+      <td>毕结业结论</td>
+      <td>{$item.graduation_conclusion}</td>
+    </tr>
+    <tr>
+      <td>学历层次</td>
+      <td>{$item.academic_level}</td>
+    </tr>
+    </foreach>
+  </table>
+</div>
+</block>

@@ -1,0 +1,48 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="container">
+  <h2>基本信息</h2> 
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>身份证</td>
+      <td>{$data.basic_version.data.basic_info.id_card_num}</td>
+    </tr>
+    <tr>
+      <td>真实姓名</td>
+      <td>{$data.basic_version.data.basic_info.real_name}</td>
+    </tr>
+    <tr>
+      <td>国籍</td>
+      <td>{$data.basic_version.data.basic_info.nationality}</td>
+    </tr>
+    <tr>
+      <td>证件类型</td>
+      <td>{$data.basic_version.data.basic_info.card_type}</td>
+    </tr>
+  </table>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>纳税项目</td>
+      <td>实缴税额税</td>
+      <td>税款所属期</td>
+      <td>申报日期</td>
+      <td>征收机关</td>
+      <td>缴税日期</td>
+      <td>扣缴义务人</td>
+      <td>所得额</td>
+    </tr>
+    <foreach name="data.basic_version.data.tax_details" item="item">
+    <tr>
+      <td>{$item.tax_name}</td>
+      <td>{$item.tax_paid}</td>
+      <td>{$item.tax_period}</td>
+      <td>{$item.declaration_time}</td>
+      <td>{$item.collection_agencies}</td>
+      <td>{$item.declaration_time}</td>
+      <td>{$item.with_holding}</td>
+      <td>{$item.amount_of_income}</td>
+    </tr>
+    </foreach>
+  </table>
+</div>
+</block>

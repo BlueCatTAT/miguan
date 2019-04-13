@@ -1,7 +1,9 @@
 <extend name="Base/base" />
 <block name="body">
 <div class="container">
-  <div class="row" style="margin-top:40%;">
+  <div style="margin-top:20px;">
+    <p style="font-size:16px;">当前剩余查询次数<span class="text-red" style="font-size:24px;"> 0 </span>次 <a href="/recharge/index">充值 ></a></p>
+  <div class="row">
     <div class="col-xs-6">
       <a class="btn btn-lg btn-block btn-primary" href="{:U('/search/report')}" type="button">
         <div>
@@ -22,6 +24,8 @@
         </div>
       </a>
     </div>
+  </div>
+  <p class="text-warning" style="margin-top:10px;">注：每次查询消费一次查询次数。</p>
   </div>
 </div>
 </block>
