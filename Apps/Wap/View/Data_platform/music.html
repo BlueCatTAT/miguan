@@ -1,0 +1,24 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="container">
+  <h2>基本信息</h2> 
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>账号</td>
+      <td>{$data.basic_version.data.basic_info.account}</td>
+    </tr>
+    <tr>
+      <td>是否绑定微博</td>
+      <td>{$data.basic_version.data.basic_info.bind_microblogging}</td>
+    </tr>
+    <tr>
+      <td>是否绑定QQ</td>
+      <td>{$data.basic_version.data.basic_info.bind_q_q}</td>
+    </tr>
+    <tr>
+      <td>是否绑定微信</td>
+      <td>{$data.basic_version.data.basic_info.bind_wechat}</td>
+    </tr>
+  </table>
+</div>
+</block>

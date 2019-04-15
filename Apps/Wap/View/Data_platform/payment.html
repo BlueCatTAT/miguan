@@ -1,0 +1,40 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="container">
+  <h2>基本信息</h2> 
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>token</td>
+      <td>{$data.basic_version.token}</td>
+    </tr>
+    <tr>
+      <td>是否有芝麻分</td>
+      <td>{$data.basic_version.activate_zm}</td>
+    </tr>
+    <tr>
+      <td>芝麻分</td>
+      <td>{$data.basic_version.score_zm}</td>
+    </tr>
+    <tr>
+      <td>电话</td>
+      <td>{$data.basic_version.cell_phone}</td>
+    </tr>
+    <tr>
+      <td>数据源</td>
+      <td>{$data.basic_version.data_source}</td>
+    </tr>
+    <tr>
+      <td>芝麻等级</td>
+      <td>{$data.basic_version.level_zm}</td>
+    </tr>
+    <tr>
+      <td>更新时间</td>
+      <td>{$data.basic_version.update_time}</td>
+    </tr>
+    <tr>
+      <td>芝麻分更新时间</td>
+      <td>{$data.basic_version.update_zm}</td>
+    </tr>
+  </table>
+</div>
+</block>

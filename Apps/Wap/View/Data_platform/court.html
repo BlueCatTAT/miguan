@@ -1,0 +1,48 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="container">
+  <h2>基本信息</h2> 
+  <table class="table table-bordered table-striped">
+    <tr>
+      <td>用户姓名</td>
+      <td>{$data.basic_version.court_executed_info.0.user_name}</td>
+    </tr>
+    <tr>
+      <td>查询获取的姓名</td>
+      <td>{$data.basic_version.court_executed_info.0.query_name}</td>
+    </tr>
+    <tr>
+      <td>身份证号</td>
+      <td>{$data.basic_version.court_executed_info.0.card_num}</td>
+    </tr>
+    <tr>
+      <td>查询获取身份证号</td>
+      <td>{$data.basic_version.court_executed_info.0.party_card_num}</td>
+    </tr>
+    <tr>
+      <td>案号</td>
+      <td>{$data.basic_version.court_executed_info.0.case_code}</td>
+    </tr>
+    <tr>
+      <td>案件的唯一ID</td>
+      <td>{$data.basic_version.court_executed_info.0.case_id}</td>
+    </tr>
+    <tr>
+      <td>执行状态</td>
+      <td>{$data.basic_version.court_executed_info.0.case_state}</td>
+    </tr>
+    <tr>
+      <td>执行法院的名称</td>
+      <td>{$data.basic_version.court_executed_info.0.court_name}</td>
+    </tr>
+    <tr>
+      <td>执行标的金额</td>
+      <td>{$data.basic_version.court_executed_info.0.exec_money}</td>
+    </tr>
+    <tr>
+      <td>案件创建时间</td>
+      <td>{$data.basic_version.court_executed_info.0.reg_date}</td>
+    </tr>
+  </table>
+</div>
+</block>
