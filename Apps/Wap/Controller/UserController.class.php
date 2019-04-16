@@ -8,6 +8,7 @@ class UserController extends RootController {
 
     protected $_base_url = 'http://www.zhixinrenapp.com/';
     protected $_appid = 'wx1e21ad441e4e2576';
+    protected $_appsecret = 'a26010468f9791b8d5939b3728600e52';
 
     public function _empty() {
         $this->index();
@@ -21,8 +22,11 @@ class UserController extends RootController {
 
     function callback()
     {
+        $code = $_GET['code'];
+        $url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_appid.'&secret='.$this->_appsecret.'&code='.$code.'&grant_type=authorization_code';
+        $res = curl_get($url);
         echo "<pre>";
-        var_dump($_GET, $_POST);
+        var_dump($res);
         echo "</pre>";
     }
 
