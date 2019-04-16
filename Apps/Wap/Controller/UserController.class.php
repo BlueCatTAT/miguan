@@ -35,9 +35,9 @@ class UserController extends RootController {
         $res2 = json_decode($res2, true);
     
     
-        $openid     = $res['openid'];
-        $nickname   = $res['nickname'];
-        $headimgurl = $res['headimgurl'];
+        $openid     = $res2['openid'];
+        $nickname   = $res2['nickname'];
+        $headimgurl = $res2['headimgurl'];
     
         $Member = M('member');
         if ($member_info = $Member->where(['openid' => $openid])->find()) {
@@ -67,6 +67,7 @@ class UserController extends RootController {
             session('user_auth_sign', data_auth_sign($auth));
             cookie('user_LOGGED', jiami($mid), $expire);
         }
+        $this->redirect('/index/index');
     }
 
     function logout()
