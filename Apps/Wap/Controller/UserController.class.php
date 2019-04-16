@@ -54,7 +54,7 @@ class UserController extends RootController {
                 'nickname'     => $nickname,
                 'headimgurl'   => $headimgurl,
                 'aid'          => $aid,
-                'created_time' => time()
+                'created_time' => time(),
                 'updated_time' => time()
             ];
             $mid = $Member->add($member_data);
