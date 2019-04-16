@@ -23,6 +23,7 @@ class UserController extends RootController {
     function callback()
     {
         $code = $_GET['code'];
+        $aid = (int) $_GET['aid'];
         $url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_appid.'&secret='.$this->_appsecret.'&code='.$code.'&grant_type=authorization_code';
         $res = curl_get($url);
         $res = json_decode($res, true);
@@ -32,9 +33,40 @@ class UserController extends RootController {
         $url2 = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
         $res2 = curl_get($url2);
         $res2 = json_decode($res2, true);
-        echo "<pre>";
-        var_dump($res2);
-        echo "</pre>";
+    
+    
+        $openid     = $res['openid'];
+        $nickname   = $res['nickname'];
+        $headimgurl = $res['headimgurl'];
+    
+        $Member = M('member');
+        if ($member_info = $Member->where(['openid' => $openid])->find()) {
+            $auth = [ 
+                'uid' => $member_info['id'],
+            ];
+            $expire = 3600 * 24 * 365;
+            session('user_auth', $auth);
+            session('user_auth_sign', data_auth_sign($auth));
+            cookie('user_LOGGED', jiami($auth['uid']), $expire);
+        } else {
+            $member_data = [
+                'openid'       => $openid,
+                'nickname'     => $nickname,
+                'headimgurl'   => $headimgurl,
+                'aid'          => $aid,
+                'created_time' => time()
+                'updated_time' => time()
+            ];
+            $mid = $Member->add($member_data);
+            
+            $auth = [ 
+                'uid' => $mid,
+            ];
+            $expire = 3600 * 24 * 365;
+            session('user_auth', $auth);
+            session('user_auth_sign', data_auth_sign($auth));
+            cookie('user_LOGGED', jiami($mid), $expire);
+        }
     }
 
     function logout()

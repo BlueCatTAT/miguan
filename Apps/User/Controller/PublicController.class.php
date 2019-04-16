@@ -41,6 +41,7 @@ class PublicController extends Controller {
 
             $this->redirect('/user/index/index');
         } else {
+            $
             $this->display();
         }
     }
