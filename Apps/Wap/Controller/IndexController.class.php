@@ -15,6 +15,10 @@ class IndexController extends Controller {
     }
 
     function index() {
+        $uid = is_login();
+        echo "<pre>";
+        var_dump($uid);
+        echo "</pre>";
         $this->display();
     }
 
