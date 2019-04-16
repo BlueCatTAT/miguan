@@ -6,12 +6,23 @@ use Think\Controller;
 
 class UserController extends RootController {
 
+    protected $_base_url = 'http://www.zhixinrenapp.com/';
+
     public function _empty() {
         $this->index();
     }
 
     function index() {
+        $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=' . $this->_base_url . 'user/callback&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+        header("Location: " . $url);            
         $this->display();
+    }
+
+    function callback()
+    {
+        echo "<pre>";
+        var_dump($_GET, $_POST);
+        echo "</pre>";
     }
 
     function logout()
