@@ -3,17 +3,45 @@
 <div class="container">
   <h1>数据查询</h1>
   <hr>
-  <form method="post">
+  <form class="form-horizontal" method="post">
     <div class="form-group">
-      <input type="text" class="form-control input-lg" id="name" name="name" placeholder="请输入姓名">
+      <div class="col-xs-12">
+        <input type="text" class="form-control input-lg" id="name" name="name" placeholder="请输入真实姓名">
+      </div>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control input-lg" id="id_card" name="id_card" placeholder="请输入身份证号">
+      <div class="col-xs-12">
+        <input type="text" class="form-control input-lg" id="id_card" name="id_card" placeholder="请输入身份证号">
+      </div>
     </div>
     <div class="form-group">
+      <div class="col-xs-12">
       <input type="text" class="form-control input-lg" id="phone" name="phone" placeholder="请输入手机号">
+      </div>
     </div>
-    <button class="btn btn-primary btn-block btn-lg" type="submit">付费查询</button>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <input type="text" class="form-control input-lg" id="phone" name="phone" placeholder="请设置查看历史报告密码">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-8">
+        <input type="text" class="form-control input-lg" id="exampleInputAccount1" placeholder="输入短信验证码">
+      </div>
+      <div class="col-xs-4">
+        <a href="/index/product" class="btn btn-block btn-primary btn-lg">获取验证码</a>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> 同意<a href="">《信用查询报告协议》</a> 
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-block btn-lg" type="submit">打赏查询</button>
   </form>
 </div>
 </block>

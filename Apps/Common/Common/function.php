@@ -3,8 +3,8 @@
 const ONETHINK_VERSION = '1.0.131129';
 const ONETHINK_ADDON_PATH = './Addons/';
 
-function curl_post($url = '', $param = '') {
-    if (empty($url) || empty($param)) {
+function curl_post($url = '', $param = '', $header=[]) {
+    if (empty($url)) {
         return false;
     }
 
@@ -12,11 +12,17 @@ function curl_post($url = '', $param = '') {
     $curlPost = $param;
     $ch = curl_init();//初始化curl
     curl_setopt($ch, CURLOPT_URL,$postUrl);//抓取指定网页
-    curl_setopt($ch, CURLOPT_HEADER, 0);//设置header
+    if ($header) {
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+    } else {
+        curl_setopt($ch, CURLOPT_HEADER, 0);//设置header
+    }
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);//要求结果为字符串且输出到屏幕上
     curl_setopt($ch, CURLOPT_POST, 1);//post提交方式
     curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
     $data = curl_exec($ch);//运行curl
+    $errno = curl_errno($ch);
+    $info  = curl_getinfo($ch);
     curl_close($ch);
 
     return $data;
