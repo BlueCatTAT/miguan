@@ -7,13 +7,14 @@ use Think\Controller;
 class UserController extends RootController {
 
     protected $_base_url = 'http://www.zhixinrenapp.com/';
+    protected $_appid = 'wx1e21ad441e4e2576';
 
     public function _empty() {
         $this->index();
     }
 
     function index() {
-        $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=' . $this->_base_url . 'user/callback&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+        $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . $this->_appid . '&redirect_uri=' . $this->_base_url . 'user/callback&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
         header("Location: " . $url);            
         $this->display();
     }
