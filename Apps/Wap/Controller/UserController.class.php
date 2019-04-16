@@ -25,8 +25,15 @@ class UserController extends RootController {
         $code = $_GET['code'];
         $url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_appid.'&secret='.$this->_appsecret.'&code='.$code.'&grant_type=authorization_code';
         $res = curl_get($url);
+        $res = json_decode($res, true);
+        $access_token = $res['access_token'];
+        $openid = $res['openid'];
+
+        $url2 = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
+        $res2 = curl_get($url2);
+        $res2 = json_decode($res2, true);
         echo "<pre>";
-        var_dump($res);
+        var_dump($res2);
         echo "</pre>";
     }
 
