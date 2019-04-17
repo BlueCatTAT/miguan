@@ -20,7 +20,9 @@ class PayController extends Controller {
         $Member = M('Member');
         $member_info = $Member->where(['id' => $uid])->find();
         
-        $res = import("Wap.Util.weixin.tool.JsApiPay");
+        import("Wap.Util.weixin.tool.JsApiPay");
+        import("Wap.Util.weixin.tool.lib.WxPayApi");
+        
         $tools = new \JsApiPay();
         $openId = $member_info['openid'];
 
@@ -36,7 +38,9 @@ class PayController extends Controller {
         $input->SetTrade_type("JSAPI");
         $input->SetOpenid($openId);
         $config = new \WxPayConfig();
-        $order = WxPayApi::unifiedOrder($config, $input);
+        
+        $payapi = new \WxPayApi();
+        $order = $payapi::unifiedOrder($config, $input);
         $jsApiParameters = $tools->GetJsApiParameters($order);
         $editAddress = $tools->GetEditAddressParameters();
         echo "<pre>";
