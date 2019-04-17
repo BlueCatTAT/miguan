@@ -32,8 +32,8 @@ class IndexController extends Controller {
                 if ($vcode_info['code'] != $code) {
                     $this->error('验证码错误');
                 }
-                $Member->where(['id' => $uid])->update(['mobile' => $mobile]);
-                $Vcode->where(['id' => $vcode_info['id']])->update(['status' => 2]);
+                $Member->where(['id' => $uid])->save(['mobile' => $mobile]);
+                $Vcode->where(['id' => $vcode_info['id']])->save(['status' => 2]);
                 $this->redirect('/index/product');
             } else {
                 $this->display();
