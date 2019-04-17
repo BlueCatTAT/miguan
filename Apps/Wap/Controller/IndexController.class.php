@@ -6,10 +6,6 @@ use Think\Controller;
 
 class IndexController extends Controller {
 
-    protected $_msm_url = 'https://openapis.7moor.com/v20160818/sms/sendInterfaceTemplateSms/T00000001267';
-    protected $_accountid = 'T00000001267';
-    protected $_apisecret = 'c97dcb10-602d-11e9-898d-7708a1f6d461';
-
     public function _empty() {
         $this->index();
     }
