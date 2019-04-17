@@ -19,6 +19,23 @@ class PayController extends Controller {
 
         $Member = M('Member');
         $member_info = $Member->where(['id' => $uid])->find();
+
+        $Order = M('Order');
+
+        $trade_no = date("YmdHis").rand(1000, 9999);
+        $fee = 2800;
+        $fee = 1;
+
+        $order_data = [
+            'uid' => $uid,
+            'trade_no' => $trade_no,
+            'fee' => $fee,
+            'created_time' => time(),
+            'updated_time' => time()
+        ];
+        if ( ! $Order->add($order_data)) {
+            $this->error('创建订单失败');
+        }
         
         import("Wap.Util.weixin.tool.JsApiPay");
         import("Wap.Util.weixin.tool.lib.WxPayApi");
@@ -29,8 +46,8 @@ class PayController extends Controller {
         $input = new \WxPayUnifiedOrder();
         $input->SetBody("test");
         $input->SetAttach("test");
-        $input->SetOut_trade_no("sdkphp".date("YmdHis"));
-        $input->SetTotal_fee("1");
+        $input->SetOut_trade_no($trade_no);
+        $input->SetTotal_fee($fee);
         $input->SetTime_start(date("YmdHis"));
         $input->SetTime_expire(date("YmdHis", time() + 600));
         $input->SetGoods_tag("test");
