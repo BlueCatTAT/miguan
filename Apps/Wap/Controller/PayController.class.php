@@ -19,6 +19,10 @@ class PayController extends Controller {
 
         $Member = M('Member');
         $member_info = $Member->where(['id' => $uid])->find();
+        
+        if ($member_info['balance'] < 1) {
+            $this->redirect('/search/report');
+        }
 
         $Order = M('Order');
 

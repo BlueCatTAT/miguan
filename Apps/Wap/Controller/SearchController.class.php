@@ -13,6 +13,18 @@ class SearchController extends Controller {
     protected $_miguan_search_url = 'https://mi.juxinli.com/api/search';
 
     function report() {
+        $uid = is_login();
+        if ( ! $uid) {
+            $this->redirect('/user/index');
+        }
+
+        $Member = M('Member');
+        $member_info = $Member->where(['id' => $uid])->find();
+
+        if ($member_info['balance'] < 1) {
+            $this->redirect('/pay/make_order');
+        }
+
         if ($_POST) {
             $token = $this->_get_token();
             $get_data = [
