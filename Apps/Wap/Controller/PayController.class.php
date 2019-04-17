@@ -66,4 +66,20 @@ class PayController extends Controller {
 
         $this->display();
     }
+
+    function callback()
+    {
+        $post = json_encode($_POST).PHP_EOL;
+        $get = json_encode($_GET).PHP_EOL;
+        file_put_contents('callback.log', $post, FILE_APPEND);
+        file_put_contents('callback.log', $get, FILE_APPEND);
+    }
+
+    function notify_url()
+    {
+        $post = json_encode($_POST).PHP_EOL;
+        $get = json_encode($_GET).PHP_EOL;
+        file_put_contents('notify.log', $post, FILE_APPEND);
+        file_put_contents('notify.log', $get, FILE_APPEND);
+    }
 }
