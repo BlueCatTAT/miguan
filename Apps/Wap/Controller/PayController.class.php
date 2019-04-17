@@ -43,8 +43,10 @@ class PayController extends Controller {
         $order = $payapi::unifiedOrder($config, $input);
         $jsApiParameters = $tools->GetJsApiParameters($order);
         $editAddress = $tools->GetEditAddressParameters();
-        echo "<pre>";
-        var_dump($order, $jsApiParameters, $editAddress);
-        echo "</pre>";
+        
+        $this->jsApiParameters = $jsApiParameters;
+        $this->editAddress = $editAddress;
+
+        $this->display();
     }
 }
