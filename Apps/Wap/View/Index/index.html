@@ -28,6 +28,20 @@
 var countdown=60; 
 function send_vcode(){
   var obj = $("#vcode_btn");
+  var mobile = $('#mobile').val();
+  if ( ! obj.attr('disabled')) {
+    $.ajax({
+      url: '/public/send_vcode',
+      type: 'POST',
+      dataType: 'json',
+      data: {'mobile': mobile, 'type':1},
+      success:function(res) {
+        if (res.status != 1) {
+          alert(res.message);
+        }
+      }
+    });
+  }
   settime(obj);
 }
 
