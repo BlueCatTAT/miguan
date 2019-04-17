@@ -77,9 +77,36 @@ class PayController extends Controller {
 
     function notify_url()
     {
-        $post = json_encode($_POST).PHP_EOL;
-        $get = json_encode($_GET).PHP_EOL;
-        file_put_contents('notify.log', $post, FILE_APPEND);
-        file_put_contents('notify.log', $get, FILE_APPEND);
+        $res = file_get_contents('php://input');
+        file_put_contents('notify.log', $res, FILE_APPEND);
+        
+        libxml_disable_entity_loader(true);
+        $res = simplexml_load_string($res, 'SimpleXMLElement', LIBXML_NOCDATA);
+        $res = json_encode($res);
+        $res = json_decode($res, true);
+
+        if ($res['result_code'] == 'SUCCESS' && $res['return_code'] == 'SUCCESS') {
+            $trade_no = $res['out_trade_no'];
+            $Order = M('Order');
+            $order_info = $Order->where(['trade_no' => $trade_no])->find();
+            if ($order_info['status'] == 1) {
+                $Order->where(['id' => $order_info['id']])->save(['status' => 2]); 
+            }
+
+            $return = [
+                'return_code' => 'SUCCESS',
+                'return_msg' => 'OK'
+            ];
+            echo $this->_toXml($return);
+        }
+    }
+    
+    private function _toXml($array){
+        $xml = '';
+        foreach($array as $k=>$v){
+            //$xml.='<'.$k.'><![CDATA['.$v.']]></'.$k.'>';
+            $xml.='<'.$k.'>'.$v.'</'.$k.'>';
+        }
+        return $xml;
     }
 }
