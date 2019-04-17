@@ -24,6 +24,7 @@ class PayController extends Controller {
         $tools = new \JsApiPay();
         $openId = $member_info['openid'];
 
+        $input = new \WxPayUnifiedOrder();
         $input->SetBody("test");
         $input->SetAttach("test");
         $input->SetOut_trade_no("sdkphp".date("YmdHis"));
