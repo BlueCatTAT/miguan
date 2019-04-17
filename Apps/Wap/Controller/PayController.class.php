@@ -88,9 +88,11 @@ class PayController extends Controller {
         if ($res['result_code'] == 'SUCCESS' && $res['return_code'] == 'SUCCESS') {
             $trade_no = $res['out_trade_no'];
             $Order = M('Order');
+            $Member = M('Member');
             $order_info = $Order->where(['trade_no' => $trade_no])->find();
             if ($order_info['status'] == 1) {
                 $Order->where(['id' => $order_info['id']])->save(['status' => 2]); 
+                $Member->where(['id' => $order_info['uid']])->setInc('balance');
             }
 
             $return = [
