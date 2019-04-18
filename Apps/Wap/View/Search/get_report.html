@@ -1,0 +1,16 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="container">
+  <h1>查询历史</h1>
+  <hr>
+  <form class="form-horizontal" method="post">
+    <input type="hidden" name="id" value="{$id}"/>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <input type="text" class="form-control input-lg" id="pass" name="pass" placeholder="查询密码">
+      </div>
+    </div>
+    <button class="btn btn-primary btn-block btn-lg" type="submit">查询</button>
+  </form>
+</div>
+</block>
