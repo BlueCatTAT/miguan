@@ -11,7 +11,6 @@ class OrderController extends RootController {
     public function order_list()
     {
         $Order = M('Order');
-        $order_list = $Order->where(['uid' => $this->_curren_user['id'], 'status' => 1])->order(['id' => 'desc'])->select();
         $this->order_list = $order_list;
         $this->display();
     }

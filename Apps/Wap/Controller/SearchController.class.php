@@ -12,26 +12,33 @@ class SearchController extends Controller {
     protected $_miguan_token_url = 'https://mi.juxinli.com/api/access_token';
     protected $_miguan_search_url = 'https://mi.juxinli.com/api/search';
 
-    protected $_mifeng_search_url = 'https://www.juxinli.com/orgApi/rest/v3/applications/';
+    protected $_mifeng_search_url = 'https://www.juxinli.com/orgApi/rest/v3/applications';
 
     function report_mifeng()
     {
-        $post_data = [
-            'selected_website' => [
-                [
-                    'website' => 'jingdong',
-                    'category' => 'e_business'
+        if ( ! $_POST) {
+            $this->display('search_mifeng');
+        } else {
+            $post_data = [
+                'selected_website' => [
+                    [
+                        'website'  => 'jingdong',
+                        'category' => 'e_business'
+                    ]
+                ],
+                'skip_mobile' => false,
+                'basic_info' => [
+                    'name'           => '晋京',
+                    'id_card_num'    => '410181198905104557',
+                    'cell_phone_num' => '13683582516' 
                 ]
-            ],
-            'skip_mobile' => false,
-            'basic_info' => [
-                'name' => '',
-                'id_card_num' => '',
-                'cell_phone_num' => ''
-            ]
-        ];
-        $url = $this->_mifeng_search_url . '/' . $this->_account;
-        $res = curl_post($url, $post_data);
+            ];
+            $url = $this->_mifeng_search_url . '/' . $this->_account;
+            $header = [
+                'Content-Type: application/json; charset=utf-8'
+            ];
+            $res = curl_post($url, json_encode($post_data), $header);       
+        }
         echo "<pre>";
         var_dump($res);
         echo "</pre>";
@@ -51,6 +58,7 @@ class SearchController extends Controller {
         }
 
         if ($_POST) {
+            $this->_check_code(I('post.phone'), I('post.code'));
             $token = $this->_get_token();
             $get_data = [
                 'name'          => I('post.name'),
@@ -142,5 +150,18 @@ class SearchController extends Controller {
         $Search->add($search_data);
         $Member = M('Member');
         $Member->where(['id' => $uid])->setDec('balance');
+    }
+
+    private function _check_code($mobile, $code)
+    {
+        $Vcode = M('Vcode');
+        $vcode_info = $Vcode->where(['mobile' => $mobile, 'status' => 1])->order(['id' => 'desc'])->find();
+        if ( ! $vcode_info) {
+            $this->error('验证码无效');
+        }
+        if ($vcode_info['code'] != $code) {
+            $this->error('验证码错误');
+        }
+        $Vcode->where(['id' => $vcode_info['id']])->save(['status' => 2]);
     }
 }

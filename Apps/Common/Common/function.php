@@ -13,7 +13,7 @@ function curl_post($url = '', $param = '', $header=[]) {
     $ch = curl_init();//初始化curl
     curl_setopt($ch, CURLOPT_URL,$postUrl);//抓取指定网页
     if ($header) {
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
     } else {
         curl_setopt($ch, CURLOPT_HEADER, 0);//设置header
     }
@@ -63,18 +63,19 @@ function get_site_conf()
  */
 function is_login() {
     $user = session('user_auth');
-    $cookie = cookie('user_LOGGED');
-    if (!empty($user)) {
-        return session('user_auth_sign') == data_auth_sign($user) ? $user['uid'] : 0;
-    } else if (!empty($cookie)) {
-        $uid = (int) jiemi($cookie);
-        if (D('Member')->autoLogin($uid)) {
-            return $user['uid'] = (int) jiemi($cookie);
-        } else {
-            return 0;
-        }
-    } else {
+    if (empty($user)) {
         return 0;
+    } else {
+        return session('user_auth_sign') == data_auth_sign($user) ? $user['uid'] : 0;
+    }
+}
+
+function admin_login() {
+    $admin = session('admin_auth');
+    if (empty($admin)) {
+        return 0;
+    } else {
+        return session('admin_auth_sign') == data_auth_sign($admin) ? $admin['uid'] : 0;
     }
 }
 
@@ -88,14 +89,6 @@ function is_weixin(){
 }
 
 
-function admin_login() {
-    $admin = session('admin_auth');
-    if (empty($admin)) {
-        return 0;
-    } else {
-        return session('admin_auth_sign') == data_auth_sign($admin) ? $admin['uid'] : 0;
-    }
-}
 
 /**
  * 检测当前用户是否为管理员

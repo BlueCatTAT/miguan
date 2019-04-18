@@ -32,9 +32,9 @@ class PublicController extends Controller {
                 'username' => $admin_info['username'],
             );
 
-            session('user_auth', $auth);
-            session('user_auth_sign', data_auth_sign($auth));
-            cookie('user_LOGGED', jiami($auth['uid']), $expire);
+            session('admin_auth', $auth);
+            session('admin_auth_sign', data_auth_sign($auth));
+            cookie('admin_LOGGED', jiami($auth['uid']), $expire);
 
             $this->redirect('/admin/index/index');
         } else {
@@ -44,9 +44,9 @@ class PublicController extends Controller {
     
     public function logout()
     {
-        session('user_auth', null);
-        session('user_auth_sign', null);
-        cookie('user_LOGGED', null);
+        session('admin_auth', null);
+        session('admin_auth_sign', null);
+        cookie('admin_LOGGED', null);
         if (isset($_COOKIE[session_name()])) {
             setcookie(session_name(), '', time() - 42000, '/');
         }

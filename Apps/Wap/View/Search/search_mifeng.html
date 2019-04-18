@@ -26,17 +26,17 @@
     </div>
     <div class="form-group">
       <div class="col-xs-8">
-        <input type="text" class="form-control input-lg" id="code" name="code" placeholder="输入短信验证码">
+        <input type="text" class="form-control input-lg" id="exampleInputAccount1" placeholder="输入短信验证码">
       </div>
       <div class="col-xs-4">
-        <a href="javascript:;" onclick="send_vcode();" id="vcode_btn" class="btn btn-block btn-primary btn-lg">获取验证码</a>
+        <a href="/index/product" class="btn btn-block btn-primary btn-lg">获取验证码</a>
       </div>
     </div>
     <div class="form-group">
       <div class="col-xs-12">
         <div class="checkbox">
           <label>
-            <input type="checkbox" checked disabled> 同意<a href="">《信用查询报告协议》</a> 
+            <input type="checkbox"> 同意<a href="">《信用查询报告协议》</a> 
           </label>
         </div>
       </div>
@@ -44,43 +44,4 @@
     <button class="btn btn-primary btn-block btn-lg" type="submit">打赏查询</button>
   </form>
 </div>
-</block>
-<block name="js">
-<script>
-var countdown=60; 
-function send_vcode(){
-  var obj = $("#vcode_btn");
-  var mobile = $('#mobile').val();
-  if ( ! obj.attr('disabled')) {
-    $.ajax({
-      url: '/public/send_vcode',
-      type: 'POST',
-      dataType: 'json',
-      data: {'mobile': mobile, 'type':2},
-      success:function(res) {
-        if (res.status != 1) {
-          alert(res.message);
-        }
-      }
-    });
-  }
-  settime(obj);
-}
-
-function settime(obj) { //发送验证码倒计时
-  if (countdown == 0) { 
-    obj.attr('disabled',false); 
-    obj.html("获取验证码");
-    countdown = 60; 
-    return;
-  } else { 
-    obj.attr('disabled',true);
-    obj.html("重新发送(" + countdown + ")");
-    countdown--; 
-  } 
-  setTimeout(function() { 
-    settime(obj) }
-    ,1000) 
-}
-</script>
 </block>
