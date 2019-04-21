@@ -1,0 +1,15 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="container" style="margin-top:20px;">
+  <div style="background:url('/Public/WX20190419-001413.png'); background-repeat:no-repeat; background-size:100% 100%; color:#ffffff; padding:20px 20px;">
+      <p>用户:</p>
+      <h1 class="code">{$member_info['nickname']}</h1>
+  </div>
+  <div class="list-group" style="font-size:16px; margin-top:20px;">
+    <a href="/user/search_list" class="list-group-item"><i class="icon-th-list"></i> 查询历史 <span class="pull-right">></span></a>
+  </div>
+  <div class="center-block">
+    <a href="/user/logout" class="btn btn-danger btn-block btn-lg">退出登录</a>
+  </div>
+</div>
+</block>

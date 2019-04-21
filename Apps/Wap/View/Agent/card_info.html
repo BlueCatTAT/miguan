@@ -1,0 +1,39 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="with-padding bg-primary" style="text-align:center; font-size:20px; padding:10px 20px;">代理中心</div>
+<div class="container" style="margin-top:20px;">
+  <blockquote>绑卡设置</blockquote>  
+  <form class="form-horizontal" method="post">
+    <div class="form-group">
+      <div class="col-xs-12">
+        <input type="text" class="form-control input-lg" id="name" name="name" placeholder="持卡人" value="{$card_info.name}">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <input type="text" class="form-control input-lg" id="bank_name" name="bank_name" placeholder="银行" value="{$card_info.bank_name}">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <input type="text" class="form-control input-lg" id="card_no" name="card_no" placeholder="银行卡号" value="{$card_info.card_no}">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <input type="text" class="form-control input-lg" id="address" name="address" placeholder="开户地址" value="{$card_info.address}">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <input type="text" class="form-control input-lg" id="branch_name" name="branch_name" placeholder="开户行" value="{$card_info.branch_name}">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <button type="submit" class="btn btn-block btn-warning btn-lg">确认</button>
+      </div>
+    </div>
+  </form>
+</div>
+</block>

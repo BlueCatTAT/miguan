@@ -1,0 +1,21 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="with-padding bg-primary" style="text-align:center; font-size:20px; padding:10px 20px;">个人中心</div>
+<div class="container" style="margin-top:20px;">
+  <blockquote>用户列表</blockquote>  
+  <table>
+    <th>
+      <td>用户</td>
+      <td>手机</td>
+      <td>时间</td>
+    </th>
+    <foreach name="user_list" item="item">
+    <tr>
+      <td>{$item.nickname}</td>
+      <td>{$item.mobile}</td>
+      <td>{$item.updated_time|date="y-m-d H:i:s",###}</td>
+    </tr>
+    </foreach>
+  </table>
+</div>
+</block>

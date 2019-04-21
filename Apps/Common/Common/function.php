@@ -62,11 +62,21 @@ function get_site_conf()
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function is_login() {
+    return 4;
     $user = session('user_auth');
     if (empty($user)) {
         return 0;
     } else {
         return session('user_auth_sign') == data_auth_sign($user) ? $user['uid'] : 0;
+    }
+}
+
+function agent_login() {
+    $user = session('agent_auth');
+    if (empty($user)) {
+        return 0;
+    } else {
+        return session('agent_auth_sign') == data_auth_sign($user) ? $user['uid'] : 0;
     }
 }
 

@@ -15,9 +15,22 @@ class UserController extends RootController {
     }
 
     function index() {
-        echo 123;exit;
         $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . $this->_appid . '&redirect_uri=' . $this->_base_url . 'user/callback&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
         header("Location: " . $url);            
+        $this->display();
+    }
+
+    function home()
+    {
+        $uid = is_login();
+        if ( ! $uid) {
+            $this->redirect('/user/index');
+        }
+
+        $Member = M('Member');
+        $member_info = $Member->where(['id' => $uid])->find();
+        
+        $this->member_info = $member_info;
         $this->display();
     }
 

@@ -1,0 +1,19 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="with-padding bg-primary" style="text-align:center; font-size:20px; padding:10px 20px;">代理中心</div>
+<div class="container" style="margin-top:20px;">
+  <div style="background:url('/Public/WX20190419-001413.png'); background-repeat:no-repeat; background-size:100% 100%; color:#ffffff; padding:20px 20px;">
+      <p>用户:</p>
+      <h1 class="code">{$agent_info['mobile']}</h1>
+  </div>
+  <div class="list-group" style="font-size:16px; margin-top:20px;">
+    <a href="/agent/reset_password" class="list-group-item"><i class="icon-cog"></i> 设置密码 <span class="pull-right">></span></a>
+    <a href="/agent/order_list" class="list-group-item"><i class="icon-th-list"></i> 订单管理 <span class="pull-right">></span></a>
+    <a href="/agent/user_list" class="list-group-item"><i class="icon-user"></i> 客户列表 <span class="pull-right">></span></a>
+    <a href="/agent/card_info" class="list-group-item"><i class="icon-credit"></i> 绑卡设置 <span class="pull-right">></span></a>
+  </div>
+  <div class="center-block">
+    <a href="/agent/logout" class="btn btn-danger btn-block btn-lg">退出登录</a>
+  </div>
+</div>
+</block>

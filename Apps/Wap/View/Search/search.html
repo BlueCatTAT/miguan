@@ -1,8 +1,8 @@
 <extend name="Base/base" />
 <block name="body">
-<div class="container">
-  <h1>数据查询</h1>
-  <hr>
+<div class="with-padding bg-primary" style="text-align:center; font-size:20px; padding:10px 20px;">报告查询</div>
+<div class="container" style="margin-top:20px;">
+  <blockquote>报告查询</blockquote>  
   <form class="form-horizontal" method="post">
     <div class="form-group">
       <div class="col-xs-12">
@@ -20,16 +20,16 @@
       </div>
     </div>
     <div class="form-group">
-      <div class="col-xs-12">
-        <input type="text" class="form-control input-lg" id="pass" name="pass" placeholder="请设置查看历史报告密码">
-      </div>
-    </div>
-    <div class="form-group">
       <div class="col-xs-8">
         <input type="text" class="form-control input-lg" id="code" name="code" placeholder="输入短信验证码">
       </div>
       <div class="col-xs-4">
         <a href="javascript:;" onclick="send_vcode();" id="vcode_btn" class="btn btn-block btn-primary btn-lg">获取验证码</a>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <input type="text" class="form-control input-lg" id="pass" name="pass" placeholder="请设置查看历史报告密码">
       </div>
     </div>
     <div class="form-group">
@@ -41,16 +41,34 @@
         </div>
       </div>
     </div>
-    <button class="btn btn-primary btn-block btn-lg" type="submit">打赏查询</button>
+    <button class="btn btn-primary btn-block btn-lg" id="pay_btn" type="button">打赏查询</button>
   </form>
 </div>
 </block>
 <block name="js">
 <script>
+$('#pay_btn').on('click', function(){
+  var name = $('#name').val();
+  var id_card = $('#id_card').val();
+  var phone = $('#phone').val();  
+  var pass = $('#pass').val();
+  var code = $('#code').val();
+
+  $.ajax({
+    url: '/search/get_report',
+    type: 'post',
+    dataType: 'json',
+    data: {'name': name, 'id_card':id_card, 'phone': phone, 'pass': pass, 'code': code},
+    success: function(res) {
+    }
+  });
+});
+
+
 var countdown=60; 
 function send_vcode(){
   var obj = $("#vcode_btn");
-  var mobile = $('#mobile').val();
+  var mobile = $('#phone').val();
   if ( ! obj.attr('disabled')) {
     $.ajax({
       url: '/public/send_vcode',
@@ -82,5 +100,61 @@ function settime(obj) { //发送验证码倒计时
     settime(obj) }
     ,1000) 
 }
+
+function jsApiCall()
+{
+  WeixinJSBridge.invoke(
+      'getBrandWCPayRequest',
+      {$jsApiParameters},
+      function(res){
+        WeixinJSBridge.log(res.err_msg);
+        alert(res.err_code);
+      }
+    );
+}
+
+function callpay()
+{
+  if (typeof WeixinJSBridge == "undefined"){
+    if( document.addEventListener ){
+      document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+    }else if (document.attachEvent){
+      document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+      document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+    }
+  }else{
+    jsApiCall();
+  }
+}
+//获取共享地址
+function editAddress()
+{
+  WeixinJSBridge.invoke(
+      'editAddress',
+      {$editAddress},
+      function(res){
+        var value1 = res.proviceFirstStageName;
+        var value2 = res.addressCitySecondStageName;
+        var value3 = res.addressCountiesThirdStageName;
+        var value4 = res.addressDetailInfo;
+        var tel = res.telNumber;
+
+        //alert(value1 + value2 + value3 + value4 + ":" + tel);
+      }
+      );
+}
+
+window.onload = function(){
+  if (typeof WeixinJSBridge == "undefined"){
+    if( document.addEventListener ){
+      document.addEventListener('WeixinJSBridgeReady', editAddress, false);
+    }else if (document.attachEvent){
+      document.attachEvent('WeixinJSBridgeReady', editAddress); 
+      document.attachEvent('onWeixinJSBridgeReady', editAddress);
+    }
+  }else{
+    editAddress();
+  }
+};
 </script>
 </block>
