@@ -87,6 +87,44 @@ class SearchController extends Controller {
         }
     }
 
+    function search_log()
+    {
+        $uid = is_login();
+        if ( ! $uid) {
+            echo json_encode(['status' => -1]);
+            exit;
+        }
+        $code = I('post.code');
+        $name = I('post.name');
+        $id_card = I('post.id_card');
+        $phone = I('post.phone');
+        $pass = I('post.pass');
+        
+        $Vcode = M('Vcode');
+        $vcode_info = $Vcode->where(['mobile' => $phone, 'status' => 1])->order(['id' => 'desc'])->find();
+        if ( ! $vcode_info) {
+            echo json_encode(['status' => 0, 'msg' => '验证码无效']);
+        }
+        if ($vcode_info['code'] != $code) {
+            echo json_encode(['status' => 0, 'msg' => '验证码错误']);
+        }
+        $Vcode->where(['id' => $vcode_info['id']])->save(['status' => 2]);
+
+        $Search = M('Search');    
+        $search_data = [
+            'uid' => $uid,
+            'code' => $code,
+            'name' => $name,
+            'id_card' => $id_card,
+            'phone' => $phone,
+            'pass' => $pass,
+            'created_time' => time(),
+            'updated_time' => time()
+        ];
+        $search_id = $Search->add($search_data);
+        echo json_encode(['status' => 1, 'id' => $search_id]);
+    }
+
     function get_report()
     {
         if ( ! $_POST) {
