@@ -128,6 +128,42 @@ class SearchController extends Controller {
 
     function get_report()
     {
+        $id = I('get.id');
+        $Search = M('Search');
+        $search_info = $Search->where(['id' => $id])->find();
+        if ( ! $search_info) {
+            $this->error('未找到报告');
+        }
+        
+        $token = $this->_get_token();
+        $get_data = [
+            'name'          => $search_info['name'],
+            'id_card'       => $search_info['id_card']
+            'phone'         => $search_info['phone'],
+            'client_secret' => $this->_app_key,
+            'access_token'  => $token,
+            'version'       => 'v3'
+        ];
+        $url = $this->_miguan_search_url . '?' . http_build_query($get_data);
+        $data = curl_get($url);
+        $update_info = [
+            'client_secret' => $this->_app_key,
+            'access_token'  => $token,
+            'data' => $data
+        ];
+        $Search->where(['id' => $search_info['id']])->save();
+        
+        $data = json_decode($data, true);
+        if ($data['code'] != 'MIGUAN_SEARCH_SUCCESS') {
+            $this->error($data['message']);
+        }
+        $this->data = $data['data'];
+
+        $this->display('report');
+    }
+
+    function get_report2()
+    {
         if ( ! $_POST) {
             $id = I('get.id');
             $this->display();

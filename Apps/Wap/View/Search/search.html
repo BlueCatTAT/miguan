@@ -138,14 +138,12 @@ function jsApiCall()
       {$jsApiParameters},
       function(res){
         WeixinJSBridge.log(res.err_msg);
-        alert(res.err_code);
         if (res.err_msg=='get_brand_wcpay_request:ok') {
           //支付
-          alert(1);
           var search_id = $('#search_id').val();
-          alert(search_id);
+          window.location.href = "/search/get_report/1";
         } else {
-          alert(0);
+          //alert(0);
         }                                                          
       }
     );
