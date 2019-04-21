@@ -54,7 +54,7 @@ class SearchController extends Controller {
         $member_info = $Member->where(['id' => $uid])->find();
 
         if ($member_info['balance'] < 1) {
-            $this->redirect('/pay/make_order');
+            //$this->redirect('/pay/make_order');
         }
 
         if ($_POST) {
