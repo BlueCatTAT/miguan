@@ -141,7 +141,7 @@ function jsApiCall()
         if (res.err_msg=='get_brand_wcpay_request:ok') {
           //支付
           var search_id = $('#search_id').val();
-          window.location.href = "/search/get_report/1";
+          window.location.href = "/search/get_report/id/" + search_id;
         } else {
           //alert(0);
         }                                                          
