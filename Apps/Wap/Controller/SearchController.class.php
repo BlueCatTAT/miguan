@@ -104,16 +104,17 @@ class SearchController extends Controller {
         $vcode_info = $Vcode->where(['mobile' => $phone, 'status' => 1])->order(['id' => 'desc'])->find();
         if ( ! $vcode_info) {
             echo json_encode(['status' => 0, 'msg' => '验证码无效']);
+            exit;
         }
         if ($vcode_info['code'] != $code) {
             echo json_encode(['status' => 0, 'msg' => '验证码错误']);
+            exit;
         }
         $Vcode->where(['id' => $vcode_info['id']])->save(['status' => 2]);
 
         $Search = M('Search');    
         $search_data = [
             'uid' => $uid,
-            'code' => $code,
             'name' => $name,
             'id_card' => $id_card,
             'phone' => $phone,
@@ -250,7 +251,10 @@ class SearchController extends Controller {
         $jsApiParameters = $tools->GetJsApiParameters($order);
         $editAddress = $tools->GetEditAddressParameters();
         
-        $this->jsApiParameters = $jsApiParameters;
-        $this->editAddress = $editAddress;
+        //$this->jsApiParameters = $jsApiParameters;
+        //$this->editAddress = $editAddress;
+        
+        $this->jsApiParameters = 'sdfdfsdfs';
+        $this->editAddress = 'sdfff';
     }
 }
