@@ -92,8 +92,8 @@ class SearchController extends Controller {
         $id = I('get.id');
         $Search = M('Search');
         $search_info = $Search->where(['id' => $id])->find();
-        $date = json_decode($search_info['data'], true);
-        $this->data = $data['data'];
+        $data = json_decode($search_info['data'], true);
+        $this->data = $data['data'];      
         $this->display('report');
     }
 
