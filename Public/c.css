@@ -1,0 +1,828 @@
+.outline
+{
+    border: .05rem solid rgba(0, 0, 0, .1);
+    background-color: transparent!important;
+}
+.primary
+{
+    color: #fff!important;
+    border-color: #3280fc !important;
+    background-color: #3280fc !important;
+}
+.primary.hover:hover,
+tr.primary:hover
+{
+    background-color: #1970fc !important;
+}
+.primary.outline
+{
+    color: #3280fc !important;
+    background-color: transparent!important;
+}
+.primary.outline.hover-solid:hover,
+.primary.outline .active
+{
+    color: #fff!important;
+    background-color: #3280fc !important;
+}
+.primary.long-shadow
+{
+    text-shadow: #0a67fb 1px 1px, #0a67fb 2px 2px, #0a67fb 3px 3px, #0a67fb 4px 4px, #0a67fb 5px 5px, #0a67fb 6px 6px, #0a67fb 7px 7px, #0a67fb 8px 8px, #0a67fb 9px 9px, #0a67fb 10px 10px, #0a67fb 11px 11px, #0a67fb 12px 12px, #0a67fb 14px 14px, #0a67fb 15px 15px, #0a67fb 16px 16px, #0a67fb 17px 17px, #0a67fb 18px 18px, #0a67fb 19px 19px, #0a67fb 20px 20px, #0a67fb 21px 21px, #0a67fb 22px 22px, #0a67fb 23px 23px, #0a67fb 24px 24px, #0a67fb 25px 25px, #0a67fb 26px 26px, #0a67fb 27px 27px, #0a67fb 28px 28px, #0a67fb 29px 29px, #0a67fb 30px 30px, #0a67fb 31px 31px, #0a67fb 32px 32px, #0a67fb 33px 33px, #0a67fb 34px 34px, #0a67fb 35px 35px, #0a67fb 36px 36px, #0a67fb 37px 37px, #0a67fb 38px 38px, #0a67fb 39px 39px, #0a67fb 40px 40px;
+}
+.secondary
+{
+    color: #fff!important;
+    border-color: #145ccd !important;
+    background-color: #145ccd !important;
+}
+.secondary.hover:hover,
+tr.secondary:hover
+{
+    background-color: #1251b6 !important;
+}
+.secondary.outline
+{
+    color: #145ccd !important;
+    background-color: transparent!important;
+}
+.secondary.outline.hover-solid:hover,
+.secondary.outline .active
+{
+    color: #fff!important;
+    background-color: #145ccd !important;
+}
+.secondary.long-shadow
+{
+    text-shadow: #114ba8 1px 1px, #114ba8 2px 2px, #114ba8 3px 3px, #114ba8 4px 4px, #114ba8 5px 5px, #114ba8 6px 6px, #114ba8 7px 7px, #114ba8 8px 8px, #114ba8 9px 9px, #114ba8 10px 10px, #114ba8 11px 11px, #114ba8 12px 12px, #114ba8 14px 14px, #114ba8 15px 15px, #114ba8 16px 16px, #114ba8 17px 17px, #114ba8 18px 18px, #114ba8 19px 19px, #114ba8 20px 20px, #114ba8 21px 21px, #114ba8 22px 22px, #114ba8 23px 23px, #114ba8 24px 24px, #114ba8 25px 25px, #114ba8 26px 26px, #114ba8 27px 27px, #114ba8 28px 28px, #114ba8 29px 29px, #114ba8 30px 30px, #114ba8 31px 31px, #114ba8 32px 32px, #114ba8 33px 33px, #114ba8 34px 34px, #114ba8 35px 35px, #114ba8 36px 36px, #114ba8 37px 37px, #114ba8 38px 38px, #114ba8 39px 39px, #114ba8 40px 40px;
+}
+.accent
+{
+    color: #fff!important;
+    border-color: #fcae32 !important;
+    background-color: #fcae32 !important;
+}
+.accent.hover:hover,
+tr.accent:hover
+{
+    background-color: #fca419 !important;
+}
+.accent.outline
+{
+    color: #fcae32 !important;
+    background-color: transparent!important;
+}
+.accent.outline.hover-solid:hover,
+.accent.outline .active
+{
+    color: #fff!important;
+    background-color: #fcae32 !important;
+}
+.accent.long-shadow
+{
+    text-shadow: #fb9e0a 1px 1px, #fb9e0a 2px 2px, #fb9e0a 3px 3px, #fb9e0a 4px 4px, #fb9e0a 5px 5px, #fb9e0a 6px 6px, #fb9e0a 7px 7px, #fb9e0a 8px 8px, #fb9e0a 9px 9px, #fb9e0a 10px 10px, #fb9e0a 11px 11px, #fb9e0a 12px 12px, #fb9e0a 14px 14px, #fb9e0a 15px 15px, #fb9e0a 16px 16px, #fb9e0a 17px 17px, #fb9e0a 18px 18px, #fb9e0a 19px 19px, #fb9e0a 20px 20px, #fb9e0a 21px 21px, #fb9e0a 22px 22px, #fb9e0a 23px 23px, #fb9e0a 24px 24px, #fb9e0a 25px 25px, #fb9e0a 26px 26px, #fb9e0a 27px 27px, #fb9e0a 28px 28px, #fb9e0a 29px 29px, #fb9e0a 30px 30px, #fb9e0a 31px 31px, #fb9e0a 32px 32px, #fb9e0a 33px 33px, #fb9e0a 34px 34px, #fb9e0a 35px 35px, #fb9e0a 36px 36px, #fb9e0a 37px 37px, #fb9e0a 38px 38px, #fb9e0a 39px 39px, #fb9e0a 40px 40px;
+}
+.green,
+.success
+{
+    color: #fff!important;
+    border-color: #38b03f !important;
+    background-color: #38b03f !important;
+}
+.green.hover:hover,
+.success.hover:hover,
+tr.green:hover,
+tr.success:hover
+{
+    background-color: #329d38 !important;
+}
+.green.outline,
+.success.outline
+{
+    color: #38b03f !important;
+    background-color: transparent!important;
+}
+.green.outline.hover-solid:hover,
+.success.outline.hover-solid:hover,
+.green.outline .active,
+.success.outline .active
+{
+    color: #fff!important;
+    background-color: #38b03f !important;
+}
+.green.long-shadow,
+.success.long-shadow
+{
+    text-shadow: #2e9134 1px 1px, #2e9134 2px 2px, #2e9134 3px 3px, #2e9134 4px 4px, #2e9134 5px 5px, #2e9134 6px 6px, #2e9134 7px 7px, #2e9134 8px 8px, #2e9134 9px 9px, #2e9134 10px 10px, #2e9134 11px 11px, #2e9134 12px 12px, #2e9134 14px 14px, #2e9134 15px 15px, #2e9134 16px 16px, #2e9134 17px 17px, #2e9134 18px 18px, #2e9134 19px 19px, #2e9134 20px 20px, #2e9134 21px 21px, #2e9134 22px 22px, #2e9134 23px 23px, #2e9134 24px 24px, #2e9134 25px 25px, #2e9134 26px 26px, #2e9134 27px 27px, #2e9134 28px 28px, #2e9134 29px 29px, #2e9134 30px 30px, #2e9134 31px 31px, #2e9134 32px 32px, #2e9134 33px 33px, #2e9134 34px 34px, #2e9134 35px 35px, #2e9134 36px 36px, #2e9134 37px 37px, #2e9134 38px 38px, #2e9134 39px 39px, #2e9134 40px 40px;
+}
+.blue,
+.info
+{
+    color: #fff!important;
+    border-color: #03b8cf !important;
+    background-color: #03b8cf !important;
+}
+.blue.hover:hover,
+.info.hover:hover,
+tr.blue:hover,
+tr.info:hover
+{
+    background-color: #03a2b6 !important;
+}
+.blue.outline,
+.info.outline
+{
+    color: #03b8cf !important;
+    background-color: transparent!important;
+}
+.blue.outline.hover-solid:hover,
+.info.outline.hover-solid:hover,
+.blue.outline .active,
+.info.outline .active
+{
+    color: #fff!important;
+    background-color: #03b8cf !important;
+}
+.blue.long-shadow,
+.info.long-shadow
+{
+    text-shadow: #0294a7 1px 1px, #0294a7 2px 2px, #0294a7 3px 3px, #0294a7 4px 4px, #0294a7 5px 5px, #0294a7 6px 6px, #0294a7 7px 7px, #0294a7 8px 8px, #0294a7 9px 9px, #0294a7 10px 10px, #0294a7 11px 11px, #0294a7 12px 12px, #0294a7 14px 14px, #0294a7 15px 15px, #0294a7 16px 16px, #0294a7 17px 17px, #0294a7 18px 18px, #0294a7 19px 19px, #0294a7 20px 20px, #0294a7 21px 21px, #0294a7 22px 22px, #0294a7 23px 23px, #0294a7 24px 24px, #0294a7 25px 25px, #0294a7 26px 26px, #0294a7 27px 27px, #0294a7 28px 28px, #0294a7 29px 29px, #0294a7 30px 30px, #0294a7 31px 31px, #0294a7 32px 32px, #0294a7 33px 33px, #0294a7 34px 34px, #0294a7 35px 35px, #0294a7 36px 36px, #0294a7 37px 37px, #0294a7 38px 38px, #0294a7 39px 39px, #0294a7 40px 40px;
+}
+.yellow,
+.warning
+{
+    color: #fff!important;
+    border-color: #f1a325 !important;
+    background-color: #f1a325 !important;
+}
+.yellow.hover:hover,
+.warning.hover:hover,
+tr.yellow:hover,
+tr.warning:hover
+{
+    background-color: #ed980f !important;
+}
+.yellow.outline,
+.warning.outline
+{
+    color: #f1a325 !important;
+    background-color: transparent!important;
+}
+.yellow.outline.hover-solid:hover,
+.warning.outline.hover-solid:hover,
+.yellow.outline .active,
+.warning.outline .active
+{
+    color: #fff!important;
+    background-color: #f1a325 !important;
+}
+.yellow.long-shadow,
+.warning.long-shadow
+{
+    text-shadow: #df8f0e 1px 1px, #df8f0e 2px 2px, #df8f0e 3px 3px, #df8f0e 4px 4px, #df8f0e 5px 5px, #df8f0e 6px 6px, #df8f0e 7px 7px, #df8f0e 8px 8px, #df8f0e 9px 9px, #df8f0e 10px 10px, #df8f0e 11px 11px, #df8f0e 12px 12px, #df8f0e 14px 14px, #df8f0e 15px 15px, #df8f0e 16px 16px, #df8f0e 17px 17px, #df8f0e 18px 18px, #df8f0e 19px 19px, #df8f0e 20px 20px, #df8f0e 21px 21px, #df8f0e 22px 22px, #df8f0e 23px 23px, #df8f0e 24px 24px, #df8f0e 25px 25px, #df8f0e 26px 26px, #df8f0e 27px 27px, #df8f0e 28px 28px, #df8f0e 29px 29px, #df8f0e 30px 30px, #df8f0e 31px 31px, #df8f0e 32px 32px, #df8f0e 33px 33px, #df8f0e 34px 34px, #df8f0e 35px 35px, #df8f0e 36px 36px, #df8f0e 37px 37px, #df8f0e 38px 38px, #df8f0e 39px 39px, #df8f0e 40px 40px;
+}
+.red,
+.danger
+{
+    color: #fff!important;
+    border-color: #ea644a !important;
+    background-color: #ea644a !important;
+}
+.red.hover:hover,
+.danger.hover:hover,
+tr.red:hover,
+tr.danger:hover
+{
+    background-color: #e75033 !important;
+}
+.red.outline,
+.danger.outline
+{
+    color: #ea644a !important;
+    background-color: transparent!important;
+}
+.red.outline.hover-solid:hover,
+.danger.outline.hover-solid:hover,
+.red.outline .active,
+.danger.outline .active
+{
+    color: #fff!important;
+    background-color: #ea644a !important;
+}
+.red.long-shadow,
+.danger.long-shadow
+{
+    text-shadow: #e64525 1px 1px, #e64525 2px 2px, #e64525 3px 3px, #e64525 4px 4px, #e64525 5px 5px, #e64525 6px 6px, #e64525 7px 7px, #e64525 8px 8px, #e64525 9px 9px, #e64525 10px 10px, #e64525 11px 11px, #e64525 12px 12px, #e64525 14px 14px, #e64525 15px 15px, #e64525 16px 16px, #e64525 17px 17px, #e64525 18px 18px, #e64525 19px 19px, #e64525 20px 20px, #e64525 21px 21px, #e64525 22px 22px, #e64525 23px 23px, #e64525 24px 24px, #e64525 25px 25px, #e64525 26px 26px, #e64525 27px 27px, #e64525 28px 28px, #e64525 29px 29px, #e64525 30px 30px, #e64525 31px 31px, #e64525 32px 32px, #e64525 33px 33px, #e64525 34px 34px, #e64525 35px 35px, #e64525 36px 36px, #e64525 37px 37px, #e64525 38px 38px, #e64525 39px 39px, #e64525 40px 40px;
+}
+.brown,
+.important
+{
+    color: #fff!important;
+    border-color: #bd7b46 !important;
+    background-color: #bd7b46 !important;
+}
+.brown.hover:hover,
+.important.hover:hover,
+tr.brown:hover,
+tr.important:hover
+{
+    background-color: #ac6f3d !important;
+}
+.brown.outline,
+.important.outline
+{
+    color: #bd7b46 !important;
+    background-color: transparent!important;
+}
+.brown.outline.hover-solid:hover,
+.important.outline.hover-solid:hover,
+.brown.outline .active,
+.important.outline .active
+{
+    color: #fff!important;
+    background-color: #bd7b46 !important;
+}
+.brown.long-shadow,
+.important.long-shadow
+{
+    text-shadow: #a16739 1px 1px, #a16739 2px 2px, #a16739 3px 3px, #a16739 4px 4px, #a16739 5px 5px, #a16739 6px 6px, #a16739 7px 7px, #a16739 8px 8px, #a16739 9px 9px, #a16739 10px 10px, #a16739 11px 11px, #a16739 12px 12px, #a16739 14px 14px, #a16739 15px 15px, #a16739 16px 16px, #a16739 17px 17px, #a16739 18px 18px, #a16739 19px 19px, #a16739 20px 20px, #a16739 21px 21px, #a16739 22px 22px, #a16739 23px 23px, #a16739 24px 24px, #a16739 25px 25px, #a16739 26px 26px, #a16739 27px 27px, #a16739 28px 28px, #a16739 29px 29px, #a16739 30px 30px, #a16739 31px 31px, #a16739 32px 32px, #a16739 33px 33px, #a16739 34px 34px, #a16739 35px 35px, #a16739 36px 36px, #a16739 37px 37px, #a16739 38px 38px, #a16739 39px 39px, #a16739 40px 40px;
+}
+.purple,
+.special
+{
+    color: #fff!important;
+    border-color: #8666b8 !important;
+    background-color: #8666b8 !important;
+}
+.purple.hover:hover,
+.special.hover:hover,
+tr.purple:hover,
+tr.special:hover
+{
+    background-color: #7855b0 !important;
+}
+.purple.outline,
+.special.outline
+{
+    color: #8666b8 !important;
+    background-color: transparent!important;
+}
+.purple.outline.hover-solid:hover,
+.special.outline.hover-solid:hover,
+.purple.outline .active,
+.special.outline .active
+{
+    color: #fff!important;
+    background-color: #8666b8 !important;
+}
+.purple.long-shadow,
+.special.long-shadow
+{
+    text-shadow: #714ea7 1px 1px, #714ea7 2px 2px, #714ea7 3px 3px, #714ea7 4px 4px, #714ea7 5px 5px, #714ea7 6px 6px, #714ea7 7px 7px, #714ea7 8px 8px, #714ea7 9px 9px, #714ea7 10px 10px, #714ea7 11px 11px, #714ea7 12px 12px, #714ea7 14px 14px, #714ea7 15px 15px, #714ea7 16px 16px, #714ea7 17px 17px, #714ea7 18px 18px, #714ea7 19px 19px, #714ea7 20px 20px, #714ea7 21px 21px, #714ea7 22px 22px, #714ea7 23px 23px, #714ea7 24px 24px, #714ea7 25px 25px, #714ea7 26px 26px, #714ea7 27px 27px, #714ea7 28px 28px, #714ea7 29px 29px, #714ea7 30px 30px, #714ea7 31px 31px, #714ea7 32px 32px, #714ea7 33px 33px, #714ea7 34px 34px, #714ea7 35px 35px, #714ea7 36px 36px, #714ea7 37px 37px, #714ea7 38px 38px, #714ea7 39px 39px, #714ea7 40px 40px;
+}
+.dark
+{
+    color: #fff!important;
+    border-color: #333 !important;
+    background-color: #333 !important;
+}
+.dark.hover:hover,
+tr.dark:hover
+{
+    background-color: #262626 !important;
+}
+.dark.outline
+{
+    color: #333 !important;
+    background-color: transparent!important;
+}
+.dark.outline.hover-solid:hover,
+.dark.outline .active
+{
+    color: #fff!important;
+    background-color: #333 !important;
+}
+.dark.long-shadow
+{
+    text-shadow: #1f1f1f 1px 1px, #1f1f1f 2px 2px, #1f1f1f 3px 3px, #1f1f1f 4px 4px, #1f1f1f 5px 5px, #1f1f1f 6px 6px, #1f1f1f 7px 7px, #1f1f1f 8px 8px, #1f1f1f 9px 9px, #1f1f1f 10px 10px, #1f1f1f 11px 11px, #1f1f1f 12px 12px, #1f1f1f 14px 14px, #1f1f1f 15px 15px, #1f1f1f 16px 16px, #1f1f1f 17px 17px, #1f1f1f 18px 18px, #1f1f1f 19px 19px, #1f1f1f 20px 20px, #1f1f1f 21px 21px, #1f1f1f 22px 22px, #1f1f1f 23px 23px, #1f1f1f 24px 24px, #1f1f1f 25px 25px, #1f1f1f 26px 26px, #1f1f1f 27px 27px, #1f1f1f 28px 28px, #1f1f1f 29px 29px, #1f1f1f 30px 30px, #1f1f1f 31px 31px, #1f1f1f 32px 32px, #1f1f1f 33px 33px, #1f1f1f 34px 34px, #1f1f1f 35px 35px, #1f1f1f 36px 36px, #1f1f1f 37px 37px, #1f1f1f 38px 38px, #1f1f1f 39px 39px, #1f1f1f 40px 40px;
+}
+.black,
+.inverse
+{
+    color: #fff!important;
+    border-color: #000 !important;
+    background-color: #000 !important;
+}
+.black.hover:hover,
+.inverse.hover:hover,
+tr.black:hover,
+tr.inverse:hover
+{
+    background-color: #000 !important;
+}
+.black.outline,
+.inverse.outline
+{
+    color: #000 !important;
+    background-color: transparent!important;
+}
+.black.outline.hover-solid:hover,
+.inverse.outline.hover-solid:hover,
+.black.outline .active,
+.inverse.outline .active
+{
+    color: #fff!important;
+    background-color: #000 !important;
+}
+.black.long-shadow,
+.inverse.long-shadow
+{
+    text-shadow: #000 1px 1px, #000 2px 2px, #000 3px 3px, #000 4px 4px, #000 5px 5px, #000 6px 6px, #000 7px 7px, #000 8px 8px, #000 9px 9px, #000 10px 10px, #000 11px 11px, #000 12px 12px, #000 14px 14px, #000 15px 15px, #000 16px 16px, #000 17px 17px, #000 18px 18px, #000 19px 19px, #000 20px 20px, #000 21px 21px, #000 22px 22px, #000 23px 23px, #000 24px 24px, #000 25px 25px, #000 26px 26px, #000 27px 27px, #000 28px 28px, #000 29px 29px, #000 30px 30px, #000 31px 31px, #000 32px 32px, #000 33px 33px, #000 34px 34px, #000 35px 35px, #000 36px 36px, #000 37px 37px, #000 38px 38px, #000 39px 39px, #000 40px 40px;
+}
+.primary-pale
+{
+    border-color: #ebf2f9 !important;
+    background-color: #ebf2f9 !important;
+}
+.primary-pale.hover-solid:hover,
+tr.primary-pale:hover
+{
+    background-color: #d7e5f3 !important;
+}
+.primary-pale.outline
+{
+    color: #ebf2f9 !important;
+    border-color: #ebf2f9 !important;
+    background-color: transparent!important;
+}
+.primary-pale.outline.hover-solid:hover
+{
+    color: #ebf2f9;
+    background-color: #3280fc !important;
+}
+.primary-pale.text-tint,
+.primary-pale .active
+{
+    color: #3280fc;
+}
+.primary-pale.long-shadow
+{
+    text-shadow: #ccdef0 1px 1px, #ccdef0 2px 2px, #ccdef0 3px 3px, #ccdef0 4px 4px, #ccdef0 5px 5px, #ccdef0 6px 6px, #ccdef0 7px 7px, #ccdef0 8px 8px, #ccdef0 9px 9px, #ccdef0 10px 10px, #ccdef0 11px 11px, #ccdef0 12px 12px, #ccdef0 14px 14px, #ccdef0 15px 15px, #ccdef0 16px 16px, #ccdef0 17px 17px, #ccdef0 18px 18px, #ccdef0 19px 19px, #ccdef0 20px 20px, #ccdef0 21px 21px, #ccdef0 22px 22px, #ccdef0 23px 23px, #ccdef0 24px 24px, #ccdef0 25px 25px, #ccdef0 26px 26px, #ccdef0 27px 27px, #ccdef0 28px 28px, #ccdef0 29px 29px, #ccdef0 30px 30px, #ccdef0 31px 31px, #ccdef0 32px 32px, #ccdef0 33px 33px, #ccdef0 34px 34px, #ccdef0 35px 35px, #ccdef0 36px 36px, #ccdef0 37px 37px, #ccdef0 38px 38px, #ccdef0 39px 39px, #ccdef0 40px 40px;
+}
+.secondary-pale
+{
+    border-color: #e1f5fe !important;
+    background-color: #e1f5fe !important;
+}
+.secondary-pale.hover-solid:hover,
+tr.secondary-pale:hover
+{
+    background-color: #c8edfd !important;
+}
+.secondary-pale.outline
+{
+    color: #e1f5fe !important;
+    border-color: #e1f5fe !important;
+    background-color: transparent!important;
+}
+.secondary-pale.outline.hover-solid:hover
+{
+    color: #e1f5fe;
+    background-color: #145ccd !important;
+}
+.secondary-pale.text-tint,
+.secondary-pale .active
+{
+    color: #145ccd;
+}
+.secondary-pale.long-shadow
+{
+    text-shadow: #bae8fd 1px 1px, #bae8fd 2px 2px, #bae8fd 3px 3px, #bae8fd 4px 4px, #bae8fd 5px 5px, #bae8fd 6px 6px, #bae8fd 7px 7px, #bae8fd 8px 8px, #bae8fd 9px 9px, #bae8fd 10px 10px, #bae8fd 11px 11px, #bae8fd 12px 12px, #bae8fd 14px 14px, #bae8fd 15px 15px, #bae8fd 16px 16px, #bae8fd 17px 17px, #bae8fd 18px 18px, #bae8fd 19px 19px, #bae8fd 20px 20px, #bae8fd 21px 21px, #bae8fd 22px 22px, #bae8fd 23px 23px, #bae8fd 24px 24px, #bae8fd 25px 25px, #bae8fd 26px 26px, #bae8fd 27px 27px, #bae8fd 28px 28px, #bae8fd 29px 29px, #bae8fd 30px 30px, #bae8fd 31px 31px, #bae8fd 32px 32px, #bae8fd 33px 33px, #bae8fd 34px 34px, #bae8fd 35px 35px, #bae8fd 36px 36px, #bae8fd 37px 37px, #bae8fd 38px 38px, #bae8fd 39px 39px, #bae8fd 40px 40px;
+}
+.accent-pale
+{
+    border-color: #fff8e1 !important;
+    background-color: #fff8e1 !important;
+}
+.accent-pale.hover-solid:hover,
+tr.accent-pale:hover
+{
+    background-color: #fff2c7 !important;
+}
+.accent-pale.outline
+{
+    color: #fff8e1 !important;
+    border-color: #fff8e1 !important;
+    background-color: transparent!important;
+}
+.accent-pale.outline.hover-solid:hover
+{
+    color: #fff8e1;
+    background-color: #fcae32 !important;
+}
+.accent-pale.text-tint,
+.accent-pale .active
+{
+    color: #fcae32;
+}
+.accent-pale.long-shadow
+{
+    text-shadow: #ffeeb8 1px 1px, #ffeeb8 2px 2px, #ffeeb8 3px 3px, #ffeeb8 4px 4px, #ffeeb8 5px 5px, #ffeeb8 6px 6px, #ffeeb8 7px 7px, #ffeeb8 8px 8px, #ffeeb8 9px 9px, #ffeeb8 10px 10px, #ffeeb8 11px 11px, #ffeeb8 12px 12px, #ffeeb8 14px 14px, #ffeeb8 15px 15px, #ffeeb8 16px 16px, #ffeeb8 17px 17px, #ffeeb8 18px 18px, #ffeeb8 19px 19px, #ffeeb8 20px 20px, #ffeeb8 21px 21px, #ffeeb8 22px 22px, #ffeeb8 23px 23px, #ffeeb8 24px 24px, #ffeeb8 25px 25px, #ffeeb8 26px 26px, #ffeeb8 27px 27px, #ffeeb8 28px 28px, #ffeeb8 29px 29px, #ffeeb8 30px 30px, #ffeeb8 31px 31px, #ffeeb8 32px 32px, #ffeeb8 33px 33px, #ffeeb8 34px 34px, #ffeeb8 35px 35px, #ffeeb8 36px 36px, #ffeeb8 37px 37px, #ffeeb8 38px 38px, #ffeeb8 39px 39px, #ffeeb8 40px 40px;
+}
+.green-pale,
+.success-pale
+{
+    border-color: #ddf4df !important;
+    background-color: #ddf4df !important;
+}
+.green-pale.hover-solid:hover,
+.success-pale.hover-solid:hover,
+tr.green-pale:hover,
+tr.success-pale:hover
+{
+    background-color: #caeecd !important;
+}
+.green-pale.outline,
+.success-pale.outline
+{
+    color: #ddf4df !important;
+    border-color: #ddf4df !important;
+    background-color: transparent!important;
+}
+.green-pale.outline.hover-solid:hover,
+.success-pale.outline.hover-solid:hover
+{
+    color: #ddf4df;
+    background-color: #38b03f !important;
+}
+.green-pale.text-tint,
+.success-pale.text-tint,
+.green-pale .active,
+.success-pale .active
+{
+    color: #38b03f;
+}
+.green-pale.long-shadow,
+.success-pale.long-shadow
+{
+    text-shadow: #beeac2 1px 1px, #beeac2 2px 2px, #beeac2 3px 3px, #beeac2 4px 4px, #beeac2 5px 5px, #beeac2 6px 6px, #beeac2 7px 7px, #beeac2 8px 8px, #beeac2 9px 9px, #beeac2 10px 10px, #beeac2 11px 11px, #beeac2 12px 12px, #beeac2 14px 14px, #beeac2 15px 15px, #beeac2 16px 16px, #beeac2 17px 17px, #beeac2 18px 18px, #beeac2 19px 19px, #beeac2 20px 20px, #beeac2 21px 21px, #beeac2 22px 22px, #beeac2 23px 23px, #beeac2 24px 24px, #beeac2 25px 25px, #beeac2 26px 26px, #beeac2 27px 27px, #beeac2 28px 28px, #beeac2 29px 29px, #beeac2 30px 30px, #beeac2 31px 31px, #beeac2 32px 32px, #beeac2 33px 33px, #beeac2 34px 34px, #beeac2 35px 35px, #beeac2 36px 36px, #beeac2 37px 37px, #beeac2 38px 38px, #beeac2 39px 39px, #beeac2 40px 40px;
+}
+.blue-pale,
+.info-pale
+{
+    border-color: #ddf3f5 !important;
+    background-color: #ddf3f5 !important;
+}
+.blue-pale.hover-solid:hover,
+.info-pale.hover-solid:hover,
+tr.blue-pale:hover,
+tr.info-pale:hover
+{
+    background-color: #c9ecef !important;
+}
+.blue-pale.outline,
+.info-pale.outline
+{
+    color: #ddf3f5 !important;
+    border-color: #ddf3f5 !important;
+    background-color: transparent!important;
+}
+.blue-pale.outline.hover-solid:hover,
+.info-pale.outline.hover-solid:hover
+{
+    color: #ddf3f5;
+    background-color: #03b8cf !important;
+}
+.blue-pale.text-tint,
+.info-pale.text-tint,
+.blue-pale .active,
+.info-pale .active
+{
+    color: #03b8cf;
+}
+.blue-pale.long-shadow,
+.info-pale.long-shadow
+{
+    text-shadow: #bde8ec 1px 1px, #bde8ec 2px 2px, #bde8ec 3px 3px, #bde8ec 4px 4px, #bde8ec 5px 5px, #bde8ec 6px 6px, #bde8ec 7px 7px, #bde8ec 8px 8px, #bde8ec 9px 9px, #bde8ec 10px 10px, #bde8ec 11px 11px, #bde8ec 12px 12px, #bde8ec 14px 14px, #bde8ec 15px 15px, #bde8ec 16px 16px, #bde8ec 17px 17px, #bde8ec 18px 18px, #bde8ec 19px 19px, #bde8ec 20px 20px, #bde8ec 21px 21px, #bde8ec 22px 22px, #bde8ec 23px 23px, #bde8ec 24px 24px, #bde8ec 25px 25px, #bde8ec 26px 26px, #bde8ec 27px 27px, #bde8ec 28px 28px, #bde8ec 29px 29px, #bde8ec 30px 30px, #bde8ec 31px 31px, #bde8ec 32px 32px, #bde8ec 33px 33px, #bde8ec 34px 34px, #bde8ec 35px 35px, #bde8ec 36px 36px, #bde8ec 37px 37px, #bde8ec 38px 38px, #bde8ec 39px 39px, #bde8ec 40px 40px;
+}
+.yellow-pale,
+.warning-pale
+{
+    border-color: #fff0d5 !important;
+    background-color: #fff0d5 !important;
+}
+.yellow-pale.hover-solid:hover,
+.warning-pale.hover-solid:hover,
+tr.yellow-pale:hover,
+tr.warning-pale:hover
+{
+    background-color: #ffe7bc !important;
+}
+.yellow-pale.outline,
+.warning-pale.outline
+{
+    color: #fff0d5 !important;
+    border-color: #fff0d5 !important;
+    background-color: transparent!important;
+}
+.yellow-pale.outline.hover-solid:hover,
+.warning-pale.outline.hover-solid:hover
+{
+    color: #fff0d5;
+    background-color: #f1a325 !important;
+}
+.yellow-pale.text-tint,
+.warning-pale.text-tint,
+.yellow-pale .active,
+.warning-pale .active
+{
+    color: #f1a325;
+}
+.yellow-pale.long-shadow,
+.warning-pale.long-shadow
+{
+    text-shadow: #ffe1ac 1px 1px, #ffe1ac 2px 2px, #ffe1ac 3px 3px, #ffe1ac 4px 4px, #ffe1ac 5px 5px, #ffe1ac 6px 6px, #ffe1ac 7px 7px, #ffe1ac 8px 8px, #ffe1ac 9px 9px, #ffe1ac 10px 10px, #ffe1ac 11px 11px, #ffe1ac 12px 12px, #ffe1ac 14px 14px, #ffe1ac 15px 15px, #ffe1ac 16px 16px, #ffe1ac 17px 17px, #ffe1ac 18px 18px, #ffe1ac 19px 19px, #ffe1ac 20px 20px, #ffe1ac 21px 21px, #ffe1ac 22px 22px, #ffe1ac 23px 23px, #ffe1ac 24px 24px, #ffe1ac 25px 25px, #ffe1ac 26px 26px, #ffe1ac 27px 27px, #ffe1ac 28px 28px, #ffe1ac 29px 29px, #ffe1ac 30px 30px, #ffe1ac 31px 31px, #ffe1ac 32px 32px, #ffe1ac 33px 33px, #ffe1ac 34px 34px, #ffe1ac 35px 35px, #ffe1ac 36px 36px, #ffe1ac 37px 37px, #ffe1ac 38px 38px, #ffe1ac 39px 39px, #ffe1ac 40px 40px;
+}
+.red-pale,
+.danger-pale
+{
+    border-color: #ffe5e0 !important;
+    background-color: #ffe5e0 !important;
+}
+.red-pale.hover-solid:hover,
+.danger-pale.hover-solid:hover,
+tr.red-pale:hover,
+tr.danger-pale:hover
+{
+    background-color: #ffd0c6 !important;
+}
+.red-pale.outline,
+.danger-pale.outline
+{
+    color: #ffe5e0 !important;
+    border-color: #ffe5e0 !important;
+    background-color: transparent!important;
+}
+.red-pale.outline.hover-solid:hover,
+.danger-pale.outline.hover-solid:hover
+{
+    color: #ffe5e0;
+    background-color: #ea644a !important;
+}
+.red-pale.text-tint,
+.danger-pale.text-tint,
+.red-pale .active,
+.danger-pale .active
+{
+    color: #ea644a;
+}
+.red-pale.long-shadow,
+.danger-pale.long-shadow
+{
+    text-shadow: #ffc3b7 1px 1px, #ffc3b7 2px 2px, #ffc3b7 3px 3px, #ffc3b7 4px 4px, #ffc3b7 5px 5px, #ffc3b7 6px 6px, #ffc3b7 7px 7px, #ffc3b7 8px 8px, #ffc3b7 9px 9px, #ffc3b7 10px 10px, #ffc3b7 11px 11px, #ffc3b7 12px 12px, #ffc3b7 14px 14px, #ffc3b7 15px 15px, #ffc3b7 16px 16px, #ffc3b7 17px 17px, #ffc3b7 18px 18px, #ffc3b7 19px 19px, #ffc3b7 20px 20px, #ffc3b7 21px 21px, #ffc3b7 22px 22px, #ffc3b7 23px 23px, #ffc3b7 24px 24px, #ffc3b7 25px 25px, #ffc3b7 26px 26px, #ffc3b7 27px 27px, #ffc3b7 28px 28px, #ffc3b7 29px 29px, #ffc3b7 30px 30px, #ffc3b7 31px 31px, #ffc3b7 32px 32px, #ffc3b7 33px 33px, #ffc3b7 34px 34px, #ffc3b7 35px 35px, #ffc3b7 36px 36px, #ffc3b7 37px 37px, #ffc3b7 38px 38px, #ffc3b7 39px 39px, #ffc3b7 40px 40px;
+}
+.brown-pale,
+.important-pale
+{
+    border-color: #f7ebe1 !important;
+    background-color: #f7ebe1 !important;
+}
+.brown-pale.hover-solid:hover,
+.important-pale.hover-solid:hover,
+tr.brown-pale:hover,
+tr.important-pale:hover
+{
+    background-color: #f2decd !important;
+}
+.brown-pale.outline,
+.important-pale.outline
+{
+    color: #f7ebe1 !important;
+    border-color: #f7ebe1 !important;
+    background-color: transparent!important;
+}
+.brown-pale.outline.hover-solid:hover,
+.important-pale.outline.hover-solid:hover
+{
+    color: #f7ebe1;
+    background-color: #bd7b46 !important;
+}
+.brown-pale.text-tint,
+.important-pale.text-tint,
+.brown-pale .active,
+.important-pale .active
+{
+    color: #bd7b46;
+}
+.brown-pale.long-shadow,
+.important-pale.long-shadow
+{
+    text-shadow: #eed6c1 1px 1px, #eed6c1 2px 2px, #eed6c1 3px 3px, #eed6c1 4px 4px, #eed6c1 5px 5px, #eed6c1 6px 6px, #eed6c1 7px 7px, #eed6c1 8px 8px, #eed6c1 9px 9px, #eed6c1 10px 10px, #eed6c1 11px 11px, #eed6c1 12px 12px, #eed6c1 14px 14px, #eed6c1 15px 15px, #eed6c1 16px 16px, #eed6c1 17px 17px, #eed6c1 18px 18px, #eed6c1 19px 19px, #eed6c1 20px 20px, #eed6c1 21px 21px, #eed6c1 22px 22px, #eed6c1 23px 23px, #eed6c1 24px 24px, #eed6c1 25px 25px, #eed6c1 26px 26px, #eed6c1 27px 27px, #eed6c1 28px 28px, #eed6c1 29px 29px, #eed6c1 30px 30px, #eed6c1 31px 31px, #eed6c1 32px 32px, #eed6c1 33px 33px, #eed6c1 34px 34px, #eed6c1 35px 35px, #eed6c1 36px 36px, #eed6c1 37px 37px, #eed6c1 38px 38px, #eed6c1 39px 39px, #eed6c1 40px 40px;
+}
+.purple-pale,
+.special-pale
+{
+    border-color: #f5eeff !important;
+    background-color: #f5eeff !important;
+}
+.purple-pale.hover-solid:hover,
+.special-pale.hover-solid:hover,
+tr.purple-pale:hover,
+tr.special-pale:hover
+{
+    background-color: #e6d5ff !important;
+}
+.purple-pale.outline,
+.special-pale.outline
+{
+    color: #f5eeff !important;
+    border-color: #f5eeff !important;
+    background-color: transparent!important;
+}
+.purple-pale.outline.hover-solid:hover,
+.special-pale.outline.hover-solid:hover
+{
+    color: #f5eeff;
+    background-color: #8666b8 !important;
+}
+.purple-pale.text-tint,
+.special-pale.text-tint,
+.purple-pale .active,
+.special-pale .active
+{
+    color: #8666b8;
+}
+.purple-pale.long-shadow,
+.special-pale.long-shadow
+{
+    text-shadow: #ddc5ff 1px 1px, #ddc5ff 2px 2px, #ddc5ff 3px 3px, #ddc5ff 4px 4px, #ddc5ff 5px 5px, #ddc5ff 6px 6px, #ddc5ff 7px 7px, #ddc5ff 8px 8px, #ddc5ff 9px 9px, #ddc5ff 10px 10px, #ddc5ff 11px 11px, #ddc5ff 12px 12px, #ddc5ff 14px 14px, #ddc5ff 15px 15px, #ddc5ff 16px 16px, #ddc5ff 17px 17px, #ddc5ff 18px 18px, #ddc5ff 19px 19px, #ddc5ff 20px 20px, #ddc5ff 21px 21px, #ddc5ff 22px 22px, #ddc5ff 23px 23px, #ddc5ff 24px 24px, #ddc5ff 25px 25px, #ddc5ff 26px 26px, #ddc5ff 27px 27px, #ddc5ff 28px 28px, #ddc5ff 29px 29px, #ddc5ff 30px 30px, #ddc5ff 31px 31px, #ddc5ff 32px 32px, #ddc5ff 33px 33px, #ddc5ff 34px 34px, #ddc5ff 35px 35px, #ddc5ff 36px 36px, #ddc5ff 37px 37px, #ddc5ff 38px 38px, #ddc5ff 39px 39px, #ddc5ff 40px 40px;
+}
+.gray
+{
+    border-color: rgba(0, 0, 0, .055) !important;
+    background-color: rgba(0, 0, 0, .055) !important;
+}
+.gray.hover-solid:hover,
+tr.gray:hover
+{
+    background-color: rgba(0, 0, 0, .055) !important;
+}
+.gray.outline
+{
+    color: rgba(0, 0, 0, .055) !important;
+    border-color: rgba(0, 0, 0, .055) !important;
+    background-color: transparent!important;
+}
+.gray.outline.hover-solid:hover
+{
+    color: rgba(0, 0, 0, .055);
+    background-color: #333 !important;
+}
+.gray.text-tint,
+.gray .active
+{
+    color: #333;
+}
+.gray.long-shadow
+{
+    text-shadow: rgba(0, 0, 0, .055) 1px 1px, rgba(0, 0, 0, .055) 2px 2px, rgba(0, 0, 0, .055) 3px 3px, rgba(0, 0, 0, .055) 4px 4px, rgba(0, 0, 0, .055) 5px 5px, rgba(0, 0, 0, .055) 6px 6px, rgba(0, 0, 0, .055) 7px 7px, rgba(0, 0, 0, .055) 8px 8px, rgba(0, 0, 0, .055) 9px 9px, rgba(0, 0, 0, .055) 10px 10px, rgba(0, 0, 0, .055) 11px 11px, rgba(0, 0, 0, .055) 12px 12px, rgba(0, 0, 0, .055) 14px 14px, rgba(0, 0, 0, .055) 15px 15px, rgba(0, 0, 0, .055) 16px 16px, rgba(0, 0, 0, .055) 17px 17px, rgba(0, 0, 0, .055) 18px 18px, rgba(0, 0, 0, .055) 19px 19px, rgba(0, 0, 0, .055) 20px 20px, rgba(0, 0, 0, .055) 21px 21px, rgba(0, 0, 0, .055) 22px 22px, rgba(0, 0, 0, .055) 23px 23px, rgba(0, 0, 0, .055) 24px 24px, rgba(0, 0, 0, .055) 25px 25px, rgba(0, 0, 0, .055) 26px 26px, rgba(0, 0, 0, .055) 27px 27px, rgba(0, 0, 0, .055) 28px 28px, rgba(0, 0, 0, .055) 29px 29px, rgba(0, 0, 0, .055) 30px 30px, rgba(0, 0, 0, .055) 31px 31px, rgba(0, 0, 0, .055) 32px 32px, rgba(0, 0, 0, .055) 33px 33px, rgba(0, 0, 0, .055) 34px 34px, rgba(0, 0, 0, .055) 35px 35px, rgba(0, 0, 0, .055) 36px 36px, rgba(0, 0, 0, .055) 37px 37px, rgba(0, 0, 0, .055) 38px 38px, rgba(0, 0, 0, .055) 39px 39px, rgba(0, 0, 0, .055) 40px 40px;
+}
+.white
+{
+    border-color: #fff !important;
+    background-color: #fff !important;
+}
+.white.hover-solid:hover,
+tr.white:hover
+{
+    background-color: #f2f2f2 !important;
+}
+.white.outline
+{
+    color: #fff !important;
+    border-color: #fff !important;
+    background-color: transparent!important;
+}
+.white.outline.hover-solid:hover
+{
+    color: #fff;
+    background-color: #333 !important;
+}
+.white.text-tint,
+.white .active
+{
+    color: #333;
+}
+.white.long-shadow
+{
+    text-shadow: #ebebeb 1px 1px, #ebebeb 2px 2px, #ebebeb 3px 3px, #ebebeb 4px 4px, #ebebeb 5px 5px, #ebebeb 6px 6px, #ebebeb 7px 7px, #ebebeb 8px 8px, #ebebeb 9px 9px, #ebebeb 10px 10px, #ebebeb 11px 11px, #ebebeb 12px 12px, #ebebeb 14px 14px, #ebebeb 15px 15px, #ebebeb 16px 16px, #ebebeb 17px 17px, #ebebeb 18px 18px, #ebebeb 19px 19px, #ebebeb 20px 20px, #ebebeb 21px 21px, #ebebeb 22px 22px, #ebebeb 23px 23px, #ebebeb 24px 24px, #ebebeb 25px 25px, #ebebeb 26px 26px, #ebebeb 27px 27px, #ebebeb 28px 28px, #ebebeb 29px 29px, #ebebeb 30px 30px, #ebebeb 31px 31px, #ebebeb 32px 32px, #ebebeb 33px 33px, #ebebeb 34px 34px, #ebebeb 35px 35px, #ebebeb 36px 36px, #ebebeb 37px 37px, #ebebeb 38px 38px, #ebebeb 39px 39px, #ebebeb 40px 40px;
+}
+.highlight
+{
+    background-color: #c6ff00 !important;
+}
+.text-primary
+{
+    color: #3280fc;
+}
+.text-secondary
+{
+    color: #145ccd;
+}
+.text-green,
+.text-success
+{
+    color: #38b03f;
+}
+.text-blue,
+.text-info
+{
+    color: #03b8cf;
+}
+.text-yellow,
+.text-warning
+{
+    color: #f1a325;
+}
+.text-red,
+.text-danger
+{
+    color: #ea644a;
+}
+.text-brown,
+.text-important
+{
+    color: #bd7b46;
+}
+.text-purple,
+.text-special
+{
+    color: #8666b8;
+}
+.text-gray
+{
+    color: rgba(0, 0, 0, .5);
+}
+.text-black
+{
+    color: #000;
+}
+.text-white
+{
+    color: #fff;
+}
+.text-dark
+{
+    color: #333;
+}
+.text-accent
+{
+    color: #fcae32;
+}
+.clean
+{
+    background-color: transparent!important;
+}
+.muted
+{
+    opacity: .5 !important;
+}
+.muted-light
+{
+    opacity: .75 !important;
+}
+.muted-dark
+{
+    opacity: .25 !important;
+}
+.long-shadow
+{
+    overflow: hidden;
+}
+.outline-cover
+{
+    border: .05rem solid rgba(0, 0, 0, .1) !important;
+}
+.darken
+{
+    background-color: rgba(0, 0, 0, .1) !important;
+}
+.darken-2
+{
+    background-color: rgba(0, 0, 0, .2) !important;
+}
+.darken-3
+{
+    background-color: rgba(0, 0, 0, .3) !important;
+}
+.lighten
+{
+    background-color: rgba(255, 255, 255, .1) !important;
+}
+.lighten-2
+{
+    background-color: rgba(255, 255, 255, .2) !important;
+}
+.lighten-3
+{
+    background-color: rgba(255, 255, 255, .3) !important;
+}

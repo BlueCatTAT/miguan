@@ -84,6 +84,18 @@ class UserController extends RootController {
         $this->redirect('/index/index');
     }
 
+    function search_list()
+    {
+        $uid = is_login();
+        if ( ! $uid) {
+            $this->redirect('/user/index');
+        }
+        $Search = M('Search');
+        $search_list = $Search->where(['uid' => $uid, 'status' => 2])->order(['id' => 'desc'])->select();
+        $this->search_list = $search_list;
+        $this->display();
+    }
+
     function logout()
     {
         cookie('user_LOGGED', null);

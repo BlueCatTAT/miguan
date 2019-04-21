@@ -149,9 +149,10 @@ class SearchController extends Controller {
         $update_info = [
             'client_secret' => $this->_app_key,
             'access_token'  => $token,
-            'data' => $data
+            'data' => $data,
+            'status' => 2
         ];
-        $Search->where(['id' => $search_info['id']])->save();
+        $Search->where(['id' => $search_info['id']])->save($update_info);
         
         $data = json_decode($data, true);
         if ($data['code'] != 'MIGUAN_SEARCH_SUCCESS') {
