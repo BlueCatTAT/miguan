@@ -138,7 +138,7 @@ class SearchController extends Controller {
         $token = $this->_get_token();
         $get_data = [
             'name'          => $search_info['name'],
-            'id_card'       => $search_info['id_card']
+            'id_card'       => $search_info['id_card'],
             'phone'         => $search_info['phone'],
             'client_secret' => $this->_app_key,
             'access_token'  => $token,
