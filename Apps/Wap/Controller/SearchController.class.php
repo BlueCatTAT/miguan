@@ -251,10 +251,7 @@ class SearchController extends Controller {
         $jsApiParameters = $tools->GetJsApiParameters($order);
         $editAddress = $tools->GetEditAddressParameters();
         
-        //$this->jsApiParameters = $jsApiParameters;
-        //$this->editAddress = $editAddress;
-        
-        $this->jsApiParameters = 'sdfdfsdfs';
-        $this->editAddress = 'sdfff';
+        $this->jsApiParameters = $jsApiParameters;
+        $this->editAddress = $editAddress;
     }
 }
