@@ -37,7 +37,7 @@ class AgentController extends RootController {
             $agent_data = [
                 'type' => 2,
                 'lv' => $lv,
-                'username' => $usernamem,
+                'username' => $username,
                 'mobile' => $mobile,
                 'password' => md5('888888'),
                 'email' => $email,
