@@ -20,7 +20,7 @@
       <td>{$item['nickname']}</td>
       <td>{$item['trade_no']}</td>
       <td>{$item['fee']/100}</td>
-      <td>{$item['updated_time']}</td>
+      <td>{$item['updated_time']|date="m-d H:i", ###}</td>
       <td>
         <a href="{:U('/admin/order/order_info', array('id' => $item['id']))}">详情</a>
       </td>

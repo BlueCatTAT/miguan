@@ -7,14 +7,14 @@
       <tr><th>ID</th><th>手机</th><th>用户名</th><th>注册时间</th><th>操作</th></tr>
     </thead>
     <tbody>
-    <foreach name="order_list" item="item">
+    <foreach name="member_list" item="item">
     <tr>
       <td>{$item['id']}</td>
       <td>{$item['mobile']}</td>
       <td>{$item['nickname']}</td>
-      <td>{$item['endprofit']}</td>
+      <td>{$item['created_time']|date="m-d H:i", ###}</td>
       <td>
-        <a href="{:U('/admin/order/order_info', array('id' => $item['id']))}">详情</a>
+        <a href="{:U('/admin/user/user_info', array('id' => $item['id']))}">详情</a>
       </td>
     </tr>
     </foreach>
