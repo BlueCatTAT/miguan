@@ -4,11 +4,11 @@
 <div class="container" style="margin-top:20px;">
   <blockquote>订单列表</blockquote>  
   <table class="table table-border table-bordered table-bg">
-    <th>
-      <td>订单号</td>
-      <td>金额</td>
-      <td>时间</td>
-    </th>
+    <tr>
+      <th>订单号</th>
+      <th>金额</th>
+      <th>时间</th>
+    </tr>
     <foreach name="order_list" item="item">
     <tr>
       <td>{$item.trade_no}</td>
