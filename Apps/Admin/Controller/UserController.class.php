@@ -6,6 +6,16 @@ use Think\Controller;
 
 class UserController extends RootController {
 
+    public function user_info()
+    {
+        $id = I('get.id');
+        $Member = M('Member');
+
+        $member_info = $Member->where(['id' => $id])->find();
+        $this->member_info = $member_info;
+        $this->display();
+    }
+
     public function user_list()
     {
         $page = $_GET['page'] ? $_GET['page'] : 1;
