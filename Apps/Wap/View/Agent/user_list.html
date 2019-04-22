@@ -4,11 +4,11 @@
 <div class="container" style="margin-top:20px;">
   <blockquote>用户列表</blockquote>  
   <table class="table table-border table-bordered table-bg">
-    <th>
-      <td>用户</td>
-      <td>手机</td>
-      <td>时间</td>
-    </th>
+    <tr>
+      <th>用户</th>
+      <th>手机</th>
+      <th>时间</th>
+    </tr>
     <foreach name="user_list" item="item">
     <tr>
       <td>{$item.nickname}</td>
