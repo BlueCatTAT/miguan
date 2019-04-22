@@ -94,11 +94,11 @@ class Page{
 
         //上一页
         $up_row  = $this->nowPage - 1;
-        $up_page = $up_row > 0 ? '<li><a class="prev" href="' . $this->url($up_row) . '">' . $this->config['prev'] . '</a></li>' : '';
+        $up_page = $up_row > 0 ? '<li class="previous"><a href="' . $this->url($up_row) . '">' . $this->config['prev'] . '</a></li>' : '';
 
         //下一页
         $down_row  = $this->nowPage + 1;
-        $down_page = ($down_row <= $this->totalPages) ? '<li><a class="next" href="' . $this->url($down_row) . '">' . $this->config['next'] . '</a></li>' : '';
+        $down_page = ($down_row <= $this->totalPages) ? '<li class="next"><a href="' . $this->url($down_row) . '">' . $this->config['next'] . '</a></li>' : '';
 
         //第一页
         $the_first = '';
@@ -125,7 +125,7 @@ class Page{
             if($page > 0 && $page != $this->nowPage){
 
                 if($page <= $this->totalPages){
-                    $link_page .= '<li><a class="num" href="' . $this->url($page) . '">' . $page . '</a></li>';
+                    $link_page .= '<li><a href="' . $this->url($page) . '">' . $page . '</a></li>';
                 }else{
                     break;
                 }
@@ -140,6 +140,6 @@ class Page{
             array('%HEADER%', '%NOW_PAGE%', '%UP_PAGE%', '%DOWN_PAGE%', '%FIRST%', '%LINK_PAGE%', '%END%', '%TOTAL_ROW%', '%TOTAL_PAGE%'),
             array($this->config['header'], $this->nowPage, $up_page, $down_page, $the_first, $link_page, $the_end, $this->totalRows, $this->totalPages),
             $this->config['theme']);
-        return "<ul class='pagination'>{$page_str}</ul>";
+        return "<ul class='pager'>{$page_str}</ul>";
     }
 }
