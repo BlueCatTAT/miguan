@@ -61,7 +61,11 @@ class AgentController extends Controller {
         $uid = $this->_check_login();
         $Member = M('Member');
 
-        $user_list = $Member->where(['aid' => $uid])->select();
+        $p = $_GET['p'] ? $_GET['p'] : 1;
+        $user_list = $Member->where(['aid' => $uid])->order(['id' => 'desc'])->page($p. ',10')->select();
+        $count = $Member->where(['aid' => $uid])->count();
+        $Page = new \Think\Page($count, 10);
+        $this->pager = $Page->show();
         $this->user_list = $user_list;
         $this->display();
     }
