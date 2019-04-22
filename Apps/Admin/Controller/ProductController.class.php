@@ -45,7 +45,7 @@ class ProductController extends RootController {
 
     function product_edit()
     {
-        $Product = M('Prodcut');
+        $Product = M('Product');
         $ProductType = M('ProductType');
         if ( ! $_POST) {
             $id = I('get.id');
