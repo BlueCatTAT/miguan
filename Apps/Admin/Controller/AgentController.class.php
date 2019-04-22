@@ -15,6 +15,15 @@ class AgentController extends RootController {
         $this->display();
     }
 
+    public function agent_info()
+    {
+        $Admin = M('Admin');
+        $id = I('get.id');
+        $agent_info = $Admin->where(['id' => $id])->find();
+        $this->agent_info = $agent_info;
+        $this->display();
+    }
+
     public function agent_add()
     {
         if ( ! $_POST) {
