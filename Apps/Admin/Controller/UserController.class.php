@@ -20,7 +20,7 @@ class UserController extends RootController {
     {
         $page = $_GET['page'] ? $_GET['page'] : 1;
         
-        $Member = M('Meber');
+        $Member = M('Member');
         $member_list = $Member->order(['id' => 'desc'])->page($page . ',10')->select();
         $this->member_list = $member_list;
         
