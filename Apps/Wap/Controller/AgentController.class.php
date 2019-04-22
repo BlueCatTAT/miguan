@@ -94,6 +94,7 @@ class AgentController extends Controller {
                     'updated_time' => time()
                 ];
                 $Card->where(['id' => $card_info['id']])->save($save_data);
+                $this->redirect('/agent/card_info');
             } else {
                 $card_data = [
                     'uid'          => $uid,
