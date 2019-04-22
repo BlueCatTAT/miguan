@@ -12,11 +12,11 @@
     <foreach name="order_list" item="item">
     <tr>
       <td>{$item.trade_no}</td>
-      <td>{$item.fee/100}</td>
+      <td>{$item['fee']/100}</td>
       <td>{$item.updated_time|date="y-m-d H:i:s",###}</td>
     </tr>
     </foreach>
   </table>
-  <div class="pages mt-20">{$pager}</div>
+  <div class="pages mt-20 text-center">{$pager}</div>
 </div>
 </block>
