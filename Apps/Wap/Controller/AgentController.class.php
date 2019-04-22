@@ -43,8 +43,13 @@ class AgentController extends Controller {
 
         $user_list = $Member->where(['aid' => $uid])->select();
         if ($user_list) {
-            $uid_list = array_column($uid_list, 'id');
-            $order_list = $Order->where(['uid' => $uid_list, 'status' => 2])->order(['id' => 'desc'])->select();
+            $uid_list = array_column($user_list, 'id');
+
+            $p = $_GET['p'] ? $_GET['p'] : 1;
+            $order_list = $Order->where(['uid' => ['in', $uid_list], 'status' => 2])->order(['id' => 'desc'])->page($p . ',10')->select();
+            $count = $Order->where(['uid' => ['in', $uid_list], 'status' => 2])->count();
+            $Page = new \Think\Page($count, 10);
+            $this->pager = $Page->show();
         }
 
         $this->order_list = $order_list;
