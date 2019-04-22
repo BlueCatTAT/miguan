@@ -26,7 +26,7 @@ class OrderController extends RootController {
 
         $this->count = $count;
         $this->page_count = ceil($count / 10);
-        $this->page = $page
+        $this->page = $page;
 
         $this->display();
     }
