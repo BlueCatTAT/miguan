@@ -1,0 +1,58 @@
+<extend name="Base/base" />
+<block name="body">
+<div class="with-padding bg-primary" style="text-align:center; font-size:20px; padding:10px 20px;">代理中心</div>
+<div class="container" style="margin-top:20px;">
+  <blockquote>个人信息</blockquote>  
+  <table class="table table-border table-bordered table-bg">
+    <tr>
+      <td>ID</td>
+      <td>{$agent_info['id']}</td>
+    </tr>
+    <tr>
+      <td>代理等级</td>
+      <td>{$agent_info['lv']}</td>
+    </tr>
+    <tr>
+      <td>姓名</td>
+      <td>{$agent_info['username']}</td>
+    </tr>
+    <tr>
+      <td>手机</td>
+      <td>{$agent_info['mobile']}</td>
+    </tr>
+    <tr>
+      <td>邮箱</td>
+      <td>{$agent_info['email']}</td>
+    </tr>
+    <tr>
+      <td>QQ</td>
+      <td>{$agent_info['qq']}</td>
+    </tr>
+    <tr>
+      <td>微信</td>
+      <td>{$agent_info['wx']}</td>
+    </tr>
+  </table>
+  <form>
+    <div class="form-group">
+      <label for="exampleInputAccount1">推广链接</label>
+      <input type="text" class="form-control" id="exampleInputAccount1" placeholder="" value="{$agent_url}">
+    </div>
+    <div class="from-group">
+      <label>推广二维码</label>
+      <div id="qrcode" style="display:inline-block;"></div>
+    </div>
+  </form>
+</div>
+<script>
+$(function(){
+  var qrcode = new QRCode('qrcode', {
+    text: "{$agent_url}",
+    width: 256,
+    height: 256,
+    colorDark : '#000000',
+    colorLight : '#ffffff',
+  });
+})
+</script>
+</block>

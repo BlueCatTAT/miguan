@@ -5,6 +5,10 @@ namespace Wap\Controller;
 use Think\Controller;
 
 class AgentController extends Controller {
+    
+    protected $_base_url = 'http://www.zhixinrenapp.com/';
+    protected $_appid = 'wx1e21ad441e4e2576';
+    protected $_appsecret = 'a26010468f9791b8d5939b3728600e52';
 
     public function index()
     {
@@ -12,6 +16,19 @@ class AgentController extends Controller {
         
         $Admin = M('Admin');
         $agent_info = $Admin->where(['id' => $uid])->find();
+
+        $this->agent_info = $agent_info;
+        $this->display();
+    }
+
+    public function info()
+    {
+        $uid = $this->_check_login();
+        
+        $Admin = M('Admin');
+        $agent_info = $Admin->where(['id' => $uid])->find();
+        
+        $this->agent_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . $this->_appid . '&redirect_uri=' . $this->_base_url . 'user/callback/aid/' . $uid . '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 
         $this->agent_info = $agent_info;
         $this->display();
