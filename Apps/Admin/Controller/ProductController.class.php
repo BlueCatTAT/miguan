@@ -4,7 +4,7 @@ namespace Admin\Controller;
 
 use Think\Controller;
 
-class AgentController extends RootController {
+class ProductController extends RootController {
 
     function type_list()
     {
