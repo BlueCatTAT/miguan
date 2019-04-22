@@ -17,37 +17,32 @@ class DataPlatformController extends Controller {
     protected $_access_report_url = 'https://www.juxinli.com/api/access_report_data';
     protected $_token_status_url = 'https://www.juxinli.com/api/token_status';
 
+    protected $_callback = 'http://www.zhixinrenapp.com/data_platform/callback.html';
+
     function index()
     {
+        $this->product_list = [
+            ['type' => 'telecom', 'name' => '运营商', 'icon' => 'fa-mobile-phone'],
+            ['type' => 'taobao', 'name' => '淘宝', 'icon' => 'fa-shopping-cart'],
+            ['type' => 'jingdong', 'name' => '京东', 'icon' => 'fa-truck'],
+            ['type' => 'fund_list', 'name' => '公积金', 'icon' => 'fa-home'],
+            ['type' => 'insurance_list', 'name' => '社保', 'icon' => 'fa-id-card'],
+            ['type' => 'education', 'name' => '学信网', 'icon' => 'fa-newspaper-o'],
+            ['type' => 'credit_card_list', 'name' => '信用卡', 'icon' => 'fa-credit-card'],
+            ['type' => 'life_insurance_list', 'name' => '寿险', 'icon' => 'fa-google-wallet'],
+            ['type' => 'car_insurance_list', 'name' => '车险', 'icon' => 'fa-car'],
+            ['type' => 'zm_score', 'name' => '芝麻信用', 'icon' => 'fa-calendar-o'],
+            ['type' => 'borrowing_list', 'name' => '借条', 'icon' => 'fa-map'],
+            ['type' => 'borrowing_credit_list', 'name' => '借条信用', 'icon' => 'fa-newspaper-o'],
+            ['type' => 'tax_list', 'name' => '个税详单', 'icon' => 'fa-file-archive-o'],
+            ['type' => 'takeaway_list', 'name' => '外卖', 'icon' => 'fa-phone'],
+            ['type' => 'music_list', 'name' => '音乐', 'icon' => 'fa-music'],
+            ['type' => 'travel_list', 'name' => '出行', 'icon' => 'fa-tree'],
+            ['type' => 'personal_tax', 'name' => '个税申报', 'icon' => 'fa-money'],
+            ['type' => 'court_list', 'name' => '法院', 'icon' => 'fa-university'],
+            ['type' => 'maimai', 'name' => '社交', 'icon' => 'fa-wifi'],
+        ];
         $this->display(); 
-    }
-
-    function search()
-    {
-        $token = $this->_get_access_token();
-        $get_data = [
-            'client_secret' => $this->_app_key,
-            'access_token'  => $token,
-            'name'          => '晋京',
-            'idcard'        => '410181198905104557',
-            'phone'         => '13683582516' 
-        ];
-        $url = $this->_access_report_url . '?' . http_build_query($get_data);
-        $res = curl_get($url);
-        echo $url;
-        echo "<pre>";
-        var_dump($res);
-        echo "</pre>";
-    }
-
-    function _get_token_status($token)
-    {
-        $get_data = [
-            'client_secret' => '',
-            'access_token'  => '',
-            'token'         => '',
-            'crawl_detail'  => ''
-        ];
     }
 
     function _get_access_token()
@@ -67,7 +62,7 @@ class DataPlatformController extends Controller {
     
     function report() {
         $type = I('get.type');
-        $string = 'http://58.87.110.104/data_platform/callback.html';
+        $string = $this->_callback;
         $data = base64_encode($string);
         $data = str_replace(array('+','/','='),array('-','_',''),$data);
         $get_data = [
