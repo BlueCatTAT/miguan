@@ -16,7 +16,7 @@ class ProductController extends RootController {
 
     function type_edit()
     {
-        $ProductType = M('ProdcutType');
+        $ProductType = M('ProductType');
         if ( ! $_POST) {
             $id = I('get.id');
             $type_info = $ProductType->where(['id' => $id])->find();
@@ -46,7 +46,7 @@ class ProductController extends RootController {
     function product_edit()
     {
         $Product = M('Prodcut');
-        $ProductType = M('ProdcutType');
+        $ProductType = M('ProductType');
         if ( ! $_POST) {
             $id = I('get.id');
             $product_info = $Product->where(['id' => $id])->find();
