@@ -1,0 +1,29 @@
+<extend name="Base/common" />
+<block name="body">
+<div class="page-container">
+  <table class="table table-border table-bordered table-bg">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>类型</th>
+        <th>产品名</th>
+        <th>简介</th>
+        <th>价格</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <foreach name="product_list" item="item">
+    <tr>
+      <td>{$item.id}</td>
+      <td>{$item.type}</td>
+      <td>{$item.name}</td>
+      <td>{$item.desc}</td>
+      <td>{$item.price}</td>
+      <td>
+        <a href="{:U('/admin/product/product_edit', array('id' => $item['id']))}">编辑</a>
+      </td>
+    </tr>
+    </foreach>
+  </table>
+</div>
+</block>

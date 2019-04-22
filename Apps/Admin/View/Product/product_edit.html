@@ -1,0 +1,53 @@
+<extend name="Base/common" />
+<block name="body">
+<div class="page-container">
+  <form action="#" method="post" class="form form-horizontal">
+    <input type="hidden" name="id" value="{$product_info['id']}"/>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">
+        <span class="c-red">*</span>
+        类型
+      </label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <select name="lv" class="select">
+          <foreach name="type_list" item="item">
+          <option value="{$item.id}" <if condition="$product_info['type'] eq $item.id">selected</if>>{$item.name}</option>
+          </foreach>
+        </select>
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">
+        <span class="c-red">*</span>
+        产品名
+      </label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <input type="text" class="input-text" value="{$product_info['name']}" placeholder="" name="name">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">
+        <span class="c-red">*</span>
+        简介
+      </label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <input type="text" class="input-text" value="{$product_info['desc']}" placeholder="" name="desc">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">
+        <span class="c-red">*</span>
+        价格(分)
+      </label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <input type="text" class="input-text" value="{$product_info['price']}" placeholder="" name="price">
+      </div>
+    </div>
+    <div class="row cl">
+      <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+        <button type="submit" class="btn btn-success radius" id="admin-role-save"><i class="icon-ok"></i> 确定</button>
+      </div>
+    </div>
+  </form>
+</div>
+</block>
