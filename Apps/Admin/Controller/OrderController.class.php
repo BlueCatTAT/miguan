@@ -10,7 +10,7 @@ class OrderController extends RootController {
     
     public function order_list()
     {
-        $p = $_GET['p'] ? $_GET['p'] : 1;
+        $page = $_GET['page'] ? $_GET['page'] : 1;
         
         $Order = M('Order');
         $order_list = $Order->table('t_order a')
@@ -23,8 +23,10 @@ class OrderController extends RootController {
         $this->order_list = $order_list;
 
         $count = $Order->where(['status' => 2])->count();
-        $Page       = new \Think\Page($count, 10);
-        $this->pager = $Page->show();
+
+        $this->count = $count;
+        $this->page_count = ceil($count / 10);
+        $this->page = $page
 
         $this->display();
     }

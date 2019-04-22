@@ -1,6 +1,7 @@
 <extend name="Base/common" />
 <block name="body">
 <div class="page-container">
+  <input type="hidden" name="page" id="page" value="{$page}"/>
   <table class="table table-border table-bordered table-bg">
     <thead>
       <tr>
@@ -29,4 +30,22 @@
   </table>
   <div class="pager">{$pager}</div>
 </div>
+<script>
+$(function(){
+  $("[data-toggle='popover']").popover();
+  $("[data-toggle='tooltip']").tooltip();
+  laypage({
+    cont: 'pager',
+    skip: true,
+    pages: {$page_count},
+    curr: {$page},
+    jump: function(e){
+      var page = $('#page').val();
+      if (page != e.curr) {
+        window.location.href = "/admin/order/order_list?page=" + e.curr;
+      }
+    }
+  });
+});
+</script>
 </block>
