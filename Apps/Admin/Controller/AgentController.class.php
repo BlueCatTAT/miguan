@@ -79,6 +79,7 @@ class AgentController extends RootController {
                 'updated_time' => time()
             ];
             $Admin->where(['id' => I('post.id')])->save($update_data);
+            $this->redirect('/admin/agent/agent_list');
         }
     }
 
