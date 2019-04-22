@@ -65,7 +65,7 @@ class AgentController extends RootController {
         $Admin = M('Admin');
         if ( ! $_POST) {
             $id = I('get.id');
-            $agent_info = $
+            $agent_info = $Admin->where(['id' => $id])->find();
             $this->agent_info = $agent_info;
             $this->display();
         } else {

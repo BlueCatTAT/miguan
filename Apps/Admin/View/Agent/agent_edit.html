@@ -9,9 +9,9 @@
       </label>
       <div class="formControls col-xs-8 col-sm-9">
         <select name="lv" class="select">
-          <option value="1">一级代理</option>
-          <option value="2">二级代理</option>
-          <option value="3">三级代理</option>
+          <option value="1" <if condition="$agent_info['lv'] eq 1">selected</if>>一级代理</option>
+          <option value="2" <if condition="$agent_info['lv'] eq 2">selected</if>>二级代理</option>
+          <option value="3" <if condition="$agent_info['lv'] eq 3">selected</if>>三级代理</option>
         </select>
       </div>
     </div>
@@ -21,7 +21,7 @@
         姓名
       </label>
       <div class="formControls col-xs-8 col-sm-9">
-        <input type="text" class="input-text" value="" placeholder="" name="username">
+        <input type="text" class="input-text" value="{$agent_info['username']}" placeholder="" name="username">
       </div>
     </div>
     <div class="row cl">
@@ -30,7 +30,7 @@
         电话
       </label>
       <div class="formControls col-xs-8 col-sm-9">
-        <input type="text" class="input-text" value="" placeholder="" name="mobile">
+        <input type="text" class="input-text" value="{$agent_info['mobile']}" placeholder="" name="mobile">
       </div>
     </div>
     <div class="row cl">
@@ -39,7 +39,7 @@
         邮箱
       </label>
       <div class="formControls col-xs-8 col-sm-9">
-        <input type="text" class="input-text" value="" placeholder="" name="email">
+        <input type="text" class="input-text" value="{$agent_info['email']}" placeholder="" name="email">
       </div>
     </div>
     <div class="row cl">
@@ -48,7 +48,7 @@
         QQ
       </label>
       <div class="formControls col-xs-8 col-sm-9">
-        <input type="text" class="input-text" value="" placeholder="" name="qq">
+        <input type="text" class="input-text" value="{$agent_info['qq']}" placeholder="" name="qq">
       </div>
     </div>
     <div class="row cl">
@@ -57,7 +57,7 @@
         微信 
       </label>
       <div class="formControls col-xs-8 col-sm-9">
-        <input type="text" class="input-text" value="" placeholder="" name="wx">
+        <input type="text" class="input-text" value="{$agent_info['wx']}" placeholder="" name="wx">
       </div>
     </div>
     <div class="row cl">
