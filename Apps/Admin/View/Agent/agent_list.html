@@ -35,6 +35,7 @@
     </foreach>
     </tbody>
   </table>
+  <div id="pager" style="margin-top:20px;"></div>
 </div>
 <script>
 $('.account-btn').on('click', function(){
@@ -52,6 +53,22 @@ $('.account-btn').on('click', function(){
         console.log(data.msg);
       },
     });
+  });
+});
+$(function(){
+  $("[data-toggle='popover']").popover();
+  $("[data-toggle='tooltip']").tooltip();
+  laypage({
+    cont: 'pager',
+    skip: true,
+    pages: {$page_count},
+    curr: {$page},
+    jump: function(e){
+      var page = $('#page').val();
+      if (page != e.curr) {
+        window.location.href = "/admin/agent/agent_list?page=" + e.curr;
+      }
+    }
   });
 });
 </script>

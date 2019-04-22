@@ -19,6 +19,24 @@
     </foreach>
     </tbody>
   </table>
-  <div class="pager">{$page}</div>
+  <div id="pager" style="margin-top:20px;"></div>
 </div>
+<script>
+$(function(){
+  $("[data-toggle='popover']").popover();
+  $("[data-toggle='tooltip']").tooltip();
+  laypage({
+    cont: 'pager',
+    skip: true,
+    pages: {$page_count},
+    curr: {$page},
+    jump: function(e){
+      var page = $('#page').val();
+      if (page != e.curr) {
+        window.location.href = "/admin/user/user_list?page=" + e.curr;
+      }
+    }
+  });
+});
+</script>
 </block>

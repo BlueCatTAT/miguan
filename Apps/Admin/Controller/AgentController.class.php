@@ -9,9 +9,15 @@ class AgentController extends RootController {
 
     public function agent_list()
     {
+        $page = $_GET['page'] ? $_GET['page'] : 1;
         $Admin = M('Admin');
-        $agent_list = $Admin->where(['type' => 2, 'status' => 1])->select();
+        $agent_list = $Admin->where(['type' => 2, 'status' => 1])->order(['id' => 'desc'])->page($page . ',10')->select();
         $this->agent_list = $agent_list;
+        
+        $count = $Admin->where(['type' => 2, 'status' => 1])->count();
+        $this->count = $count;
+        $this->page_count = ceil($count / 10);
+        $this->page = $page;
         $this->display();
     }
 

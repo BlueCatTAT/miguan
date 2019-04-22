@@ -18,7 +18,7 @@ class OrderController extends RootController {
             ->join('t_member b on a.uid = b.id')
             ->where(['a.status' => 2])
             ->order(['a.id' => 'desc'])
-            ->page($p . ',10')
+            ->page($page . ',10')
             ->select();
         $this->order_list = $order_list;
 
