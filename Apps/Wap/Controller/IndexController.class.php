@@ -48,7 +48,9 @@ class IndexController extends Controller {
 
     function product()
     {
+        $Product = M('Product');
+        $product_list = $Product->table('t_product a')->field('a.*, b.name as type_name')->join('t_product_type b ON a.type = b.id')->select();
+        $this->product_list = $product_list;
         $this->display();
     }
-
 }
