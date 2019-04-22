@@ -8,7 +8,7 @@ class ProductController extends RootController {
 
     function type_list()
     {
-        $ProductType = M('ProdcutType');
+        $ProductType = M('ProductType');
         $type_list = $ProductType->select();
         $this->type_list = $type_list;
         $this->display();
