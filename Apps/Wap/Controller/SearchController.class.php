@@ -54,6 +54,7 @@ class SearchController extends Controller {
         $id_card = I('post.id_card');
         $phone = I('post.phone');
         $pass = I('post.pass');
+        $trade_no = I('post.trade_no');
         
         $Vcode = M('Vcode');
         $vcode_info = $Vcode->where(['mobile' => $phone, 'status' => 1])->order(['id' => 'desc'])->find();
@@ -78,7 +79,10 @@ class SearchController extends Controller {
             'created_time' => time(),
             'updated_time' => time()
         ];
-        $search_id = $Search->add($search_data);
+        if ( ! $search_id = $Search->add($search_data)) {
+            echo json_encode(['status' => 0, 'msg' => '生成报告失败']);
+            exit;
+        }
         echo json_encode(['status' => 1, 'id' => $search_id]);
     }
 
