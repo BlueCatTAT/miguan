@@ -122,7 +122,7 @@ class DataPlatformController extends Controller {
                 ]; 
                 $SearchMifeng = M('SearchMifeng');
                 //$SearchMifeng->where(['token' => $token])->save(['data' => json_encode($res)]);
-                $SearchMifeng->where(['token' => $token])->save(['data' => $res['data']['status']]);
+                //$SearchMifeng->where(['token' => $token])->save(['data' => $res['data']['status']]);
                 echo json_encode($result);
             }
         }
