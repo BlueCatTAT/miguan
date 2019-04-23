@@ -17,7 +17,7 @@ class DataPlatformController extends Controller {
     protected $_access_report_url = 'https://www.juxinli.com/api/access_report_data';
     protected $_token_status_url = 'https://www.juxinli.com/api/token_status';
 
-    protected $_callback = 'http://www.zhixinrenapp.com/data_platform/callback.html';
+    protected $_callback = 'http://www.zhixinrenapp.com/data_platform/callback';
 
     function index()
     {
@@ -53,7 +53,7 @@ class DataPlatformController extends Controller {
         $trade_no = $this->_make_order($uid);
         
         $type = I('get.type');
-        $string = $this->_callback;
+        $string = $this->_callback . '/trade_no/' . $trade_no;
         $data = base64_encode($string);
         $data = str_replace(array('+','/','='),array('-','_',''),$data);
         $get_data = [
@@ -68,7 +68,24 @@ class DataPlatformController extends Controller {
 
     function callback()
     {
+        $uid = is_login();
+        if ( ! $uid) {
+            $this->redirect('/user/index');
+        }
         $token = I('get.token');
+        $trade_no = I('get.trade_no');
+
+        $SearchMifeng = M('SearchMifeng');
+        $search_data = [
+            'uid'          => $uid,
+            'token'        => $token,
+            'trade_no'     => $trade_no,
+            'created_time' => time(),
+            'updated_time' => $time()
+        ];
+        if ( ! $SearchMifeng->add($search_data)) {
+            $this->error('创建报告信息失败');
+        }
 
         $this->token = $token;
         $this->display();
@@ -103,6 +120,8 @@ class DataPlatformController extends Controller {
                     'msg'    => '采集成功',
                     'html'   => $this->_format_html($res)
                 ]; 
+                $SearchMifeng = M('SearchMifeng');
+                $SearchMifeng->where(['token' => $token])->save(['data' => json_encode($res)]);
                 echo json_encode($result);
             }
         }
