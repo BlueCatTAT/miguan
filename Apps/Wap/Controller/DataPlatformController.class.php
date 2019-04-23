@@ -81,7 +81,7 @@ class DataPlatformController extends Controller {
             'token'        => $token,
             'trade_no'     => $trade_no,
             'created_time' => time(),
-            'updated_time' => $time()
+            'updated_time' => time()
         ];
         if ( ! $SearchMifeng->add($search_data)) {
             $this->error('创建报告信息失败');
