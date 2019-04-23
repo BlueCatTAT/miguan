@@ -246,5 +246,7 @@ class SearchController extends Controller {
         
         $this->jsApiParameters = $jsApiParameters;
         $this->editAddress = $editAddress;
+
+        return $trade_no;
     }
 }
