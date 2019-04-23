@@ -110,7 +110,7 @@ class DataPlatformController extends Controller {
             if ($res['data']['status'] != 'SUCCESS') {
                 $result = [
                     'status' => 0,
-                    'msg'    => '<p>数据采集中...请稍后</p>',
+                    'msg'    => '<div class="alert alert-info">数据采集中, 请稍后...  [' . date('Y-m-d H:i:s') . ']</div>',
                     'res'    => $res
                 ];
                 echo json_encode($result);
@@ -121,7 +121,8 @@ class DataPlatformController extends Controller {
                     'html'   => $this->_format_html($res)
                 ]; 
                 $SearchMifeng = M('SearchMifeng');
-                $SearchMifeng->where(['token' => $token])->save(['data' => json_encode($res)]);
+                //$SearchMifeng->where(['token' => $token])->save(['data' => json_encode($res)]);
+                $SearchMifeng->where(['token' => $token])->save(['data' => $res['data']['status']]);
                 echo json_encode($result);
             }
         }
