@@ -15,6 +15,7 @@
   <blockquote>报告查询</blockquote>  
   <form class="form-horizontal" method="post">
     <input type="hidden" id="search_id" value="0"/>
+    <input type="hidden" id="trade_no" value="{$trade_no}"/>
     <div class="form-group">
       <div class="col-xs-12">
         <input type="text" class="form-control input-lg" id="name" name="name" placeholder="请输入真实姓名">
@@ -64,6 +65,7 @@ $('#pay_btn').on('click', function(){
   var phone = $('#phone').val();  
   var pass = $('#pass').val();
   var code = $('#code').val();
+  var trade_no = $('#trade_no').val();
 
   if (name == '') {
     alert('请输入姓名');
@@ -90,7 +92,7 @@ $('#pay_btn').on('click', function(){
     url: '/search/search_log',
     type: 'post',
     dataType: 'json',
-    data: {'name': name, 'id_card':id_card, 'phone': phone, 'pass': pass, 'code': code},
+    data: {'name': name, 'id_card':id_card, 'phone': phone, 'pass': pass, 'code': code, 'trade_no':trade_no},
     success: function(res) {
       if (res.status != 1) {
         alert(res.msg);
@@ -172,35 +174,5 @@ function callpay()
     jsApiCall();
   }
 }
-//获取共享地址
-function editAddress()
-{
-  WeixinJSBridge.invoke(
-      'editAddress',
-      {$editAddress},
-      function(res){
-        var value1 = res.proviceFirstStageName;
-        var value2 = res.addressCitySecondStageName;
-        var value3 = res.addressCountiesThirdStageName;
-        var value4 = res.addressDetailInfo;
-        var tel = res.telNumber;
-
-        //alert(value1 + value2 + value3 + value4 + ":" + tel);
-      }
-      );
-}
-
-window.onload = function(){
-  if (typeof WeixinJSBridge == "undefined"){
-    if( document.addEventListener ){
-      document.addEventListener('WeixinJSBridgeReady', editAddress, false);
-    }else if (document.attachEvent){
-      document.attachEvent('WeixinJSBridgeReady', editAddress); 
-      document.attachEvent('onWeixinJSBridgeReady', editAddress);
-    }
-  }else{
-    editAddress();
-  }
-};
 </script>
 </block>

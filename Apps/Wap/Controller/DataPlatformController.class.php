@@ -45,22 +45,13 @@ class DataPlatformController extends Controller {
         $this->display(); 
     }
 
-    function _get_access_token()
-    {
-        $get_data = [
-            'org_name' => $this->_account,
-            'client_secret' => $this->_app_key,
-            'hours' => 1
-        ];
-        $url = $this->_access_token_url . '?' . http_build_query($get_data); 
-        $res = curl_get($url);
-        $res = '{"access_token":"80453718b0e64baf8cab93f6fbe87f2b","note":"获取access_token成功","update_time":"2019-04-11 13:56:21","code":200,"create_time":"2019-04-11 13:56:21","success":"true","expire_time":"2019-04-11 14:56:21","expires_in":"1"}';
-        $res = json_decode($res, true);
-        $token = $res['access_token'];
-        return $token;
-    }
-    
     function report() {
+        $uid = is_login();
+        if ( ! $uid) {
+            $this->redirect('/user/index');
+        }
+        $trade_no = $this->_make_order($uid);
+        
         $type = I('get.type');
         $string = $this->_callback;
         $data = base64_encode($string);
@@ -70,7 +61,9 @@ class DataPlatformController extends Controller {
             'callback_url' => $data
         ];
         $url = $this->_auth_url . $type . '?' . http_build_query($get_data);
-        header("Location: " . $url);            
+        $this->url = $url;
+        $this->display();
+        //header("Location: " . $url);            
     }
 
     function callback()
@@ -142,5 +135,57 @@ class DataPlatformController extends Controller {
             // TODO 数据采集失败，如果为解析异常可联系运营人员进行修复
             $this->error("获取数据失败");
         }
+    }
+    
+    private function _make_order($uid)
+    {
+        $Member = M('Member');
+        $member_info = $Member->where(['id' => $uid])->find();
+        
+        $Order = M('Order');
+        
+        $trade_no = date("YmdHis").rand(1000, 9999);
+        $fee = 2800;
+        $fee = 1;
+
+        $order_data = [
+            'uid' => $uid,
+            'trade_no' => $trade_no,
+            'fee' => $fee,
+            'created_time' => time(),
+            'updated_time' => time()
+        ];
+        if ( ! $Order->add($order_data)) {
+            $this->error('创建订单失败');
+        }
+        
+        import("Wap.Util.weixin.tool.JsApiPay");
+        import("Wap.Util.weixin.tool.lib.WxPayApi");
+        
+        $tools = new \JsApiPay();
+        $openId = $member_info['openid'];
+
+        $input = new \WxPayUnifiedOrder();
+        $input->SetBody("test");
+        $input->SetAttach("test");
+        $input->SetOut_trade_no($trade_no);
+        $input->SetTotal_fee($fee);
+        $input->SetTime_start(date("YmdHis"));
+        $input->SetTime_expire(date("YmdHis", time() + 600));
+        $input->SetGoods_tag("test");
+        $input->SetNotify_url("http://www.zhixinrenapp.com/pay/notify_url");
+        $input->SetTrade_type("JSAPI");
+        $input->SetOpenid($openId);
+        $config = new \WxPayConfig();
+        
+        $payapi = new \WxPayApi();
+        $order = $payapi::unifiedOrder($config, $input);
+        $jsApiParameters = $tools->GetJsApiParameters($order);
+        $editAddress = $tools->GetEditAddressParameters();
+        
+        $this->jsApiParameters = $jsApiParameters;
+        $this->editAddress = $editAddress;
+
+        return $trade_no;
     }
 }

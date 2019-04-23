@@ -14,36 +14,6 @@ class SearchController extends Controller {
 
     protected $_mifeng_search_url = 'https://www.juxinli.com/orgApi/rest/v3/applications';
 
-    function report_mifeng()
-    {
-        if ( ! $_POST) {
-            $this->display('search_mifeng');
-        } else {
-            $post_data = [
-                'selected_website' => [
-                    [
-                        'website'  => 'jingdong',
-                        'category' => 'e_business'
-                    ]
-                ],
-                'skip_mobile' => false,
-                'basic_info' => [
-                    'name'           => '晋京',
-                    'id_card_num'    => '410181198905104557',
-                    'cell_phone_num' => '13683582516' 
-                ]
-            ];
-            $url = $this->_mifeng_search_url . '/' . $this->_account;
-            $header = [
-                'Content-Type: application/json; charset=utf-8'
-            ];
-            $res = curl_post($url, json_encode($post_data), $header);       
-        }
-        echo "<pre>";
-        var_dump($res);
-        echo "</pre>";
-    }
-
     function report() {
         $uid = is_login();
         if ( ! $uid) {
@@ -57,34 +27,9 @@ class SearchController extends Controller {
             //$this->redirect('/pay/make_order');
         }
 
-        if ($_POST) {
-            $this->_check_code(I('post.phone'), I('post.code'));
-            $token = $this->_get_token();
-            $get_data = [
-                'name'          => I('post.name'),
-                'id_card'       => I('post.id_card'),
-                'phone'         => I('post.phone'),
-                'client_secret' => $this->_app_key,
-                'access_token'  => $token,
-                'version'       => 'v3'
-            ];
-            $url = $this->_miguan_search_url . '?' . http_build_query($get_data);
-            $data = curl_get($url);
-            $data = json_decode($data, true);
-            if ($data['code'] != 'MIGUAN_SEARCH_SUCCESS') {
-                $this->error($data['message']);
-            }
-            $this->data = $data['data'];
-
-            //记录log 
-            $pass = I('post.pass');
-            $this->_set_search_log($uid, $get_data['name'], $get_data['id_card'], $get_data['phone'], $get_data['client_secret'], $get_data['access_token'], $pass);
-
-            $this->display();
-        } else {
-            $this->_make_order($uid);
-            $this->display('search');
-        }
+        $trade_no = $this->_make_order($uid);
+        $this->trade_no = $trade_no;
+        $this->display('search');
     }
 
     function report_his()
@@ -124,11 +69,12 @@ class SearchController extends Controller {
 
         $Search = M('Search');    
         $search_data = [
-            'uid' => $uid,
-            'name' => $name,
-            'id_card' => $id_card,
-            'phone' => $phone,
-            'pass' => $pass,
+            'uid'          => $uid,
+            'name'         => $name,
+            'id_card'      => $id_card,
+            'phone'        => $phone,
+            'pass'         => $pass,
+            'trade_no'     => $trade_no,
             'created_time' => time(),
             'updated_time' => time()
         ];
