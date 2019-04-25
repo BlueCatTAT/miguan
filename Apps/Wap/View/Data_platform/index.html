@@ -15,7 +15,7 @@
     <foreach name="product_list" item="item">
     <div class="col-xs-4">
       <div class="card" style="text-align:center;">
-        <a href="/data_platform/report.html?type={$item.type}" >
+        <a href="{:U('/data_platform/report', ['type' => $item[type], 'product_id' => $product_id])}" >
           <p> </p>
           <i class="fa {$item.icon} fa-2x"></i>
           <p>{$item.name}<p>

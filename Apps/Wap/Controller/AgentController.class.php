@@ -29,8 +29,10 @@ class AgentController extends Controller {
         $agent_info = $Admin->where(['id' => $uid])->find();
         
         $this->agent_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . $this->_appid . '&redirect_uri=' . $this->_base_url . 'user/callback/aid/' . $uid . '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
-
         $this->agent_info = $agent_info;
+        if ($agent_info['lv'] <= 2) {
+            $this->c_url = U('/agent/reg', ['pid' => $uid], true, true, true);
+        }
         $this->display();
     }
 
@@ -131,6 +133,96 @@ class AgentController extends Controller {
 
         $this->card_info = $card_info;
         $this->display();
+    }
+
+    function reg()
+    {
+        $uid = agent_login();
+        if ($uid) {
+            cookie('agent_LOGGED', null);
+            if (isset($_COOKIE[session_name()])) {
+                setcookie(session_name(), '', time() - 42000, '/');
+            }
+            session_destroy();
+        }
+
+        $pid = I('get.pid'); 
+        if ( ! $pid) {
+            $this->error('链接不合法');
+        }
+        if ( ! $_POST) {
+            $this->pid = $pid;
+            $this->display();
+        } else {
+            $pid = I('post.pid');
+            $username = I('post.username');
+            $mobile = I('post.mobile');
+            $password = I('post.password');
+            $repassword = I('post.repassword');
+            $email = I('post.email');
+            $qq = I('post.qq');
+            $wx = I('post.wx');
+            $code = I('post.code');
+
+            if (!$pid) {
+                $this->error('链接不合法');
+            }
+            if (!$username) {
+                $this->error('姓名不能为空');
+            }
+            if (!$mobile) {
+                $this->error('电话不能为空');
+            }
+            if (!$password) {
+                $this->error('密码不能为空');
+            }
+            if (!$repassword) {
+                $this->error('重复免密不能为空');
+            }
+            if ($password != $repassword) {
+                $this->error('两次免密不一致');
+            }
+            if (!$email) {
+                $this->error('邮箱不能为空');
+            }
+            if (!$qq) {
+                $this->error('QQ不能为空');
+            }
+            if (!$wx) {
+                $this->error('微信不能为空');
+            }
+
+            $Admin = M('Admin');
+            if ($admin_info = $Admin->where(['mobile' => $mobile])->find()) {
+                $this->error('手机已经注册, 请勿重复注册');
+            }
+
+            $Vcode = M('Vcode');
+            $vcode_info = $Vcode->where(['mobile' => $mobile, 'status' => 1])->order(['id' => 'desc'])->find();
+            if (!$vcode_info) {
+                $this->error('验证码无效');
+            }
+            if ($vcode_info['code'] != $code) {
+                $this->error('验证码错误');
+            }
+            $Vcode->where(['id' => $vcode_info['id']])->save(['status' => 2]);
+
+            $p_admin_info = $Admin->where(['id' => $pid])->find();
+            $admin_data = [
+                'pid' => $pid,
+                'lv'  => $p_admin_info['lv'] + 1,
+                'username' => $username,
+                'mobile'   => $mobile,
+                'password' => md5($password),
+                'email'    => $email,
+                'qq'       => $qq,
+                'wx'       => $wx,
+                'created_time' => time(),
+                'updated_time' => time()
+            ];
+            $Admin->add($admin_data);
+            $this->redirect('/agent/login');
+        }
     }
 
     function login()

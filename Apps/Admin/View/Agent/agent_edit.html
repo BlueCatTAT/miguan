@@ -11,8 +11,6 @@
       <div class="formControls col-xs-8 col-sm-9">
         <select name="lv" class="select">
           <option value="1" <if condition="$agent_info['lv'] eq 1">selected</if>>一级代理</option>
-          <option value="2" <if condition="$agent_info['lv'] eq 2">selected</if>>二级代理</option>
-          <option value="3" <if condition="$agent_info['lv'] eq 3">selected</if>>三级代理</option>
         </select>
       </div>
     </div>
@@ -61,6 +59,17 @@
         <input type="text" class="input-text" value="{$agent_info['wx']}" placeholder="" name="wx">
       </div>
     </div>
+    <foreach name="product_list" item="item">
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">
+        <span class="c-red">*</span>
+        {$item['name']} 分润(元/单) 
+      </label>
+      <div class="formControls col-xs-8 col-sm-9">
+        <input type="text" class="input-text" value="{$item['fr']}" placeholder="" name="p{$item['id']}">
+      </div>
+    </div>
+    </foreach>
     <div class="row cl">
       <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
         <button type="submit" class="btn btn-success radius" id="admin-role-save"><i class="icon-ok"></i> 确定</button>

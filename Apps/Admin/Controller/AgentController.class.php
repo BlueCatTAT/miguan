@@ -69,14 +69,39 @@ class AgentController extends RootController {
     public function agent_edit()
     {
         $Admin = M('Admin');
+        $Product = M('Product');
+        $AgentSet = M('AgentSet');
+        $product_list = $Product->where(['status' => 1])->select();
         if ( ! $_POST) {
             $id = I('get.id');
             $agent_info = $Admin->where(['id' => $id])->find();
+            foreach ($product_list as $k => $v) {
+                if ($agent_set_info = $AgentSet->where(['aid' => $id, 'product_id' => $v['id'], 'status' => 1])->find()) {
+                    $product_list[$k]['fr'] = $agent_set_info['price'];
+                }
+            }
             $this->agent_info = $agent_info;
+            $this->product_list = $product_list;
             $this->display();
         } else {
+            foreach ($product_list as $k => $v) {
+                $ks = 'p' . $v['id'];
+                if (isset($_POST[$ks]) && $_POST[$ks]) {
+                    if ($agent_set_info = $AgentSet->where(['aid' => I('post.id'), 'product_id' => $v['id']])->find()) {
+                        $AgentSet->where(['id' => $agent_set_info['id']])->save(['price' => $_POST[$ks]]);
+                    } else {
+                        $agent_set_data = [
+                            'aid' => I('post.id'),
+                            'product_id' => $v['id'],
+                            'price' => $_POST[$ks],
+                            'created_time' => time(),
+                            'updated_time' => time()
+                        ];
+                        $AgentSet->add($agent_set_data);
+                    }
+                }
+            }
             $update_data = [
-                'lv'           => I('post.lv'),
                 'username'     => I('post.username'),
                 'mobile'       => I('post.mobile'),
                 'email'        => I('post.email'),

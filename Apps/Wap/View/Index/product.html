@@ -30,12 +30,12 @@
         </div>
         <div class="pull-right">
           <if condition="$item['type'] == 1">
-          <div><a href="/search/report" class="btn btn-small btn-primary">报告样例</a></div> 
-          <div><a href="/search/report" class="btn btn-small btn-warning" style="margin-top:10px;">立即查询</a></div> 
+          <div><a href="{:U('/search/report', ['product_id' => $item['id']])}" class="btn btn-small btn-primary">报告样例</a></div> 
+          <div><a href="{:U('/search/report', ['product_id' => $item['id']])}" class="btn btn-small btn-warning" style="margin-top:10px;">立即查询</a></div> 
           </if>
           <if condition="$item['type'] == 2">
-          <div><a href="/data_platform/index" class="btn btn-small btn-info">报告样例</a></div> 
-          <div><a href="/data_platform/index" class="btn btn-small btn-warning" style="margin-top:10px;">立即查询</a></div> 
+          <div><a href="{:U('/data_platform/index', ['product_id' => $item['id']])}" class="btn btn-small btn-info">报告样例</a></div> 
+          <div><a href="{:U('/data_platform/index', ['product_id' => $item['id']])}" class="btn btn-small btn-warning" style="margin-top:10px;">立即查询</a></div> 
           </if>
         </div>
       </div>

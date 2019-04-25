@@ -42,6 +42,8 @@ class DataPlatformController extends Controller {
             ['type' => 'court_list', 'name' => '法院', 'icon' => 'fa-university'],
             ['type' => 'maimai', 'name' => '社交', 'icon' => 'fa-wifi'],
         ];
+        $product_id = I('get.product_id');
+        $this->product_id = $product_id;
         $this->display(); 
     }
 
@@ -50,7 +52,8 @@ class DataPlatformController extends Controller {
         if ( ! $uid) {
             $this->redirect('/user/index');
         }
-        $trade_no = $this->_make_order($uid);
+        $product_id = I('get.product_id');
+        $trade_no = $this->_make_order($product_id, $uid);
         
         $type = I('get.type');
         $string = $this->_callback . '/trade_no/' . $trade_no;
@@ -157,21 +160,24 @@ class DataPlatformController extends Controller {
         }
     }
     
-    private function _make_order($uid)
+    private function _make_order($product_id, $uid)
     {
         $Member = M('Member');
         $member_info = $Member->where(['id' => $uid])->find();
         
+        $Product = M('Product');
+        $product_info = $Product->where(['id' => $product_id])->find(); 
+        
         $Order = M('Order');
         
         $trade_no = date("YmdHis").rand(1000, 9999);
-        $fee = 2800;
-        $fee = 1;
+        $fee = $product_info['price'];
 
         $order_data = [
-            'uid' => $uid,
-            'trade_no' => $trade_no,
-            'fee' => $fee,
+            'uid'        => $uid,
+            'product_id' => $product_id,
+            'trade_no'   => $trade_no,
+            'fee'        => $fee,
             'created_time' => time(),
             'updated_time' => time()
         ];
