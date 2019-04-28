@@ -96,7 +96,7 @@ class AgentController extends Controller {
         $this->agent_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . $this->_appid . '&redirect_uri=' . $this->_base_url . 'user/callback/aid/' . $uid . '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
         $this->agent_info = $agent_info;
         if ($agent_info['lv'] <= 2) {
-            $this->c_url = U('/agent/reg', ['pid' => $uid], true, true, true);
+            $this->c_url = U('/agent/reg@zx.dfx8.com', ['pid' => $uid], true, true, true);
         }
         $this->display();
     }
