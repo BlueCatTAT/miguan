@@ -62,7 +62,6 @@ function get_site_conf()
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function is_login() {
-    return 4;
     $user = session('user_auth');
     if (empty($user)) {
         return 0;
