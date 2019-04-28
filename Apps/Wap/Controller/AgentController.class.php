@@ -51,9 +51,18 @@ class AgentController extends Controller {
             if ($agent_info['pid'] != $uid) {
                 $this->error('信息错误');
             }
+            $p_agent_info = $this->_Admin->where(['id' => $uid])->find();
             foreach ($product_list as $k => $v) {
                 if ($agent_set_info = $this->_AgentSet->where(['aid' => $id, 'product_id' => $v['id'], 'status' => 1])->find()) {
                     $product_list[$k]['fr'] = $agent_set_info['price'];
+                } else {
+                    $product_list[$k]['fr'] = 1;
+                }
+                
+                if ($p_agent_set_info = $this->_AgentSet->where(['aid' => $p_agent_info['id'], 'product_id' => $v['id'], 'status' => 1])->find()) {
+                    $product_list[$k]['fr_max'] = $p_agent_set_info['price'];
+                } else {
+                    $product_list[$k]['fr_max'] = 1;
                 }
             }
             $this->agent_info = $agent_info;
@@ -65,16 +74,25 @@ class AgentController extends Controller {
             if ($agent_info['pid'] != $uid) {
                 $this->error('信息错误');
             }
+            $p_agent_info = $this->_Admin->where(['id' => $uid])->find();
             foreach ($product_list as $k => $v) {
                 $ks = 'p' . $v['id'];
                 if (isset($_POST[$ks]) && $_POST[$ks]) {
+                    if ($p_agent_set_info = $this->_AgentSet->where(['aid' => $p_agent_info['id'], 'product_id' => $v['id'], 'status' => 1])->find()) {
+                        $fr_max = $p_agent_set_info['price'];
+                    } else {
+                        $fr_max = 1;
+                    }
+                    if ($fr_max < $_POST[$ks]) {
+                        $this->error('分润不能超过' . $fr_max);
+                    }
                     if ($agent_set_info = $this->_AgentSet->where(['aid' => I('post.id'), 'product_id' => $v['id']])->find()) {
                         $this->_AgentSet->where(['id' => $agent_set_info['id']])->save(['price' => $_POST[$ks]]);
                     } else {
                         $agent_set_data = [
-                            'aid' => I('post.id'),
-                            'product_id' => $v['id'],
-                            'price' => $_POST[$ks],
+                            'aid'          => I('post.id'),
+                            'product_id'   => $v['id'],
+                            'price'        => $_POST[$ks],
                             'created_time' => time(),
                             'updated_time' => time()
                         ];
@@ -95,7 +113,7 @@ class AgentController extends Controller {
         
         $this->agent_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . $this->_appid . '&redirect_uri=' . $this->_base_url . 'user/callback/aid/' . $uid . '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
         $this->agent_info = $agent_info;
-        if ($agent_info['lv'] <= 2) {
+        if ($agent_info['lv'] == 1) {
             $this->c_url = U('/agent/reg@zx.dfx8.com', ['pid' => $uid], true, true, true);
         }
         $this->display();
@@ -124,8 +142,21 @@ class AgentController extends Controller {
         $uid = $this->_check_login();
         $Member = M('Member');
         $Order = M('Order');
-
-        $user_list = $Member->where(['aid' => $uid])->select();
+        $Admin = M('Admin');
+        
+        $agent_info = $Admin->where(['id' => $uid])->find();
+        if ($agent_info['lv'] == 1) {
+            $agent_list = $Admin->where(['pid' => $uid])->select();
+            if ($agent_list) {
+                $aid_list = array_column($agent_list, 'id');
+                $aid_list[] = $uid;
+                $user_list = $Member->where(['aid' => ['in', $aid_list])->select();
+            } else {
+                $user_list = $Member->where(['aid' => $uid])->select();
+            }
+        } else {
+            $user_list = $Member->where(['aid' => $uid])->select();
+        }
         if ($user_list) {
             $uid_list = array_column($user_list, 'id');
 
