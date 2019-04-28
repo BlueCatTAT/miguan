@@ -17,7 +17,7 @@ class DataPlatformController extends Controller {
     protected $_access_report_url = 'https://www.juxinli.com/api/access_report_data';
     protected $_token_status_url = 'https://www.juxinli.com/api/token_status';
 
-    protected $_callback = 'http://www.zhixinrenapp.com/data_platform/callback';
+    protected $_callback = 'http://zx.dfx8.com/data_platform/callback';
 
     function index()
     {
@@ -199,7 +199,7 @@ class DataPlatformController extends Controller {
         $input->SetTime_start(date("YmdHis"));
         $input->SetTime_expire(date("YmdHis", time() + 600));
         $input->SetGoods_tag("test");
-        $input->SetNotify_url("http://www.zhixinrenapp.com/pay/notify_url");
+        $input->SetNotify_url("http://zx.dfx8.com/pay/notify_url");
         $input->SetTrade_type("JSAPI");
         $input->SetOpenid($openId);
         $config = new \WxPayConfig();

@@ -6,7 +6,7 @@ use Think\Controller;
 
 class UserController extends RootController {
 
-    protected $_base_url = 'http://www.zhixinrenapp.com/';
+    protected $_base_url = 'http://zx.dfx8.com/';
     protected $_appid = 'wx1e21ad441e4e2576';
     protected $_appsecret = 'a26010468f9791b8d5939b3728600e52';
 

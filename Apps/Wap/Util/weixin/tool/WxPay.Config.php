@@ -43,7 +43,7 @@ class WxPayConfig extends WxPayConfigInterface
 	**/
 	public function GetNotifyUrl()
 	{
-		return "http://www.zhixinrenapp.com/pay/notify_url";
+		return "http://zx.dfx8.com/pay/notify_url";
 	}
 	public function GetSignType()
 	{

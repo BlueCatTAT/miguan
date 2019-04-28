@@ -242,7 +242,7 @@ class SearchController extends Controller {
         $input->SetTime_start(date("YmdHis"));
         $input->SetTime_expire(date("YmdHis", time() + 600));
         $input->SetGoods_tag("test");
-        $input->SetNotify_url("http://www.zhixinrenapp.com/pay/notify_url");
+        $input->SetNotify_url("http://zx.dfx8.com/pay/notify_url");
         $input->SetTrade_type("JSAPI");
         $input->SetOpenid($openId);
         $config = new \WxPayConfig();

@@ -1,6 +1,16 @@
 <extend name="Base/base" />
 <block name="body">
-<div class="with-padding bg-primary" style="text-align:center; font-size:20px; padding:10px 20px;">代理中心</div>
+<div class="row with-padding bg-primary" style="font-size:20px; padding:10px 0px;">
+  <div class="col-xs-3 text-center">
+    <a href="/agent/index" style="color:#ffffff;"><i class="icon-chevron-left"></i></a> 
+  </div>
+  <div class="col-xs-6 text-center">
+    <strong>代理中心</strong>
+  </div>
+  <div class="col-xs-3 text-center">
+    <a href="/agent/index" style="color:#ffffff;"><i class="icon-user"></i></a> 
+  </div>
+</div>
 <div class="container" style="margin-top:20px;">
   <div style="background:url('/Public/WX20190419-001413.png'); background-repeat:no-repeat; background-size:100% 100%; color:#ffffff; padding:20px 20px;">
       <p>用户:</p>
@@ -9,6 +19,7 @@
   <div class="list-group" style="font-size:16px; margin-top:20px;">
     <a href="/agent/reset_password" class="list-group-item"><i class="icon-cog"></i> 设置密码 <span class="pull-right">></span></a>
     <a href="/agent/order_list" class="list-group-item"><i class="icon-th-list"></i> 订单管理 <span class="pull-right">></span></a>
+    <a href="/agent/agent_list" class="list-group-item"><i class="icon-user"></i> 下级代理 <span class="pull-right">></span></a>
     <a href="/agent/user_list" class="list-group-item"><i class="icon-user"></i> 客户列表 <span class="pull-right">></span></a>
     <a href="/agent/card_info" class="list-group-item"><i class="icon-credit"></i> 绑卡设置 <span class="pull-right">></span></a>
     <a href="/agent/info" class="list-group-item"><i class="icon-credit"></i> 个人信息 <span class="pull-right">></span></a>

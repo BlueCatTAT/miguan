@@ -6,9 +6,16 @@ use Think\Controller;
 
 class AgentController extends Controller {
     
-    protected $_base_url = 'http://www.zhixinrenapp.com/';
+    protected $_base_url = 'http://zx.dfx8.com/';
     protected $_appid = 'wx1e21ad441e4e2576';
     protected $_appsecret = 'a26010468f9791b8d5939b3728600e52';
+    
+    protected function _initialize() 
+    {
+        $this->_Admin = M('Admin');
+        $this->_Product = M('Product');
+        $this->_AgentSet = M('AgentSet');
+    }
 
     public function index()
     {
@@ -19,6 +26,64 @@ class AgentController extends Controller {
 
         $this->agent_info = $agent_info;
         $this->display();
+    }
+
+    public function agent_list()
+    {
+        $uid = $this->_check_login();
+
+        $Admin = M('Admin');
+        
+        $agent_list = $Admin->where(['pid' => $uid])->select();
+        $this->agent_list = $agent_list;
+        $this->display();
+    }
+
+    public function agent_set()
+    {
+        $uid = $this->_check_login();
+        
+        $product_list = $this->_Product->where(['status' => 1])->select();
+        
+        if ( ! $_POST) {
+            $id = I('get.id');
+            $agent_info = $this->_Admin->where(['id' => $id])->find();
+            if ($agent_info['pid'] != $uid) {
+                $this->error('信息错误');
+            }
+            foreach ($product_list as $k => $v) {
+                if ($agent_set_info = $this->_AgentSet->where(['aid' => $id, 'product_id' => $v['id'], 'status' => 1])->find()) {
+                    $product_list[$k]['fr'] = $agent_set_info['price'];
+                }
+            }
+            $this->agent_info = $agent_info;
+            $this->product_list = $product_list;
+            $this->display();
+        } else {
+            $id = I('post.id');
+            $agent_info = $this->_Admin->where(['id' => $id])->find();
+            if ($agent_info['pid'] != $uid) {
+                $this->error('信息错误');
+            }
+            foreach ($product_list as $k => $v) {
+                $ks = 'p' . $v['id'];
+                if (isset($_POST[$ks]) && $_POST[$ks]) {
+                    if ($agent_set_info = $this->_AgentSet->where(['aid' => I('post.id'), 'product_id' => $v['id']])->find()) {
+                        $this->_AgentSet->where(['id' => $agent_set_info['id']])->save(['price' => $_POST[$ks]]);
+                    } else {
+                        $agent_set_data = [
+                            'aid' => I('post.id'),
+                            'product_id' => $v['id'],
+                            'price' => $_POST[$ks],
+                            'created_time' => time(),
+                            'updated_time' => time()
+                        ];
+                        $this->_AgentSet->add($agent_set_data);
+                    }
+                }
+            }
+            $this->redirect('/agent/agent_list');
+        }
     }
 
     public function info()
