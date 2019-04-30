@@ -17,16 +17,16 @@ class OrderController extends RootController {
         $page = $_GET['page'] ? $_GET['page'] : 1;
 
         $where = ['a.status' => 2];
-        if (isset(I('start_time'))) {
+        if (I('start_time')) {
             $where[] = ['a.updated_time' => ['gt' => strtotime(I('start_time'))]]
         }
-        if (isset(I('end_time'))) {
+        if (I('end_time')) {
             $where[] = ['a.updated_time' => ['lt' => strtotime(I('end_time')) + 3600 * 24]];
         }
-        if (isset(I('trade_no'))) {
+        if (I('trade_no')) {
             $where[] = ['a.trade_no' => I('trade_no')]
         }
-        if (isset(I('aid'))) {
+        if (I('aid')) {
             $agent_info = $Admin->where(['id' => I('aid')])->find();
             $agent_list = $Admin->where(['pid' => I('aid')])->select();
             if ($agent_list) {
