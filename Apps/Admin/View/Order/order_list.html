@@ -7,15 +7,15 @@
         <select name="aid" class="select">
           <option value="0">全部</option>
           <foreach name="agent_list" item="item">
-          <option value="{$item['id']}">{$item['username']}</option>
+          <option value="{$item['id']}" {if $aid == $item['id']}selected{/if}>{$item['username']}</option>
           </foreach>
         </select>
       </span>
       日期范围：
-      <input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="start_time" name="start_time" class="input-text Wdate" style="width:120px;" autocomplete="off">
+      <input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="start_time" name="start_time" class="input-text Wdate" style="width:120px;" autocomplete="off" value="{$start_time}">
       -
-      <input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="end_time" name="end_time" class="input-text Wdate" style="width:120px;" autocomplete="off">
-      <input type="text" name="trade_no" id="trade_no" placeholder="订单号" style="width:250px" class="input-text">
+      <input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="end_time" name="end_time" class="input-text Wdate" style="width:120px;" autocomplete="off" value="{$end_time}">
+      <input type="text" name="trade_no" id="trade_no" placeholder="订单号" style="width:250px" class="input-text" value="{$trade_no}">
       <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont"></i> 搜索</button>
     </form>
   </div>

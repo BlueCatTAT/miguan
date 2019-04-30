@@ -19,12 +19,15 @@ class OrderController extends RootController {
         $where = ['a.status' => 2];
         if (I('start_time')) {
             $where[] = ['a.updated_time' => ['gt' => strtotime(I('start_time'))]];
+            $this->start_time = I('start_time');
         }
         if (I('end_time')) {
             $where[] = ['a.updated_time' => ['lt' => strtotime(I('end_time')) + 3600 * 24]];
+            $this->end_time = I('end_time');
         }
         if (I('trade_no')) {
             $where[] = ['a.trade_no' => I('trade_no')];
+            $this->trade_no = I('trade_no');
         }
         if (I('aid')) {
             $agent_info = $Admin->where(['id' => I('aid')])->find();
@@ -38,6 +41,7 @@ class OrderController extends RootController {
             }
             $uid_list = array_column($user_list, 'id');
             $where[] = ['a.uid' => ['in' => $uid_list]];
+            $this->aid = I('aid');
         }
 
         $agent_list = $Admin->where(['lv' => 1, 'status' => 1])->select();
