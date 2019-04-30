@@ -18,13 +18,13 @@ class OrderController extends RootController {
 
         $where = ['a.status' => 2];
         if (I('start_time')) {
-            $where[] = ['a.updated_time' => ['gt' => strtotime(I('start_time'))]]
+            $where[] = ['a.updated_time' => ['gt' => strtotime(I('start_time'))]];
         }
         if (I('end_time')) {
             $where[] = ['a.updated_time' => ['lt' => strtotime(I('end_time')) + 3600 * 24]];
         }
         if (I('trade_no')) {
-            $where[] = ['a.trade_no' => I('trade_no')]
+            $where[] = ['a.trade_no' => I('trade_no')];
         }
         if (I('aid')) {
             $agent_info = $Admin->where(['id' => I('aid')])->find();
