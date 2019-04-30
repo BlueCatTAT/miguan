@@ -32,7 +32,7 @@ class OrderController extends RootController {
             if ($agent_list) {
                 $aid_list = array_column($agent_list, 'id');
                 $aid_list[] = I('aid');
-                $user_list = $Member->where(['aid' => ['in', $aid_list])->select();
+                $user_list = $Member->where(['aid' => ['in', $aid_list]])->select();
             } else {
                 $user_list = $Member->where(['aid' => I('aid')])->select();
             }
