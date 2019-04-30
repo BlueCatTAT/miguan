@@ -40,7 +40,7 @@ class OrderController extends RootController {
                 $user_list = $Member->where(['aid' => I('aid')])->select();
             }
             $uid_list = array_column($user_list, 'id');
-            $where[] = ['a.uid' => ['in' => $uid_list]];
+            $where['a.uid'] = ['in' => $uid_list];
             $this->aid = I('aid');
         }
 
