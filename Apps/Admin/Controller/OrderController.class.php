@@ -18,11 +18,11 @@ class OrderController extends RootController {
 
         $where = ['a.status' => 2];
         if (I('start_time')) {
-            $where['a.updated_time'] = [['gt' => strtotime(I('start_time'))]];
+            $where['a.updated_time'][] = ['gt', strtotime(I('start_time'))];
             $this->start_time = I('start_time');
         }
         if (I('end_time')) {
-            $where['a.updated_time'] = [['lt' => strtotime(I('end_time')) + 3600 * 24]];
+            $where['a.updated_time'][] = ['lt', strtotime(I('end_time')) + 3600 * 24];
             $this->end_time = I('end_time');
         }
         if (I('trade_no')) {
