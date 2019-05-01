@@ -150,7 +150,7 @@ class AgentController extends Controller {
             if ($agent_list) {
                 $aid_list = array_column($agent_list, 'id');
                 $aid_list[] = $uid;
-                $user_list = $Member->where(['aid' => ['in', $aid_list])->select();
+                $user_list = $Member->where(['aid' => ['in', $aid_list]])->select();
             } else {
                 $user_list = $Member->where(['aid' => $uid])->select();
             }
