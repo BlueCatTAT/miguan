@@ -4,7 +4,7 @@ namespace Wap\Controller;
 
 use Think\Controller;
 
-class AgentController extends Controller {
+class InfoController extends Controller {
 
     public function info_1()
     {
