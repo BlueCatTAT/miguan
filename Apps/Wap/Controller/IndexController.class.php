@@ -13,7 +13,7 @@ class IndexController extends Controller {
     function index() {
         $uid = is_login();
         if ( ! $uid) {
-//            $this->redirect('/user/index');
+            $this->redirect('/user/index');
         }
 
         $Member = M('Member');
