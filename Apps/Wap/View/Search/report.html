@@ -759,6 +759,7 @@
   </div>
   <h2>手机存疑</h2> 
   <table class="table table-bordered table-striped">
+    <notempty name="data.user_phone_suspicion.phone_with_other_names">
     <tr>
       <td>使用过此手机的其他姓名</td>
       <td>最后使用时间</td>
@@ -769,6 +770,8 @@
       <td>{$item.susp_updt}</td>
     </tr>
     </foreach>
+    </notempty>
+    <notempty name="data.user_phone_suspicion.phone_with_other_idcards">
     <tr>
       <td>使用过此手机的其他身份证</td>
       <td>最后使用时间</td>
@@ -779,6 +782,8 @@
       <td>{$item.susp_updt}</td>
     </tr>
     </foreach>
+    </notempty>
+    <notempty name="data.user_phone_suspicion.phone_applied_in_orgs">
     <tr>
       <td>提供数据的机构类型</td>
       <td>最后使用时间</td>
@@ -789,6 +794,7 @@
       <td>{$item.susp_updt}</td>
     </tr>
     </foreach>
+    </notempty>
   </table>
   <h2>身份证存疑</h2> 
   <table class="table table-bordered table-striped">
