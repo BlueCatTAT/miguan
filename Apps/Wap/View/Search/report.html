@@ -165,7 +165,7 @@
         </tr>
         <tr>
           <td>最近活跃时间</td>
-          <td>{$data.user_gray.recent_active_time|date="y-m-d H:i:s",###} (以下联系人信息的统计窗口在最近活跃时间的前半年内)</td>
+          <td>{$data['user_gray']['recent_active_time']/1000|date="y-m-d H:i:s",###} (以下联系人信息的统计窗口在最近活跃时间的前半年内)</td>
         </tr>
         <tr>
           <td>被标记的黑名单分类</td>
@@ -324,19 +324,35 @@
       <table class="table table-bordered table-striped">
         <tr>
           <td>与所有联系人的最近主动通话时间</td>
-          <td>{$data['user_gray']['contacts_rfm']['recent_time_to_all']/1000|date="y-m-d H:i:s",###}</td>
+          <td>
+            <notempty name="data.user_gray.contacts_rfm.recent_time_to_all">
+            {$data['user_gray']['contacts_rfm']['recent_time_to_all']/1000|date="y-m-d H:i:s",###}
+            </notempty>
+          </td>
         </tr>
         <tr>
           <td>与所有联系人的最近被动通话时间</td>
-          <td>{$data['user_gray']['contacts_rfm']['recent_time_be_all']/1000|date="y-m-d H:i:s",###}</td>
+          <td>
+            <notempty name="data.user_gray.contacts_rfm.recent_time_be_all">
+            {$data['user_gray']['contacts_rfm']['recent_time_be_all']/1000|date="y-m-d H:i:s",###}
+            </notempty>
+          </td>
         </tr>
         <tr>
           <td>与黑号的最近主动通话时间</td>
-          <td>{$data['user_gray']['contacts_rfm']['recent_time_to_black']/1000|date="y-m-d H:i:s",###}</td>
+          <td>
+            <notempty name="data.user_gray.contacts_rfm.recent_time_to_black">
+            {$data['user_gray']['contacts_rfm']['recent_time_to_black']/1000|date="y-m-d H:i:s",###}
+            </notempty>
+          </td>
         </tr>
         <tr>
           <td>与黑号的最近被动通话时间</td>
-          <td>{$data['user_gray']['contacts_rfm']['recent_time_be_black']/1000|date="y-m-d H:i:s",###}</td>
+          <td>
+            <notempty name="data.user_gray.contacts_rfm.recent_time_be_black">
+            {$data['user_gray']['contacts_rfm']['recent_time_be_black']/1000|date="y-m-d H:i:s",###}
+            </notempty>
+          </td>
         </tr>
         <tr>
           <td>与申请人的最近主动通话时间</td>
