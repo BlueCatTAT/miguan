@@ -67,7 +67,13 @@
     </tr>
     <tr>
       <td>最近一次借入日期</td>
-      <td>{$data.iou_statistic.recent_loan_time|date="y-m-d H:i:s",###}</td>
+      <td>
+        <?php 
+          if ($data['iou_statistic']['recent_loan_time']) {
+            echo date('y-m-d H:i:s', $data['iou_statistic']['recent_loan_time']);
+          }
+        ?>
+      </td>
     </tr>
     <tr>
       <td>最近一次应还款日期</td>
