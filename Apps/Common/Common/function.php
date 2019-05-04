@@ -66,7 +66,13 @@ function is_login() {
     if (empty($user)) {
         return 0;
     } else {
-        return session('user_auth_sign') == data_auth_sign($user) ? $user['uid'] : 0;
+        $uid = session('user_auth_sign') == data_auth_sign($user) ? $user['uid'] : 0;
+        $Member = M('Member');
+        if ($Member->where(['id' => $uid])->find()) {
+            return $uid;
+        } else {
+            return 0;
+        }
     }
 }
 
