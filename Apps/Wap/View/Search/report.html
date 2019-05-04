@@ -68,16 +68,18 @@
     <tr>
       <td>最近一次借入日期</td>
       <td>
-        <?php 
-          if ($data['iou_statistic']['recent_loan_time']) {
-            echo date('y-m-d H:i:s', $data['iou_statistic']['recent_loan_time']);
-          }
-        ?>
+        <notempty name="data.iou_statistic.recent_loan_time">
+        {$data.iou_statistic.recent_loan_time|date="y-m-d H:i:s",###}
+        </notempty>
       </td>
     </tr>
     <tr>
       <td>最近一次应还款日期</td>
-      <td>{$data.iou_statistic.recent_pay_back_time|date="y-m-d H:i:s",###}</td>
+      <td>
+        <notempty name="data.iou_statistic.recent_pay_back_time">
+        {$data.iou_statistic.recent_pay_back_time|date="y-m-d H:i:s",###}
+        </notempty>
+      </td>
     </tr>
     <tr>
       <td>还款中借款笔数</td>
@@ -167,7 +169,11 @@
         </tr>
         <tr>
           <td>被标记的黑名单分类</td>
-          <td>{$data.user_blacklist.blacklist_category}</td>
+          <td>
+            <foreach name="data.user_blacklist.blacklist_category" item="item">
+            {$item}
+            </foreach>
+          </td>
         </tr>
         <tr>
           <td>姓名和手机是否在黑名单</td>
@@ -318,27 +324,27 @@
       <table class="table table-bordered table-striped">
         <tr>
           <td>与所有联系人的最近主动通话时间</td>
-          <td>{$data.user_gray.contacts_rfm.recent_time_to_all|date="y-m-d H:i:s",###}</td>
+          <td>{$data['user_gray']['contacts_rfm']['recent_time_to_all']/1000|date="y-m-d H:i:s",###}</td>
         </tr>
         <tr>
           <td>与所有联系人的最近被动通话时间</td>
-          <td>{$data.user_gray.contacts_rfm.recent_time_be_all|date="y-m-d H:i:s",###}</td>
+          <td>{$data['user_gray']['contacts_rfm']['recent_time_be_all']/1000|date="y-m-d H:i:s",###}</td>
         </tr>
         <tr>
           <td>与黑号的最近主动通话时间</td>
-          <td>{$data.user_gray.contacts_rfm.recent_time_to_black|date="y-m-d H:i:s",###}</td>
+          <td>{$data['user_gray']['contacts_rfm']['recent_time_to_black']/1000|date="y-m-d H:i:s",###}</td>
         </tr>
         <tr>
           <td>与黑号的最近被动通话时间</td>
-          <td>{$data.user_gray.contacts_rfm.recent_time_be_black|date="y-m-d H:i:s",###}</td>
+          <td>{$data['user_gray']['contacts_rfm']['recent_time_be_black']/1000|date="y-m-d H:i:s",###}</td>
         </tr>
         <tr>
           <td>与申请人的最近主动通话时间</td>
-          <td>{$data.user_gray.contacts_rfm.recent_time_to_applied|date="y-m-d H:i:s",###}</td>
+          <td>{$data['user_gray']['contacts_rfm']['recent_time_to_applied']/1000|date="y-m-d H:i:s",###}</td>
         </tr>
         <tr>
           <td>与申请人的最近被动通话时间</td>
-          <td>{$data.user_gray.contacts_rfm.recent_time_be_applied|date="y-m-d H:i:s",###}</td>
+          <td>{$data['user_gray']['contacts_rfm']['recent_time_be_applied']/1000|date="y-m-d H:i:s",###}</td>
         </tr>
         <tr>
           <td>与所有联系人的主动总通话次数</td>
