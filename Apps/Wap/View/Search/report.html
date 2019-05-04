@@ -572,11 +572,19 @@
       <table class="table table-bordered table-striped">
         <tr>
           <td>主动联系的人的最近一次查询时间</td> 
-          <td>{$data.user_gray.contacts_query.to_recent_query_time|date="y-m-d H:i:s",###}</td> 
+          <td>
+            <notempty name="data.user_gray.contacts_query.to_recent_query_time">
+            {$data['user_gray']['contacts_query']['to_recent_query_time']/1000|date="y-m-d H:i:s",###}
+            </notempty>
+          </td> 
         </tr>
         <tr>
           <td>被动联系的人的最近一次查询时间</td> 
-          <td>{$data.user_gray.contacts_query.be_recent_query_time|date="y-m-d H:i:s",###}</td> 
+          <td>
+            <notempty name="data.user_gray.contacts_query.be_recent_query_time">
+            {$data['user_gray']['contacts_query']['be_recent_query_time']/1000|date="y-m-d H:i:s",###}
+            </notempty>
+          </td> 
         </tr>
         <tr>
           <td>前半月内主动联系的人的查询次数</td> 
