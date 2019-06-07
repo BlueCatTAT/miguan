@@ -3,6 +3,9 @@
 namespace Wap\Controller;
 
 use Think\Controller;
+use AlibabaCloud\Client\AlibabaCloud;
+use AlibabaCloud\Client\Exception\ClientException;
+use AlibabaCloud\Client\Exception\ServerException;
 
 class PublicController extends Controller {
     
@@ -27,7 +30,7 @@ class PublicController extends Controller {
         $Vcode->add($code_data);
 
         $res = $this->_send_msm($mobile, $code);
-        if ($res['success'] == true) {
+        if ($res == true) {
             echo json_encode(['status' => 1]);
         } else {
             echo json_encode(['status' => 0, 'message' => $res['message']]);
@@ -75,8 +78,38 @@ class PublicController extends Controller {
         echo "</pre>";
     
     }
-
+    
     private function _send_msm($mobile, $code)
+    {
+        AlibabaCloud::accessKeyClient('LTAIwyCTxUIipkdQ', 'ZVeu8i1voV23lHMNPJWZdQ8ttvKFCc')
+            ->regionId('cn-hangzhou') // replace regionId as you need
+            ->asDefaultClient();
+
+        try {
+            $result = AlibabaCloud::rpc()
+                ->product('Dysmsapi')
+            // ->scheme('https') // https | http
+                ->version('2017-05-25')
+                ->action('SendSms')
+                ->method('POST')
+                ->options([
+                    'query' => [
+                        'PhoneNumbers' => $mobile,
+                        'SignName' => "全网资信",
+                        'TemplateCode' => "SMS_71065055",
+                        'TemplateParam' => json_encode(['code' => $code]),
+                    ],
+                ])
+                ->request();
+                return true;
+        } catch (ClientException $e) {
+            echo $e->getErrorMessage() . PHP_EOL;
+        } catch (ServerException $e) {
+            echo $e->getErrorMessage() . PHP_EOL;
+        }
+    }
+
+    private function _send_msm_bak($mobile, $code)
     {
         $time = date('YmdHis');
         $authorization = base64_encode($this->_accountid.':'.$time);
