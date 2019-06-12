@@ -98,6 +98,16 @@ class SearchController extends Controller {
         }
         
         $token = $this->_get_token();
+        
+        $update_info = [
+            'client_secret' => $this->_app_key,
+            'access_token'  => $token,
+            'status'        => 3
+        ];
+        if ( ! $Search->where(['id' => $search_info['id']])->save($update_info)) {
+            file_put_contents('search_start.log', date('Y-m-d H:i:s') . PHP_EOL, FILE_APPEND);
+        }
+        
         $get_data = [
             'name'          => $search_info['name'],
             'id_card'       => $search_info['id_card'],
@@ -109,17 +119,13 @@ class SearchController extends Controller {
         $url = $this->_miguan_search_url . '?' . http_build_query($get_data);
         $data = curl_get($url);
         $update_info = [
-            'client_secret' => $this->_app_key,
-            'access_token'  => $token,
-            'data' => $data,
+            'data'   => $data,
             'status' => 2
         ];
         if ( ! $Search->where(['id' => $search_info['id']])->save($update_info)) {
-            file_put_contents('search_res.log', date('Y-m-d H:i:s'), FILE_APPEND);
-            //file_put_contents('search_res.log', $Search->getLastSql(), FILE_APPEND);
-            //file_put_contents('search_res.log', $data, FILE_APPEND);
+            file_put_contents('search_error.log', date('Y-m-d H:i:s') . PHP_EOL, FILE_APPEND);
         }
-	file_put_contents('search_res.log', date('Y-m-d H:i:s'), FILE_APPEND);
+	file_put_contents('search_res.log', date('Y-m-d H:i:s') . PHP_EOL, FILE_APPEND);
         
         $data = json_decode($data, true);
         if ($data['code'] != 'MIGUAN_SEARCH_SUCCESS') {
