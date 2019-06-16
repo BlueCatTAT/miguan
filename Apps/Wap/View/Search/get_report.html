@@ -11,7 +11,7 @@
     <a href="/user/home" style="color:#ffffff;"><i class="icon-user"></i></a>
   </div>
 </div>
-<div class="container" style="margin-top:20px;" class="panel load-indicator loading" data-loading="报告生成中，请稍后...">>
+<div class="container" style="margin-top:20px;" class="panel load-indicator loading" data-loading="报告生成中，请稍后...">
   <input type="hidden" name="id" id="id" value="{$id}"/>
   <div class="panel load-indicator loading" data-loading="正在生成报告,请耐心等待...">
     <div class="panel-heading" contenteditable="">信用报告</div>
@@ -24,7 +24,6 @@
 var t = '';
 function get_search_res() {
   var id = $('#id').val();
-  alert(id);
   $.ajax({
     url: '/search/get_search_res',
     type: 'POST',
