@@ -96,44 +96,58 @@ class SearchController extends Controller {
         if ( ! $search_info) {
             $this->error('未找到报告');
         }
-        
-        $token = $this->_get_token();
-        
-        $update_info = [
-            'client_secret' => $this->_app_key,
-            'access_token'  => $token,
-            'status'        => 3
-        ];
-        if ( ! $Search->where(['id' => $search_info['id']])->save($update_info)) {
-            file_put_contents('search_start.log', date('Y-m-d H:i:s') . PHP_EOL, FILE_APPEND);
-        }
-        
-        $get_data = [
-            'name'          => $search_info['name'],
-            'id_card'       => $search_info['id_card'],
-            'phone'         => $search_info['phone'],
-            'client_secret' => $this->_app_key,
-            'access_token'  => $token,
-            'version'       => 'v3'
-        ];
-        $url = $this->_miguan_search_url . '?' . http_build_query($get_data);
-        $data = curl_get($url);
-        $update_info = [
-            'data'   => $data,
-            'status' => 2
-        ];
-        if ( ! $Search->where(['id' => $search_info['id']])->save($update_info)) {
-            file_put_contents('search_error.log', date('Y-m-d H:i:s') . PHP_EOL, FILE_APPEND);
-        }
-	file_put_contents('search_res.log', date('Y-m-d H:i:s') . PHP_EOL, FILE_APPEND);
-        
-        $data = json_decode($data, true);
-        if ($data['code'] != 'MIGUAN_SEARCH_SUCCESS') {
-            $this->error($data['message']);
-        }
-        $this->data = $data['data'];
 
-        $this->display('report');
+        if ( ! $search_info['access_token']) {
+            $token = $this->_get_token();
+            $update_info = [
+                'client_secret' => $this->_app_key,
+                'access_token'  => $token,
+                'status'        => 3
+            ];
+            if ( ! $Search->where(['id' => $search_info['id']])->save($update_info)) {
+                file_put_contents('search_start.log', date('Y-m-d H:i:s') . PHP_EOL, FILE_APPEND);
+            }
+        } 
+        $this->id = $id;    
+        $this->display();
+    }
+
+    function get_search_res()
+    {
+        $id = I('post.id');
+        $Search = M('Search');
+        $search_info = $Search->where(['id' => $id, 'status' => 2])->find();
+        if ( ! $search_info) {
+            echo json_encode(['status' => 0]);
+        } else {
+            echo json_encode(['status' => 1]);
+        }
+    }
+
+    function get_report_data()
+    {
+        $Search = M('Search');
+        $search_list = $Search->where(['status' => 3])->select();
+        if ($search_list) {
+            foreach ($search_list as $k => $v) {
+                $get_data = [
+                    'name'          => $v['name'],
+                    'id_card'       => $v['id_card'],
+                    'phone'         => $v['phone'],
+                    'client_secret' => $v['client_secret'],
+                    'access_token'  => $v['access_token'],
+                    'version'       => 'v3'
+                ];
+            }
+            $url = $this->_miguan_search_url . '?' . http_build_query($get_data);
+            $data = curl_get($url);
+            $update_info = [
+                'data'   => $data,
+                'status' => 2
+            ];
+            if ( ! $Search->where(['id' => $search_info['id']])->save($update_info)) {
+            }
+        }
     }
 
     function get_report2()

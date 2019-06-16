@@ -12,6 +12,35 @@ class PublicController extends Controller {
     protected $_msm_url = 'https://openapis.7moor.com/v20160818/sms/sendInterfaceTemplateSms/T00000001267';
     protected $_accountid = 'T00000001267';
     protected $_apisecret = 'c97dcb10-602d-11e9-898d-7708a1f6d461';
+    protected $_miguan_token_url = 'https://mi.juxinli.com/api/access_token';
+    protected $_miguan_search_url = 'https://mi.juxinli.com/api/search';
+
+    function get_report()
+    {
+        $Search = M('Search');
+        $search_list = $Search->where(['status' => 3])->select();
+        if ($search_list) {
+            foreach ($search_list as $k => $v) {
+                $get_data = [
+                    'name'          => $v['name'],
+                    'id_card'       => $v['id_card'],
+                    'phone'         => $v['phone'],
+                    'client_secret' => $v['client_secret'],
+                    'access_token'  => $v['access_token'],
+                    'version'       => 'v3'
+                ];
+                $url = $this->_miguan_search_url . '?' . http_build_query($get_data);
+                $data = curl_get($url);
+                if ($data['code'] == 'MIGUAN_SEARCH_SUCCESS') {
+                    $update_info = [
+                        'data'   => $data,
+                        'status' => 2
+                    ];
+                    $Search->where(['id' => $search_info['id']])->save($update_info);
+                }
+            }
+        }
+    }
 
     function send_vcode()
     {
