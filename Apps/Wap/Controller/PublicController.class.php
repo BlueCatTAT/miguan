@@ -31,13 +31,11 @@ class PublicController extends Controller {
                 ];
                 $url = $this->_miguan_search_url . '?' . http_build_query($get_data);
                 $data = curl_get($url);
-                if ($data['code'] == 'MIGUAN_SEARCH_SUCCESS') {
-                    $update_info = [
-                        'data'   => $data,
-                        'status' => 2
-                    ];
-                    $Search->where(['id' => $search_info['id']])->save($update_info);
-                }
+                $update_info = [
+                    'data'   => $data,
+                    'status' => 2
+                ];
+                $Search->where(['id' => $v['id']])->save($update_info);
             }
         }
     }
