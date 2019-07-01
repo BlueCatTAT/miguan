@@ -5,6 +5,12 @@ namespace Wap\Controller;
 use Think\Controller;
 
 class PayController extends Controller {
+    
+    protected $_account = 'shaoyang';
+    protected $_app_id  = '780bbf7c7d094461b9d2982e66f803d7';
+    protected $_app_key = '74b0a11a86a044a5b30bdade08218a50';
+    protected $_miguan_token_url = 'https://mi.juxinli.com/api/access_token';
+    protected $_miguan_search_url = 'https://mi.juxinli.com/api/search';
 
     function index() {
         $this->display();
@@ -95,8 +101,19 @@ class PayController extends Controller {
             $Member = M('Member');
             $order_info = $Order->where(['trade_no' => $trade_no])->find();
             if ($order_info['status'] == 1) {
-                $Order->where(['id' => $order_info['id']])->save(['status' => 3]); 
+                $Order->where(['id' => $order_info['id']])->save(['status' => 2]); 
                 $Member->where(['id' => $order_info['uid']])->setInc('balance');
+
+                $Search = M('Search');
+                $search_info = $Search->where(['trade_no' => $trade_no])->find();
+                if ($search_info && $search_info['status'] == 1) {
+                    $update_info = [
+                        'client_secret' => $this->_app_key,
+                        'access_token'  => $this->_get_token(),
+                        'status'        => 3
+                    ];
+                    $Search->where(['trade_no' => $trade_no])->save($update_info));
+                }
             }
 
             $return = [
@@ -114,5 +131,16 @@ class PayController extends Controller {
             $xml.='<'.$k.'>'.$v.'</'.$k.'>';
         }
         return $xml;
+    }
+    
+    function _get_token()
+    {
+        $url = $this->_miguan_token_url . '?client_secret=' . $this->_app_key . '&account=' . $this->_account;
+        $token_res = curl_get($url);
+        $token_res = json_decode($token_res, true);
+        if ($token_res['code'] != 'MIGUAN_ACCESS_SUCCESS') {
+            $this->error($token_res['message']);
+        }
+        return $token_res['data']['access_token'];
     }
 }
