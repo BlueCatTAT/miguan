@@ -95,7 +95,7 @@ class PayController extends Controller {
             $Member = M('Member');
             $order_info = $Order->where(['trade_no' => $trade_no])->find();
             if ($order_info['status'] == 1) {
-                $Order->where(['id' => $order_info['id']])->save(['status' => 2]); 
+                $Order->where(['id' => $order_info['id']])->save(['status' => 3]); 
                 $Member->where(['id' => $order_info['uid']])->setInc('balance');
             }
 
