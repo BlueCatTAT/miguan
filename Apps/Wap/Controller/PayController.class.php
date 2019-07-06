@@ -112,7 +112,7 @@ class PayController extends Controller {
                         'access_token'  => $this->_get_token(),
                         'status'        => 3
                     ];
-                    $Search->where(['trade_no' => $trade_no])->save($update_info));
+                    $Search->where(['trade_no' => $trade_no])->save($update_info);
                 }
             }
 
