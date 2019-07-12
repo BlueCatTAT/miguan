@@ -63,7 +63,7 @@ class OrderController extends RootController {
             ->select();
         $this->order_list = $order_list;
 
-        $count = $Order->where($where)->count();
+        $count = $Order->table('t_order a')->where($where)->count();
 
         $this->count = $count;
         $this->page_count = ceil($count / 10);
