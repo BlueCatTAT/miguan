@@ -3,10 +3,6 @@
 <div class="page-container">
   <div class="text-c"> 
     <form action="#" method="post">
-      <input type="hidden" name="s_aid" value="{$aid}">
-      <input type="hidden" name="s_start_time" value="{$start_time}">
-      <input type="hidden" name="s_end_time" value="{$end_time}">
-      <input type="hidden" name="s_trade_no" value="{$trade_no}">
       <span class="select-box inline">
         <select name="aid" class="select">
           <option value="0">全部</option>
@@ -59,7 +55,6 @@
 $(function(){
   $("[data-toggle='popover']").popover();
   $("[data-toggle='tooltip']").tooltip();
-  var aid =$('#s_aid').val();
   var start_time =$('#start_time').val();
   var end_time =$('#end_time').val();
   var trade_no =$('#trade_no').val();
@@ -71,7 +66,7 @@ $(function(){
     jump: function(e){
       var page = $('#page').val();
       if (page != e.curr) {
-        window.location.href = "/admin/order/order_list?page=" + e.curr + '&aid=' + aid + '&start_time=' + start_time + '&end_time=' + end_time + '&trade_no=' + trade_no;
+        window.location.href = "/admin/order/order_list?page=" + e.curr + '&start_time=' + start_time + '&end_time=' + end_time + '&trade_no=' + trade_no;
       }
     }
   });
