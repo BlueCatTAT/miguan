@@ -3,6 +3,7 @@
 <div class="page-container">
   <div class="text-c"> 
     <form action="#" method="post">
+      <input type="hidden" id="aid" value="{$aid}">
       <span class="select-box inline">
         <select name="aid" class="select">
           <option value="0">全部</option>
@@ -58,6 +59,7 @@ $(function(){
   var start_time =$('#start_time').val();
   var end_time =$('#end_time').val();
   var trade_no =$('#trade_no').val();
+  var aid = $('#aid').val();
   laypage({
     cont: 'pager',
     skip: true,
@@ -66,7 +68,7 @@ $(function(){
     jump: function(e){
       var page = $('#page').val();
       if (page != e.curr) {
-        window.location.href = "/admin/order/order_list?page=" + e.curr + '&start_time=' + start_time + '&end_time=' + end_time + '&trade_no=' + trade_no;
+        window.location.href = "/admin/order/order_list?page=" + e.curr + '&start_time=' + start_time + '&end_time=' + end_time + '&trade_no=' + trade_no + '&aid=' + aid;
       }
     }
   });
